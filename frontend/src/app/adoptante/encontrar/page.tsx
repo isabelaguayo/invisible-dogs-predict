@@ -282,10 +282,9 @@ export default function FindDogPage() {
               <span>Preferencias</span><i aria-hidden="true" /><span>Referencia visual</span><i aria-hidden="true" /><span>Resultados</span>
             </div>
 
-            {/* La navegación se conectará cuando exista el Paso 2. */}
-            <button className="continue-button" type="button">
+            <Link className="continue-button" href="/adoptante/referencia">
               Continuar a referencia visual <ArrowIcon />
-            </button>
+            </Link>
           </aside>
         </div>
       </section>
