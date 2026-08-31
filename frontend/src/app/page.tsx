@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const steps = [
   { number: "01", title: "Preferencias", description: "El adoptante define qué características busca." },
@@ -13,6 +14,7 @@ const paths = [
     description: "Descubre perros compatibles con tus preferencias y explora nuevas posibilidades mediante similitud visual.",
     items: ["Preferencias", "Búsqueda visual", "Favoritos y comparación"],
     cta: "Descubrir mi match",
+    href: "/adoptante/encontrar",
     className: "journey-adopter",
   },
   {
@@ -21,6 +23,7 @@ const paths = [
     description: "Una lectura operativa para comprender el riesgo y reforzar la visibilidad de los perfiles que más pueden beneficiarse de ella.",
     items: ["Riesgo", "Completitud de fichas", "Priorización"],
     cta: "Descubrir recorrido",
+    href: null,
     className: "journey-shelter",
   },
 ];
@@ -93,7 +96,7 @@ export default function Home() {
             <h1>Tecnología para hacer visibles<span> a quienes más lo necesitan.</span></h1>
             <p className="hero-description">InvisibleDogs Predict combina predicción de larga estancia, búsqueda visual inteligente y modelado multimodal para ayudar a identificar perros que podrían necesitar una mayor visibilidad.</p>
             <div className="hero-actions" aria-label="Recorridos disponibles">
-              <a className="button button-primary" href="#recorridos">Quiero adoptar<ArrowIcon /></a>
+              <Link className="button button-primary" href="/adoptante/encontrar">Quiero adoptar<ArrowIcon /></Link>
               <a className="button button-secondary" href="#recorridos">Soy una protectora</a>
             </div>
             <p className="technology-line">
@@ -154,7 +157,11 @@ export default function Home() {
                 <h3>{path.title}</h3>
                 <p className="journey-description">{path.description}</p>
                 <ul>{path.items.map((item) => <li key={item}><CheckIcon />{item}</li>)}</ul>
-                <span className="journey-link">{path.cta} <ArrowIcon /></span>
+                {path.href ? (
+                  <Link className="journey-link" href={path.href}>{path.cta} <ArrowIcon /></Link>
+                ) : (
+                  <span className="journey-link">{path.cta} <ArrowIcon /></span>
+                )}
                 <div className="journey-decoration" aria-hidden="true" />
               </article>
             ))}
@@ -190,7 +197,7 @@ export default function Home() {
           <h2 id="final-cta-title">Dos formas de utilizar una misma tecnología.</h2>
           <p>Descubre perros compatibles contigo o explora herramientas para mejorar la visibilidad de quienes podrían necesitar más atención.</p>
           <div className="cta-actions">
-            <a className="button cta-primary" href="#recorridos">Descubrir mi match <ArrowIcon /></a>
+            <Link className="button cta-primary" href="/adoptante/encontrar">Descubrir mi match <ArrowIcon /></Link>
             <a className="button cta-secondary" href="#recorridos">Soy una protectora</a>
           </div>
         </div>
