@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ColorSwatch } from "@/components/PreferenceIllustrations";
+import { SectionDivider } from "@/components/SectionDivider";
 
 type PreferenceKey =
   | "age"
@@ -198,6 +199,8 @@ export default function FindDogPage() {
           <li className="progress-step"><span>03</span><strong>Resultados</strong></li>
         </ol>
       </nav>
+
+      <SectionDivider />
 
       <section className="preferences-area">
         <div className="page-shell preferences-layout">

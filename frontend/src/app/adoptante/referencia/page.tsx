@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChangeEvent, DragEvent, useEffect, useMemo, useRef, useState } from "react";
+import { SectionDivider } from "@/components/SectionDivider";
+import { visualReferenceBreeds, type VisualReferenceBreed } from "@/data/visualReferenceBreeds";
 
 type ReferenceMethod = "breed" | "photo" | null;
 
@@ -11,7 +13,7 @@ type PhotoReference = {
   url: string;
 };
 
-const breeds = [
+const featuredBreeds = [
   "Shih Tzu",
   "Labrador Retriever",
   "Golden Retriever",
@@ -56,14 +58,20 @@ export default function VisualReferencePage() {
   const [selectedBreed, setSelectedBreed] = useState<string | null>(null);
   const [photo, setPhoto] = useState<PhotoReference | null>(null);
   const [breedQuery, setBreedQuery] = useState("");
+  const [selectedSearchBreed, setSelectedSearchBreed] = useState<VisualReferenceBreed | null>(null);
+  const [suggestionsOpen, setSuggestionsOpen] = useState(false);
   const [fileError, setFileError] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const breedSearchRef = useRef<HTMLInputElement>(null);
 
-  const filteredBreeds = useMemo(() => {
+  const breedSuggestions = useMemo(() => {
     const normalizedQuery = breedQuery.trim().toLocaleLowerCase();
-    if (!normalizedQuery) return breeds;
-    return breeds.filter((breed) => breed.toLocaleLowerCase().includes(normalizedQuery));
+    if (!normalizedQuery) return [];
+
+    return visualReferenceBreeds
+      .filter((breed) => breed.displayName.toLocaleLowerCase().includes(normalizedQuery))
+      .slice(0, 7);
   }, [breedQuery]);
 
   useEffect(() => {
@@ -74,10 +82,13 @@ export default function VisualReferencePage() {
     };
   }, [photo]);
 
-  function chooseBreed(breed: string) {
+  function chooseBreed(breed: string, searchBreed: VisualReferenceBreed | null = null) {
     setPhoto(null);
     setFileError("");
     setSelectedBreed(breed);
+    setSelectedSearchBreed(searchBreed);
+    setBreedQuery("");
+    setSuggestionsOpen(false);
     setMethod("breed");
   }
 
@@ -88,6 +99,9 @@ export default function VisualReferencePage() {
     }
 
     setSelectedBreed(null);
+    setSelectedSearchBreed(null);
+    setBreedQuery("");
+    setSuggestionsOpen(false);
     setFileError("");
     setPhoto({ file, url: URL.createObjectURL(file) });
     setMethod("photo");
@@ -117,6 +131,19 @@ export default function VisualReferencePage() {
     setPhoto(null);
     setFileError("");
     setMethod(null);
+  }
+
+  function clearBreedSearch() {
+    setBreedQuery("");
+    setSuggestionsOpen(false);
+    breedSearchRef.current?.focus();
+  }
+
+  function removeSearchedBreed() {
+    setSelectedBreed(null);
+    setSelectedSearchBreed(null);
+    setMethod(null);
+    breedSearchRef.current?.focus();
   }
 
   function openFilePicker() {
@@ -174,6 +201,8 @@ export default function VisualReferencePage() {
         </ol>
       </nav>
 
+      <SectionDivider />
+
       <section className="reference-area">
         <div className="page-shell">
           <header className="reference-heading">
@@ -197,7 +226,7 @@ export default function VisualReferencePage() {
               <div className="reference-option-intro">
                 <div>
                   <h3 id="breed-reference-title">Elegir una referencia de raza</h3>
-                  <p>Selecciona una raza como referencia visual. Más adelante se utilizará para encontrar perros con rasgos visuales similares.</p>
+                  <p>Selecciona una de las razas destacadas o busca otra referencia visual disponible. Más adelante se utilizará para encontrar perros con rasgos visuales similares.</p>
                 </div>
                 <Image
                   src="/illustrations/seleccion.png"
@@ -210,23 +239,13 @@ export default function VisualReferencePage() {
                 />
               </div>
 
-              <div className="breed-search">
-                <label htmlFor="breed-search">Buscar raza</label>
-                <div>
-                  <input
-                    id="breed-search"
-                    type="search"
-                    value={breedQuery}
-                    onChange={(event) => setBreedQuery(event.target.value)}
-                    placeholder="Escribe un nombre de raza"
-                    autoComplete="off"
-                  />
-                  {breedQuery && <button type="button" onClick={() => setBreedQuery("")}>Limpiar</button>}
-                </div>
+              <div className="featured-breeds-heading">
+                <h4>Razas destacadas</h4>
+                <p>Accesos rápidos a referencias visuales habituales.</p>
               </div>
 
               <div className="breed-grid" role="group" aria-label="Raza de referencia visual">
-                {filteredBreeds.map((breed) => {
+                {featuredBreeds.map((breed) => {
                   const selected = selectedBreed === breed;
                   return (
                     <button
@@ -242,7 +261,76 @@ export default function VisualReferencePage() {
                     </button>
                   );
                 })}
-                {filteredBreeds.length === 0 && <p className="breed-empty">No encontramos ninguna raza con ese nombre.</p>}
+              </div>
+
+              <div className="breed-search">
+                <label htmlFor="breed-search">Buscar otra raza</label>
+                <p id="breed-search-help">Busca entre las referencias visuales disponibles.</p>
+                <div className="breed-search-field">
+                  <input
+                    ref={breedSearchRef}
+                    id="breed-search"
+                    type="search"
+                    value={breedQuery}
+                    onChange={(event) => {
+                      setBreedQuery(event.target.value);
+                      setSuggestionsOpen(Boolean(event.target.value.trim()));
+                    }}
+                    onFocus={() => {
+                      if (breedQuery.trim()) setSuggestionsOpen(true);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === "Escape") {
+                        setSuggestionsOpen(false);
+                        event.currentTarget.blur();
+                      }
+                    }}
+                    placeholder="Escribe el nombre de una raza"
+                    autoComplete="off"
+                    aria-describedby="breed-search-help"
+                  />
+                  {breedQuery && <button type="button" onClick={clearBreedSearch}>Limpiar</button>}
+                </div>
+
+                {selectedSearchBreed && (
+                  <div className="searched-breed-selection" aria-live="polite">
+                    <div>
+                      <span>Referencia seleccionada</span>
+                      <strong>{selectedSearchBreed.displayName}</strong>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={removeSearchedBreed}
+                      aria-label={"Eliminar " + selectedSearchBreed.displayName + " como referencia visual"}
+                    >
+                      ×
+                    </button>
+                  </div>
+                )}
+
+                {suggestionsOpen && breedQuery.trim() && (
+                  <div className="breed-suggestions" id="breed-suggestions" aria-live="polite">
+                    {breedSuggestions.length > 0 ? (
+                      <ul>
+                        {breedSuggestions.map((breed) => (
+                          <li key={breed.id}>
+                            <button
+                              type="button"
+                              aria-pressed={selectedBreed === breed.displayName}
+                              onClick={() => chooseBreed(breed.displayName, breed)}
+                            >
+                              <span className="breed-initial" aria-hidden="true">{breedInitials(breed.displayName)}</span>
+                              <span>{breed.displayName}</span>
+                              <small>Seleccionar</small>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="breed-empty">No encontramos ninguna referencia con ese nombre.</p>
+                    )}
+                  </div>
+                )}
               </div>
             </article>
 

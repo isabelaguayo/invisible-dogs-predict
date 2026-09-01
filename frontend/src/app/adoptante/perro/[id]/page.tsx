@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ProfileFavoriteButton } from "@/components/ProfileFavoriteButton";
+import { SectionDivider } from "@/components/SectionDivider";
 import { DEMO_DOGS, getDemoDogById, type DemoDog } from "@/data/demoDogs";
 
 type DogProfilePageProps = {
@@ -174,6 +175,8 @@ export default async function DogProfilePage({ params }: DogProfilePageProps) {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       <section className="profile-content">
         <div className="page-shell">

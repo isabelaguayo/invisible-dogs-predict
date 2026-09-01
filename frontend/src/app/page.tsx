@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SectionDivider } from "@/components/SectionDivider";
 
 const steps = [
   { number: "01", title: "Preferencias", description: "El adoptante define qué características busca." },
@@ -125,6 +126,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       <section className="section how-section" id="como-funciona">
         <div className="page-shell">

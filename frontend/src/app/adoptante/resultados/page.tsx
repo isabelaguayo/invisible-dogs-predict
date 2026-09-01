@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { DogResultCard } from "@/components/DogResultCard";
+import { SectionDivider } from "@/components/SectionDivider";
 import { DEMO_DOGS } from "@/data/demoDogs";
 
 function BackIcon() {
@@ -56,6 +57,8 @@ export default function AdopterResultsPage() {
           <li className="progress-step progress-active" aria-current="step"><span>03</span><strong>Resultados</strong></li>
         </ol>
       </nav>
+
+      <SectionDivider />
 
       <section className="results-area">
         <div className="page-shell">
