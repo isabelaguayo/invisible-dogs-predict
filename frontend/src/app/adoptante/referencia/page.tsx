@@ -348,9 +348,11 @@ export default function VisualReferencePage() {
               </div>
 
               <Link className="back-preferences" href="/adoptante/encontrar"><BackIcon />Volver a preferencias</Link>
-              <button className="results-button" type="button" disabled={!canContinue}>
-                Continuar a resultados <ArrowIcon />
-              </button>
+              {canContinue ? (
+                <Link className="results-button" href="/adoptante/resultados">Continuar a resultados <ArrowIcon /></Link>
+              ) : (
+                <button className="results-button" type="button" disabled>Continuar a resultados <ArrowIcon /></button>
+              )}
             </aside>
           </div>
         </div>
