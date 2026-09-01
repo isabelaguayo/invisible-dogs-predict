@@ -1,16 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { DogResultCard, type DogResult } from "@/components/DogResultCard";
-
-// DEMO_RESULTS: datos exclusivamente ilustrativos para validar la interfaz.
-const DEMO_RESULTS: DogResult[] = [
-  { id: "nala", name: "Nala", age: "Adulto", sex: "Hembra", size: "Mediano", breed: "Mixed Breed", similarity: 92, risk: "Alto", completeness: 88 },
-  { id: "bruno", name: "Bruno", age: "Joven", sex: "Macho", size: "Grande", breed: "Labrador Retriever", similarity: 89, risk: "Medio", completeness: 94 },
-  { id: "kira", name: "Kira", age: "Adulto", sex: "Hembra", size: "Pequeño", breed: "Shih Tzu", similarity: 86, risk: "Bajo", completeness: 91 },
-  { id: "toby", name: "Toby", age: "Senior", sex: "Macho", size: "Mediano", breed: "Beagle Mix", similarity: 82, risk: "Alto", completeness: 76 },
-  { id: "coco", name: "Coco", age: "Joven", sex: "Hembra", size: "Pequeño", breed: "Poodle Mix", similarity: 78, risk: "Medio", completeness: 83 },
-  { id: "milo", name: "Milo", age: "Adulto", sex: "Macho", size: "Grande", breed: "German Shepherd Mix", similarity: 74, risk: "Bajo", completeness: 69 },
-];
+import { DogResultCard } from "@/components/DogResultCard";
+import { DEMO_DOGS } from "@/data/demoDogs";
 
 function BackIcon() {
   return (
@@ -108,7 +99,7 @@ export default function AdopterResultsPage() {
           </header>
 
           <div className="dog-results-grid">
-            {DEMO_RESULTS.map((dog) => <DogResultCard dog={dog} key={dog.id} />)}
+            {DEMO_DOGS.map((dog) => <DogResultCard dog={dog} key={dog.id} />)}
           </div>
 
           <div className="results-footer-area">

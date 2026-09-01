@@ -1,20 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-
-export type RiskLevel = "Bajo" | "Medio" | "Alto";
-
-export type DogResult = {
-  id: string;
-  name: string;
-  age: string;
-  sex: string;
-  size: string;
-  breed: string;
-  similarity: number;
-  risk: RiskLevel;
-  completeness: number;
-};
+import type { DemoDog } from "@/data/demoDogs";
 
 function HeartIcon({ active }: { active: boolean }) {
   return (
@@ -24,7 +12,7 @@ function HeartIcon({ active }: { active: boolean }) {
   );
 }
 
-export function DogResultCard({ dog }: { dog: DogResult }) {
+export function DogResultCard({ dog }: { dog: DemoDog }) {
   const [favorite, setFavorite] = useState(false);
   const [explanationOpen, setExplanationOpen] = useState(false);
   const explanationId = `result-explanation-${dog.id}`;
@@ -107,7 +95,7 @@ export function DogResultCard({ dog }: { dog: DogResult }) {
           </div>
         )}
 
-        <button className="view-profile-button" type="button">Ver perfil</button>
+        <Link className="view-profile-button" href={`/adoptante/perro/${dog.id}`}>Ver perfil</Link>
       </div>
     </article>
   );
