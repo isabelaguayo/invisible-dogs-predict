@@ -24,7 +24,7 @@ const paths = [
     description: "Una lectura operativa para comprender el riesgo y reforzar la visibilidad de los perfiles que más pueden beneficiarse de ella.",
     items: ["Riesgo", "Completitud de fichas", "Priorización"],
     cta: "Descubrir recorrido",
-    href: null,
+    href: "/protectora",
     className: "journey-shelter",
   },
 ];
@@ -98,7 +98,7 @@ export default function Home() {
             <p className="hero-description">InvisibleDogs Predict combina predicción de larga estancia, búsqueda visual inteligente y modelado multimodal para ayudar a identificar perros que podrían necesitar una mayor visibilidad.</p>
             <div className="hero-actions" aria-label="Recorridos disponibles">
               <Link className="button button-primary" href="/adoptante/encontrar">Quiero adoptar<ArrowIcon /></Link>
-              <a className="button button-secondary" href="#recorridos">Soy una protectora</a>
+              <Link className="button button-secondary" href="/protectora">Soy una protectora</Link>
             </div>
             <p className="technology-line">
               <span>Inteligencia Artificial</span><i aria-hidden="true" /><span>DINOv2</span><i aria-hidden="true" /><span>Modelado Multimodal</span>
@@ -201,7 +201,7 @@ export default function Home() {
           <p>Descubre perros compatibles contigo o explora herramientas para mejorar la visibilidad de quienes podrían necesitar más atención.</p>
           <div className="cta-actions">
             <Link className="button cta-primary" href="/adoptante/encontrar">Descubrir mi match <ArrowIcon /></Link>
-            <a className="button cta-secondary" href="#recorridos">Soy una protectora</a>
+            <Link className="button cta-secondary" href="/protectora">Soy una protectora</Link>
           </div>
         </div>
       </section>
