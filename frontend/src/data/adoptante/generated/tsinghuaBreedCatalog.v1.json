@@ -1,0 +1,652 @@
+[
+  {
+    "label": 0,
+    "technicalName": "shiba-dog",
+    "displayName": "Shiba Dog"
+  },
+  {
+    "label": 1,
+    "technicalName": "french-bulldog",
+    "displayName": "French Bulldog"
+  },
+  {
+    "label": 2,
+    "technicalName": "siberian-husky",
+    "displayName": "Siberian Husky"
+  },
+  {
+    "label": 3,
+    "technicalName": "malamute",
+    "displayName": "Malamute"
+  },
+  {
+    "label": 4,
+    "technicalName": "pomeranian",
+    "displayName": "Pomeranian"
+  },
+  {
+    "label": 5,
+    "technicalName": "airedale",
+    "displayName": "Airedale"
+  },
+  {
+    "label": 6,
+    "technicalName": "miniature-poodle",
+    "displayName": "Miniature Poodle"
+  },
+  {
+    "label": 7,
+    "technicalName": "affenpinscher",
+    "displayName": "Affenpinscher"
+  },
+  {
+    "label": 8,
+    "technicalName": "schipperke",
+    "displayName": "Schipperke"
+  },
+  {
+    "label": 9,
+    "technicalName": "australian-terrier",
+    "displayName": "Australian Terrier"
+  },
+  {
+    "label": 10,
+    "technicalName": "welsh-springer-spaniel",
+    "displayName": "Welsh Springer Spaniel"
+  },
+  {
+    "label": 11,
+    "technicalName": "curly-coated-retriever",
+    "displayName": "Curly Coated Retriever"
+  },
+  {
+    "label": 12,
+    "technicalName": "staffordshire-bullterrier",
+    "displayName": "Staffordshire Bullterrier"
+  },
+  {
+    "label": 13,
+    "technicalName": "norwich-terrier",
+    "displayName": "Norwich Terrier"
+  },
+  {
+    "label": 14,
+    "technicalName": "tibetan-terrier",
+    "displayName": "Tibetan Terrier"
+  },
+  {
+    "label": 15,
+    "technicalName": "english-setter",
+    "displayName": "English Setter"
+  },
+  {
+    "label": 16,
+    "technicalName": "norfolk-terrier",
+    "displayName": "Norfolk Terrier"
+  },
+  {
+    "label": 17,
+    "technicalName": "pembroke",
+    "displayName": "Pembroke"
+  },
+  {
+    "label": 18,
+    "technicalName": "tibetan-mastiff",
+    "displayName": "Tibetan Mastiff"
+  },
+  {
+    "label": 19,
+    "technicalName": "border-terrier",
+    "displayName": "Border Terrier"
+  },
+  {
+    "label": 20,
+    "technicalName": "great-dane",
+    "displayName": "Great Dane"
+  },
+  {
+    "label": 21,
+    "technicalName": "scotch-terrier",
+    "displayName": "Scotch Terrier"
+  },
+  {
+    "label": 22,
+    "technicalName": "flat-coated-retriever",
+    "displayName": "Flat Coated Retriever"
+  },
+  {
+    "label": 23,
+    "technicalName": "saluki",
+    "displayName": "Saluki"
+  },
+  {
+    "label": 24,
+    "technicalName": "irish-setter",
+    "displayName": "Irish Setter"
+  },
+  {
+    "label": 25,
+    "technicalName": "blenheim-spaniel",
+    "displayName": "Blenheim Spaniel"
+  },
+  {
+    "label": 26,
+    "technicalName": "irish-terrier",
+    "displayName": "Irish Terrier"
+  },
+  {
+    "label": 27,
+    "technicalName": "bloodhound",
+    "displayName": "Bloodhound"
+  },
+  {
+    "label": 28,
+    "technicalName": "redbone",
+    "displayName": "Redbone"
+  },
+  {
+    "label": 29,
+    "technicalName": "west-highland-white-terrier",
+    "displayName": "West Highland White Terrier"
+  },
+  {
+    "label": 30,
+    "technicalName": "brabancon-griffo",
+    "displayName": "Brabancon Griffo"
+  },
+  {
+    "label": 31,
+    "technicalName": "dhole",
+    "displayName": "Dhole"
+  },
+  {
+    "label": 32,
+    "technicalName": "kelpie",
+    "displayName": "Kelpie"
+  },
+  {
+    "label": 33,
+    "technicalName": "doberman",
+    "displayName": "Doberman"
+  },
+  {
+    "label": 34,
+    "technicalName": "ibizan-hound",
+    "displayName": "Ibizan Hound"
+  },
+  {
+    "label": 35,
+    "technicalName": "vizsla",
+    "displayName": "Vizsla"
+  },
+  {
+    "label": 36,
+    "technicalName": "cairn",
+    "displayName": "Cairn"
+  },
+  {
+    "label": 37,
+    "technicalName": "german-shepherd",
+    "displayName": "German Shepherd"
+  },
+  {
+    "label": 38,
+    "technicalName": "african-hunting-dog",
+    "displayName": "African Hunting Dog"
+  },
+  {
+    "label": 39,
+    "technicalName": "dandie-dinmont",
+    "displayName": "Dandie Dinmont"
+  },
+  {
+    "label": 40,
+    "technicalName": "sealyham-terrier",
+    "displayName": "Sealyham Terrier"
+  },
+  {
+    "label": 41,
+    "technicalName": "german-short-haired-pointer",
+    "displayName": "German Short Haired Pointer"
+  },
+  {
+    "label": 42,
+    "technicalName": "bernese-mountain-dog",
+    "displayName": "Bernese Mountain Dog"
+  },
+  {
+    "label": 43,
+    "technicalName": "saint-bernard",
+    "displayName": "Saint Bernard"
+  },
+  {
+    "label": 44,
+    "technicalName": "leonberg",
+    "displayName": "Leonberg"
+  },
+  {
+    "label": 45,
+    "technicalName": "bedlington-terrier",
+    "displayName": "Bedlington Terrier"
+  },
+  {
+    "label": 46,
+    "technicalName": "newfoundland",
+    "displayName": "Newfoundland"
+  },
+  {
+    "label": 47,
+    "technicalName": "lhasa",
+    "displayName": "Lhasa"
+  },
+  {
+    "label": 48,
+    "technicalName": "chesapeake-bay-retriever",
+    "displayName": "Chesapeake Bay Retriever"
+  },
+  {
+    "label": 49,
+    "technicalName": "lakeland-terrier",
+    "displayName": "Lakeland Terrier"
+  },
+  {
+    "label": 50,
+    "technicalName": "walker-hound",
+    "displayName": "Walker Hound"
+  },
+  {
+    "label": 51,
+    "technicalName": "american-staffordshire-terrier",
+    "displayName": "American Staffordshire Terrier"
+  },
+  {
+    "label": 52,
+    "technicalName": "otterhound",
+    "displayName": "Otterhound"
+  },
+  {
+    "label": 53,
+    "technicalName": "sussex-spaniel",
+    "displayName": "Sussex Spaniel"
+  },
+  {
+    "label": 54,
+    "technicalName": "norwegian-elkhound",
+    "displayName": "Norwegian Elkhound"
+  },
+  {
+    "label": 55,
+    "technicalName": "bluetick",
+    "displayName": "Bluetick"
+  },
+  {
+    "label": 56,
+    "technicalName": "dingo",
+    "displayName": "Dingo"
+  },
+  {
+    "label": 57,
+    "technicalName": "irish-water-spaniel",
+    "displayName": "Irish Water Spaniel"
+  },
+  {
+    "label": 58,
+    "technicalName": "samoyed",
+    "displayName": "Samoyed"
+  },
+  {
+    "label": 59,
+    "technicalName": "fila-braziliero",
+    "displayName": "Fila Braziliero"
+  },
+  {
+    "label": 60,
+    "technicalName": "standard-schnauzer",
+    "displayName": "Standard Schnauzer"
+  },
+  {
+    "label": 61,
+    "technicalName": "mexican-hairless",
+    "displayName": "Mexican Hairless"
+  },
+  {
+    "label": 62,
+    "technicalName": "entlebucher",
+    "displayName": "Entlebucher"
+  },
+  {
+    "label": 63,
+    "technicalName": "afghan-hound",
+    "displayName": "Afghan Hound"
+  },
+  {
+    "label": 64,
+    "technicalName": "kuvasz",
+    "displayName": "Kuvasz"
+  },
+  {
+    "label": 65,
+    "technicalName": "english-foxhound",
+    "displayName": "English Foxhound"
+  },
+  {
+    "label": 66,
+    "technicalName": "keeshond",
+    "displayName": "Keeshond"
+  },
+  {
+    "label": 67,
+    "technicalName": "irish-wolfhound",
+    "displayName": "Irish Wolfhound"
+  },
+  {
+    "label": 68,
+    "technicalName": "scottish-deerhound",
+    "displayName": "Scottish Deerhound"
+  },
+  {
+    "label": 69,
+    "technicalName": "rottweiler",
+    "displayName": "Rottweiler"
+  },
+  {
+    "label": 70,
+    "technicalName": "black-and-tan-coonhound",
+    "displayName": "Black And Tan Coonhound"
+  },
+  {
+    "label": 71,
+    "technicalName": "great-pyrenees",
+    "displayName": "Great Pyrenees"
+  },
+  {
+    "label": 72,
+    "technicalName": "boxer",
+    "displayName": "Boxer"
+  },
+  {
+    "label": 73,
+    "technicalName": "wire-haired-fox-terrier",
+    "displayName": "Wire Haired Fox Terrier"
+  },
+  {
+    "label": 74,
+    "technicalName": "borzoi",
+    "displayName": "Borzoi"
+  },
+  {
+    "label": 75,
+    "technicalName": "groenendael",
+    "displayName": "Groenendael"
+  },
+  {
+    "label": 76,
+    "technicalName": "collie",
+    "displayName": "Collie"
+  },
+  {
+    "label": 77,
+    "technicalName": "gordon-setter",
+    "displayName": "Gordon Setter"
+  },
+  {
+    "label": 78,
+    "technicalName": "kerry-blue-terrier",
+    "displayName": "Kerry Blue Terrier"
+  },
+  {
+    "label": 79,
+    "technicalName": "briard",
+    "displayName": "Briard"
+  },
+  {
+    "label": 80,
+    "technicalName": "rhodesian-ridgeback",
+    "displayName": "Rhodesian Ridgeback"
+  },
+  {
+    "label": 81,
+    "technicalName": "boston-bull",
+    "displayName": "Boston Bull"
+  },
+  {
+    "label": 82,
+    "technicalName": "bull-mastiff",
+    "displayName": "Bull Mastiff"
+  },
+  {
+    "label": 83,
+    "technicalName": "silky-terrier",
+    "displayName": "Silky Terrier"
+  },
+  {
+    "label": 84,
+    "technicalName": "brittany-spaniel",
+    "displayName": "Brittany Spaniel"
+  },
+  {
+    "label": 85,
+    "technicalName": "eskimo-dog",
+    "displayName": "Eskimo Dog"
+  },
+  {
+    "label": 86,
+    "technicalName": "giant-schnauzer",
+    "displayName": "Giant Schnauzer"
+  },
+  {
+    "label": 87,
+    "technicalName": "malinois",
+    "displayName": "Malinois"
+  },
+  {
+    "label": 88,
+    "technicalName": "bouvier-des-flandres",
+    "displayName": "Bouvier Des Flandres"
+  },
+  {
+    "label": 89,
+    "technicalName": "whippet",
+    "displayName": "Whippet"
+  },
+  {
+    "label": 90,
+    "technicalName": "appenzeller",
+    "displayName": "Appenzeller"
+  },
+  {
+    "label": 91,
+    "technicalName": "chinese-crested-dog",
+    "displayName": "Chinese Crested Dog"
+  },
+  {
+    "label": 92,
+    "technicalName": "miniature-schnauzer",
+    "displayName": "Miniature Schnauzer"
+  },
+  {
+    "label": 93,
+    "technicalName": "soft-coated-wheaten-terrier",
+    "displayName": "Soft Coated Wheaten Terrier"
+  },
+  {
+    "label": 94,
+    "technicalName": "weimaraner",
+    "displayName": "Weimaraner"
+  },
+  {
+    "label": 95,
+    "technicalName": "clumber",
+    "displayName": "Clumber"
+  },
+  {
+    "label": 96,
+    "technicalName": "greater-swiss-mountain-dog",
+    "displayName": "Greater Swiss Mountain Dog"
+  },
+  {
+    "label": 97,
+    "technicalName": "toy-terrier",
+    "displayName": "Toy Terrier"
+  },
+  {
+    "label": 98,
+    "technicalName": "italian-greyhound",
+    "displayName": "Italian Greyhound"
+  },
+  {
+    "label": 99,
+    "technicalName": "basset",
+    "displayName": "Basset"
+  },
+  {
+    "label": 100,
+    "technicalName": "basenji",
+    "displayName": "Basenji"
+  },
+  {
+    "label": 101,
+    "technicalName": "australian-shepherd",
+    "displayName": "Australian Shepherd"
+  },
+  {
+    "label": 102,
+    "technicalName": "maltese-dog",
+    "displayName": "Maltese Dog"
+  },
+  {
+    "label": 103,
+    "technicalName": "japanese-spaniel",
+    "displayName": "Japanese Spaniel"
+  },
+  {
+    "label": 104,
+    "technicalName": "cane-carso",
+    "displayName": "Cane Carso"
+  },
+  {
+    "label": 105,
+    "technicalName": "japanese-spitzes",
+    "displayName": "Japanese Spitzes"
+  },
+  {
+    "label": 106,
+    "technicalName": "old-english-sheepdog",
+    "displayName": "Old English Sheepdog"
+  },
+  {
+    "label": 107,
+    "technicalName": "black-sable",
+    "displayName": "Black Sable"
+  },
+  {
+    "label": 108,
+    "technicalName": "border-collie",
+    "displayName": "Border Collie"
+  },
+  {
+    "label": 109,
+    "technicalName": "shetland-sheepdog",
+    "displayName": "Shetland Sheepdog"
+  },
+  {
+    "label": 110,
+    "technicalName": "english-springer",
+    "displayName": "English Springer"
+  },
+  {
+    "label": 111,
+    "technicalName": "beagle",
+    "displayName": "Beagle"
+  },
+  {
+    "label": 112,
+    "technicalName": "cocker-spaniel",
+    "displayName": "Cocker Spaniel"
+  },
+  {
+    "label": 113,
+    "technicalName": "cardigan",
+    "displayName": "Cardigan"
+  },
+  {
+    "label": 114,
+    "technicalName": "toy-poodle",
+    "displayName": "Toy Poodle"
+  },
+  {
+    "label": 115,
+    "technicalName": "bichon-frise",
+    "displayName": "Bichon Frise"
+  },
+  {
+    "label": 116,
+    "technicalName": "standard-poodle",
+    "displayName": "Standard Poodle"
+  },
+  {
+    "label": 117,
+    "technicalName": "komondor",
+    "displayName": "Komondor"
+  },
+  {
+    "label": 118,
+    "technicalName": "chow",
+    "displayName": "Chow"
+  },
+  {
+    "label": 119,
+    "technicalName": "chinese-rural-dog",
+    "displayName": "Chinese Rural Dog"
+  },
+  {
+    "label": 120,
+    "technicalName": "yorkshire-terrier",
+    "displayName": "Yorkshire Terrier"
+  },
+  {
+    "label": 121,
+    "technicalName": "labrador-retriever",
+    "displayName": "Labrador Retriever"
+  },
+  {
+    "label": 122,
+    "technicalName": "shih-tzu",
+    "displayName": "Shih Tzu"
+  },
+  {
+    "label": 123,
+    "technicalName": "chihuahua",
+    "displayName": "Chihuahua"
+  },
+  {
+    "label": 124,
+    "technicalName": "pekinese",
+    "displayName": "Pekinese"
+  },
+  {
+    "label": 125,
+    "technicalName": "golden-retriever",
+    "displayName": "Golden Retriever"
+  },
+  {
+    "label": 126,
+    "technicalName": "miniature-pinscher",
+    "displayName": "Miniature Pinscher"
+  },
+  {
+    "label": 127,
+    "technicalName": "teddy",
+    "displayName": "Teddy"
+  },
+  {
+    "label": 128,
+    "technicalName": "pug",
+    "displayName": "Pug"
+  },
+  {
+    "label": 129,
+    "technicalName": "papillon",
+    "displayName": "Papillon"
+  }
+]

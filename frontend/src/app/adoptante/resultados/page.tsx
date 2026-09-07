@@ -2,7 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { DogResultCard } from "@/components/DogResultCard";
 import { SectionDivider } from "@/components/SectionDivider";
-import { DEMO_DOGS } from "@/data/demoDogs";
+import { FavoritesNavLink } from "@/components/adoptante/FavoritesNavLink";
+import { getVisualReferenceBreed } from "@/data/adoptante/catalogs";
+import { createAdopterPreferenceSummary } from "@/lib/adoptante/presentation";
+import {
+  adopterCharacteristicsOnly,
+  createAdopterHref,
+  parseAdopterSearchRequest,
+  type SearchParamsRecord,
+} from "@/lib/adoptante/query";
+import { resolveAdopterResults, type AdopterResultsView } from "@/lib/adoptante/results";
+import type { AdopterSearchState } from "@/types/adopterSearch";
+
+type AdopterResultsPageProps = {
+  searchParams: Promise<SearchParamsRecord>;
+};
 
 function BackIcon() {
   return (
@@ -12,7 +26,107 @@ function BackIcon() {
   );
 }
 
-export default function AdopterResultsPage() {
+function ResultState({ view, searchState }: { view: AdopterResultsView; searchState: AdopterSearchState }) {
+  if (view.status === "results") {
+    const visuallyRanked = view.mode === "similarity";
+    const candidateCountLabel = visuallyRanked
+      ? String(view.candidateCount).replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      : String(view.candidateCount);
+    return (
+      <>
+        <header className="results-list-heading">
+          <div>
+            <p className="section-kicker">Resultados de tu búsqueda · {candidateCountLabel} {visuallyRanked ? "perfiles comparados" : "candidatos compatibles"}</p>
+            <h2>{visuallyRanked
+              ? `${view.dogs.length} perfiles históricos`
+              : "Perfiles compatibles con tus preferencias"}</h2>
+          </div>
+          <div className="results-order">
+            <span>{visuallyRanked ? "Ordenados por" : "Vista"}</span>
+            <strong>{visuallyRanked ? "Similitud visual" : "Perfiles compatibles"}</strong>
+          </div>
+        </header>
+        <div className="dog-results-grid">
+          {view.dogs.map((dog) => (
+            <DogResultCard
+              dog={dog}
+              key={dog.profile.petId}
+              profileHref={createAdopterHref(`/adoptante/perro/${dog.profile.petId}`, searchState)}
+            />
+          ))}
+        </div>
+      </>
+    );
+  }
+
+  if (view.status === "empty") {
+    return (
+      <section className="results-reading" aria-live="polite">
+        <p className="section-kicker">0 candidatos compatibles</p>
+        <div className="results-reading-heading"><span aria-hidden="true">i</span><h2>No hay resultados con estos filtros</h2></div>
+        <p>No hemos relajado tus preferencias. Puedes modificarlas y realizar una nueva búsqueda.</p>
+      </section>
+    );
+  }
+
+  const content = {
+    "photo-pending": {
+      kicker: "Búsqueda por fotografía",
+      title: "Esta modalidad estará disponible en una fase posterior",
+      description: "No se ha ejecutado DINOv2 ni se han generado resultados simulados. Puedes volver y elegir otro método de búsqueda.",
+    },
+    "invalid-reference": {
+      kicker: "Referencia visual no válida",
+      title: "La referencia visual está incompleta",
+      description: "La URL contiene una referencia sin todos los datos necesarios. Puedes volver y seleccionar una referencia Tsinghua válida o elegir otro método de búsqueda.",
+    },
+    error: {
+      kicker: "Búsqueda no disponible",
+      title: "No hemos podido consultar el catálogo histórico",
+      description: "Los resultados no se han sustituido por perfiles ficticios. Puedes volver a intentarlo desde el paso anterior.",
+    },
+  }[view.status];
+
+  return (
+    <section className="results-reading" aria-live="polite">
+      <p className="section-kicker">{content.kicker}</p>
+      <div className="results-reading-heading"><span aria-hidden="true">i</span><h2>{content.title}</h2></div>
+      <p>{content.description}</p>
+    </section>
+  );
+}
+
+export default async function AdopterResultsPage({ searchParams }: AdopterResultsPageProps) {
+  const request = parseAdopterSearchRequest(await searchParams);
+  const searchState = request.state;
+  const view = resolveAdopterResults(searchState, {
+    invalidReferenceQuery: request.referenceStatus === "invalid",
+  });
+  const isResolvedView = view.status === "results" || view.status === "empty";
+  const hasVisualRanking = isResolvedView && view.mode === "similarity";
+  const isPhotoMode = searchState.searchMode === "photo" || searchState.referenceType === "photo";
+  const isBreedMode = searchState.searchMode === "breed" || hasVisualRanking;
+  const isCharacteristicsMode = searchState.searchMode === "characteristics"
+    || (!isBreedMode && !isPhotoMode && isResolvedView && view.mode === "compatible");
+  const preferences = isCharacteristicsMode ? adopterCharacteristicsOnly(searchState) : {};
+  const preferenceSummary = createAdopterPreferenceSummary(preferences);
+  const selectedBreed = searchState.prototypeLabel === undefined
+    ? undefined
+    : getVisualReferenceBreed(searchState.prototypeLabel)?.displayName;
+  const referenceName = isResolvedView
+    ? view.referenceName ?? "Sin referencia visual"
+    : searchState.referenceType === "photo"
+      ? "Fotografía propia"
+      : selectedBreed ?? "Sin referencia válida";
+  const methodLabel = isBreedMode
+    ? "Búsqueda por apariencia visual"
+    : isCharacteristicsMode
+      ? "Búsqueda por características"
+      : isPhotoMode
+        ? "Búsqueda mediante fotografía"
+        : "Resultados de búsqueda";
+  const methodKey = isBreedMode ? "B" : isCharacteristicsMode ? "A" : isPhotoMode ? "C" : "·";
+
   return (
     <main className="adopter-page results-page">
       <header className="flow-header">
@@ -23,6 +137,7 @@ export default function AdopterResultsPage() {
           </Link>
           <div className="flow-header-actions">
             <span className="flow-context"><i aria-hidden="true" />Recorrido Adoptante</span>
+            <FavoritesNavLink />
             <Link className="back-home" href="/"><BackIcon />Inicio</Link>
           </div>
         </div>
@@ -35,91 +150,87 @@ export default function AdopterResultsPage() {
             <h1>Descubre perros que podrían encajar en tu búsqueda</h1>
           </div>
           <div className="results-intro-copy">
-            <p>Primero se tienen en cuenta tus preferencias y, dentro de los candidatos compatibles, la referencia elegida permite ordenar los perfiles por similitud visual.</p>
-            <div><span aria-hidden="true">i</span>La similitud visual describe parecido en la imagen. No mide personalidad ni compatibilidad total.</div>
+            <p>{isBreedMode
+              ? "La referencia visual Tsinghua permite ordenar los perfiles históricos PetFinder según su parecido, sin convertirlos en registros de raza Tsinghua."
+              : "Tus preferencias estructuradas definen los perfiles PetFinder compatibles, sin ejecutar comparación visual."}</p>
+            <div><span aria-hidden="true">i</span>{isBreedMode
+              ? "La similitud visual describe parecido en la imagen. No mide personalidad ni compatibilidad total."
+              : "Esta vista no utiliza una puntuación visual ni relaja los filtros seleccionados."}</div>
           </div>
-          <Image
-            className="results-hero-image"
-            src="/illustrations/descubrir.png"
-            alt=""
-            width={1024}
-            height={1536}
-            priority
-            sizes="(max-width: 760px) 180px, (max-width: 1040px) 210px, 260px"
-          />
+          <Image className="results-hero-image" src="/illustrations/descubrir.png" alt="" width={1024} height={1536} priority sizes="(max-width: 760px) 180px, (max-width: 1040px) 210px, 260px" />
         </div>
       </section>
 
-      <nav className="flow-progress page-shell" aria-label="Progreso del recorrido Adoptante">
-        <ol>
-          <li className="progress-step progress-complete"><span aria-hidden="true">✓</span><strong>Preferencias</strong></li>
-          <li className="progress-step progress-complete"><span aria-hidden="true">✓</span><strong>Referencia visual</strong></li>
-          <li className="progress-step progress-active" aria-current="step"><span>03</span><strong>Resultados</strong></li>
-        </ol>
+      <nav className="method-context-bar page-shell" aria-label="Método de búsqueda utilizado">
+        <Link href="/adoptante/encontrar"><BackIcon />Cambiar método</Link>
+        <span><i aria-hidden="true">{methodKey}</i>{methodLabel}</span>
       </nav>
 
       <SectionDivider />
 
       <section className="results-area">
         <div className="page-shell">
-          <aside className="demo-results-notice" aria-labelledby="demo-results-title">
-            <span>Vista de demostración</span>
+          <aside className="demo-results-notice" aria-labelledby="search-summary-title">
+            <span>Catálogo histórico</span>
             <div>
-              <h2 id="demo-results-title">Perfiles y métricas ilustrativos</h2>
-              <p>Los perfiles y métricas mostrados en esta pantalla son ilustrativos y se utilizan únicamente para validar la experiencia de usuario. La versión final se conectará al catálogo histórico preparado.</p>
+              <h2 id="search-summary-title">{isBreedMode
+                ? `Referencia visual: ${referenceName}`
+                : "Método: por características"}</h2>
+              <p>Los perfiles proceden del catálogo histórico PetFinder preparado para esta demostración y no representan perros actualmente disponibles para adopción.</p>
             </div>
-            <p>Los animales mostrados no deben interpretarse como actualmente disponibles para adopción.</p>
+            <p><strong>Preferencias activas:</strong><br />{preferenceSummary.length
+              ? preferenceSummary.map((item) => `${item.label}: ${item.value}`).join(" · ")
+              : "Sin filtros estructurados específicos."}</p>
           </aside>
 
           <section className="results-ranking" aria-labelledby="ranking-title">
             <div>
-              <p className="section-kicker">Principio de ordenación</p>
+              <p className="section-kicker">{isBreedMode ? "Principio de ordenación" : "Proceso de selección"}</p>
               <h2 id="ranking-title">Cómo se construye esta vista</h2>
             </div>
-            <div className="ranking-sequence" aria-label="Preferencias, candidatos compatibles, similitud visual y resultados">
-              <span><strong>Preferencias</strong><small>Definen la búsqueda</small></span>
+            <div className="ranking-sequence" aria-label={isBreedMode
+              ? "Referencia Tsinghua, perfiles PetFinder, similitud visual y resultados"
+              : "Preferencias, candidatos compatibles y resultados"}>
+              <span><strong>{isBreedMode ? "Referencia Tsinghua" : "Preferencias"}</strong><small>{isBreedMode ? "Prototipo visual" : "Definen la búsqueda"}</small></span>
               <i aria-hidden="true">→</i>
-              <span><strong>Candidatos compatibles</strong><small>Conjunto filtrado</small></span>
+              <span><strong>{isBreedMode ? "Perfiles PetFinder" : "Candidatos compatibles"}</strong><small>{isBreedMode ? "6.474 perfiles históricos" : "Conjunto filtrado"}</small></span>
+              {isBreedMode && <><i aria-hidden="true">→</i><span><strong>Similitud visual</strong><small>Ordena los perfiles</small></span></>}
               <i aria-hidden="true">→</i>
-              <span><strong>Similitud visual</strong><small>Ordena los perfiles</small></span>
-              <i aria-hidden="true">→</i>
-              <span><strong>Resultados</strong><small>Vista ordenada</small></span>
+              <span><strong>Resultados</strong><small>{isBreedMode ? "Vista ordenada" : "Perfiles compatibles"}</small></span>
             </div>
           </section>
 
           <section className="results-reading" aria-labelledby="reading-results-title">
             <div className="results-reading-heading"><span aria-hidden="true">i</span><h2 id="reading-results-title">Cómo leer los resultados</h2></div>
             <div className="results-reading-grid">
-              <div><span>01</span><strong>Preferencias</strong><p>Definen qué perfiles entran en la búsqueda.</p></div>
-              <div><span>02</span><strong>Similitud visual</strong><p>Ordena los candidatos según parecido con tu referencia.</p></div>
+              <div><span>01</span><strong>{isBreedMode ? "Catálogo PetFinder" : "Preferencias"}</strong><p>{isBreedMode
+                ? "Todos los resultados son perfiles históricos PetFinder."
+                : "Definen qué perfiles entran en la búsqueda."}</p></div>
+              <div><span>02</span><strong>{isBreedMode ? "Similitud visual" : "Orden neutro"}</strong><p>{isBreedMode
+                ? "Ordena los candidatos según parecido con tu referencia."
+                : "Presenta los perfiles compatibles por PetID, sin puntuación predictiva."}</p></div>
               <div><span>03</span><strong>Riesgo complementario</strong><p>Aporta contexto sobre perfiles que podrían necesitar mayor visibilidad.</p></div>
             </div>
           </section>
 
-          <header className="results-list-heading">
-            <div><p className="section-kicker">Resultados de tu búsqueda</p><h2>6 perfiles de demostración</h2></div>
-            <div className="results-order"><span>Ordenados por</span><strong>Similitud visual</strong></div>
-          </header>
-
-          <div className="dog-results-grid">
-            {DEMO_DOGS.map((dog) => <DogResultCard dog={dog} key={dog.id} />)}
-          </div>
+          <ResultState view={view} searchState={searchState} />
 
           <div className="results-footer-area">
             <div className="results-modify-actions">
-              <Link href="/adoptante/encontrar"><BackIcon />Modificar preferencias</Link>
-              <Link href="/adoptante/referencia"><BackIcon />Cambiar referencia visual</Link>
+              {isCharacteristicsMode && <Link href={createAdopterHref("/adoptante/caracteristicas", searchState)}><BackIcon />Modificar características</Link>}
+              {isBreedMode && <Link href={createAdopterHref("/adoptante/referencia", searchState)}><BackIcon />Cambiar referencia visual</Link>}
+              <Link href="/adoptante/encontrar"><BackIcon />Cambiar método</Link>
             </div>
             <aside className="historical-results-note">
               <strong>Prototipo desarrollado con datos históricos.</strong>
-              <p>Los seis perfiles actuales son ilustrativos. Los animales mostrados en futuras demostraciones no deben interpretarse como actualmente disponibles para adopción.</p>
+              <p>Los perfiles mostrados proceden del catálogo histórico preparado. No deben interpretarse como animales actualmente disponibles para adopción.</p>
             </aside>
           </div>
         </div>
       </section>
 
       <footer className="flow-footer">
-        <div className="page-shell"><span>InvisibleDogs Predict</span><p>Preferencias, referencia visual y resultados explicables.</p></div>
+        <div className="page-shell"><span>InvisibleDogs Predict</span><p>Tres métodos independientes y resultados explicables.</p></div>
       </footer>
     </main>
   );

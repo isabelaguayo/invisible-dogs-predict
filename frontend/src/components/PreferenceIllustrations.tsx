@@ -8,5 +8,11 @@ const swatchClasses: Record<string, string> = {
 };
 
 export function ColorSwatch({ color }: { color: string }) {
-  return <span className={`color-swatch ${swatchClasses[color]}`} aria-hidden="true" />;
+  return (
+    <span
+      className={`color-swatch ${swatchClasses[color] ?? ""}`}
+      style={color === "Amarillo" ? { background: "#d8b52f" } : undefined}
+      aria-hidden="true"
+    />
+  );
 }

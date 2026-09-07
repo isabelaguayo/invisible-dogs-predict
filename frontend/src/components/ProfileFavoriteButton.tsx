@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useAdopterFavorite } from "@/hooks/useAdopterFavorites";
 
 function HeartIcon({ active }: { active: boolean }) {
   return (
@@ -10,19 +10,19 @@ function HeartIcon({ active }: { active: boolean }) {
   );
 }
 
-export function ProfileFavoriteButton({ dogName }: { dogName: string }) {
-  const [favorite, setFavorite] = useState(false);
+export function ProfileFavoriteButton({ petId, dogName }: { petId: string; dogName: string }) {
+  const { isFavorite, toggle } = useAdopterFavorite(petId);
 
   return (
     <button
       className="profile-favorite-button"
       type="button"
-      aria-label={favorite ? `Quitar a ${dogName} de favoritos` : `Añadir a ${dogName} a favoritos`}
-      aria-pressed={favorite}
-      onClick={() => setFavorite((current) => !current)}
+      aria-label={isFavorite ? `Quitar a ${dogName} de favoritos` : `Añadir a ${dogName} a favoritos`}
+      aria-pressed={isFavorite}
+      onClick={toggle}
     >
-      <HeartIcon active={favorite} />
-      <span>{favorite ? "Guardado como favorito" : "Añadir a favoritos"}</span>
+      <HeartIcon active={isFavorite} />
+      <span>{isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}</span>
     </button>
   );
 }

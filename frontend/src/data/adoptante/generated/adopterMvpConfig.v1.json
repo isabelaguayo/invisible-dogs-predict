@@ -1,0 +1,33 @@
+{
+  "artifactVersion": "adopter-phase-0-a-v1",
+  "contractVersion": 1,
+  "source": {
+    "profilesFile": "invisible_dogs_petfinder_adoptante_ready.csv",
+    "profilesSha256": "b635facde0905967514c12d6ff49cba8f197361a762fbdd531b42141cd74372c",
+    "visualBreedsFile": "invisible_dogs_breed_catalog.csv",
+    "visualBreedsSha256": "ac0c6766acb4dd1f759bc21880a53834a9d0df4ab5f1dd992383b584eaefb4ee"
+  },
+  "profileCount": 6474,
+  "petfinderBreedCount": 120,
+  "visualBreedCount": 130,
+  "rankingMode": "similarity",
+  "ageCategories": {
+    "puppy": {
+      "minMonths": 1,
+      "maxMonths": 11
+    },
+    "young": {
+      "minMonths": 12,
+      "maxMonths": 35
+    },
+    "adult": {
+      "minMonths": 36,
+      "maxMonths": 95
+    },
+    "senior": {
+      "minMonths": 96,
+      "maxMonths": null
+    }
+  },
+  "ageZeroTreatment": "Age=0 represents an undetermined age. It is retained only when the age preference is omitted. The categories are operational MVP ranges, not a universal veterinary classification."
+}

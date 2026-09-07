@@ -1,0 +1,610 @@
+{
+  "artifactVersion": "adopter-search-v1",
+  "source": "Python/NumPy validation against the original TFM NPZ files",
+  "similarity": "dot(normalizedPrototype, normalizedPetFinderEmbedding)",
+  "ranking": "similarity descending, then PetID ascending",
+  "numericTolerance": 1e-05,
+  "goldenRetriever": {
+    "label": 125,
+    "prototypeRow": 125,
+    "technicalName": "golden-retriever"
+  },
+  "poodleVariants": {
+    "Miniature Poodle": 6,
+    "Toy Poodle": 114,
+    "Standard Poodle": 116
+  },
+  "scenarios": [
+    {
+      "id": "all-golden-retriever",
+      "description": "Todos Indiferente + Golden Retriever visual",
+      "state": {},
+      "prototypeLabel": 125,
+      "referenceName": "Golden Retriever",
+      "candidateCount": 6474,
+      "top20": [
+        {
+          "rank": 1,
+          "petId": "df2d9957f",
+          "similarity": 0.7686938047409058
+        },
+        {
+          "rank": 2,
+          "petId": "c8e941dbd",
+          "similarity": 0.7589130401611328
+        },
+        {
+          "rank": 3,
+          "petId": "2cf6b6627",
+          "similarity": 0.7557657361030579
+        },
+        {
+          "rank": 4,
+          "petId": "f89c6f6a6",
+          "similarity": 0.7505413293838501
+        },
+        {
+          "rank": 5,
+          "petId": "ab5964338",
+          "similarity": 0.7425734996795654
+        },
+        {
+          "rank": 6,
+          "petId": "013527aeb",
+          "similarity": 0.741424560546875
+        },
+        {
+          "rank": 7,
+          "petId": "1c9a2baf6",
+          "similarity": 0.738298773765564
+        },
+        {
+          "rank": 8,
+          "petId": "47453584e",
+          "similarity": 0.7371702194213867
+        },
+        {
+          "rank": 9,
+          "petId": "3b3349318",
+          "similarity": 0.7349006533622742
+        },
+        {
+          "rank": 10,
+          "petId": "9da5c9d23",
+          "similarity": 0.7268240451812744
+        },
+        {
+          "rank": 11,
+          "petId": "fc46e61c5",
+          "similarity": 0.726143479347229
+        },
+        {
+          "rank": 12,
+          "petId": "a36b60379",
+          "similarity": 0.7235680222511292
+        },
+        {
+          "rank": 13,
+          "petId": "e470b6bd3",
+          "similarity": 0.7217337489128113
+        },
+        {
+          "rank": 14,
+          "petId": "839aa5fd0",
+          "similarity": 0.7199705839157104
+        },
+        {
+          "rank": 15,
+          "petId": "1cbe873e7",
+          "similarity": 0.7198408842086792
+        },
+        {
+          "rank": 16,
+          "petId": "1c16e813b",
+          "similarity": 0.7175420522689819
+        },
+        {
+          "rank": 17,
+          "petId": "8b9739cef",
+          "similarity": 0.705261766910553
+        },
+        {
+          "rank": 18,
+          "petId": "bcf13ec9d",
+          "similarity": 0.7009601593017578
+        },
+        {
+          "rank": 19,
+          "petId": "32148e0fc",
+          "similarity": 0.7001960873603821
+        },
+        {
+          "rank": 20,
+          "petId": "5182392d9",
+          "similarity": 0.69819176197052
+        }
+      ]
+    },
+    {
+      "id": "female-golden-retriever",
+      "description": "Sexo Hembra + Golden Retriever visual",
+      "state": {
+        "sex": "Hembra"
+      },
+      "prototypeLabel": 125,
+      "referenceName": "Golden Retriever",
+      "candidateCount": 3740,
+      "top20": [
+        {
+          "rank": 1,
+          "petId": "013527aeb",
+          "similarity": 0.741424560546875
+        },
+        {
+          "rank": 2,
+          "petId": "47453584e",
+          "similarity": 0.7371702194213867
+        },
+        {
+          "rank": 3,
+          "petId": "e470b6bd3",
+          "similarity": 0.7217337489128113
+        },
+        {
+          "rank": 4,
+          "petId": "1cbe873e7",
+          "similarity": 0.7198408842086792
+        },
+        {
+          "rank": 5,
+          "petId": "1c16e813b",
+          "similarity": 0.7175420522689819
+        },
+        {
+          "rank": 6,
+          "petId": "8b9739cef",
+          "similarity": 0.705261766910553
+        },
+        {
+          "rank": 7,
+          "petId": "32148e0fc",
+          "similarity": 0.7001960873603821
+        },
+        {
+          "rank": 8,
+          "petId": "77fa5cdd7",
+          "similarity": 0.6900041699409485
+        },
+        {
+          "rank": 9,
+          "petId": "13485ebf1",
+          "similarity": 0.6890770196914673
+        },
+        {
+          "rank": 10,
+          "petId": "c7bb75711",
+          "similarity": 0.6825680732727051
+        },
+        {
+          "rank": 11,
+          "petId": "adc3a477a",
+          "similarity": 0.6812427043914795
+        },
+        {
+          "rank": 12,
+          "petId": "295b1eef3",
+          "similarity": 0.6811785101890564
+        },
+        {
+          "rank": 13,
+          "petId": "6c64dd197",
+          "similarity": 0.6804858446121216
+        },
+        {
+          "rank": 14,
+          "petId": "b17f7a1fc",
+          "similarity": 0.670805811882019
+        },
+        {
+          "rank": 15,
+          "petId": "ac45f71e3",
+          "similarity": 0.6688861846923828
+        },
+        {
+          "rank": 16,
+          "petId": "f4df06287",
+          "similarity": 0.667221188545227
+        },
+        {
+          "rank": 17,
+          "petId": "5b8610245",
+          "similarity": 0.6628943681716919
+        },
+        {
+          "rank": 18,
+          "petId": "50f87522f",
+          "similarity": 0.6547025442123413
+        },
+        {
+          "rank": 19,
+          "petId": "a8cfbf446",
+          "similarity": 0.6460877060890198
+        },
+        {
+          "rank": 20,
+          "petId": "c749028bb",
+          "similarity": 0.642295241355896
+        }
+      ]
+    },
+    {
+      "id": "medium-shiba-dog",
+      "description": "Tamaño Mediano + Shiba Dog visual",
+      "state": {
+        "size": "Mediano"
+      },
+      "prototypeLabel": 0,
+      "referenceName": "Shiba Dog",
+      "candidateCount": 4867,
+      "top20": [
+        {
+          "rank": 1,
+          "petId": "5b3559bf2",
+          "similarity": 0.6715301275253296
+        },
+        {
+          "rank": 2,
+          "petId": "1635eac9a",
+          "similarity": 0.6350775957107544
+        },
+        {
+          "rank": 3,
+          "petId": "bdde3b5ca",
+          "similarity": 0.6257655024528503
+        },
+        {
+          "rank": 4,
+          "petId": "cfd0757cf",
+          "similarity": 0.6219677329063416
+        },
+        {
+          "rank": 5,
+          "petId": "ea03ccbba",
+          "similarity": 0.6211491823196411
+        },
+        {
+          "rank": 6,
+          "petId": "b88fa24c2",
+          "similarity": 0.6177537441253662
+        },
+        {
+          "rank": 7,
+          "petId": "933da53ee",
+          "similarity": 0.6130136251449585
+        },
+        {
+          "rank": 8,
+          "petId": "95636a0d9",
+          "similarity": 0.6126523017883301
+        },
+        {
+          "rank": 9,
+          "petId": "11960b9ed",
+          "similarity": 0.6013674736022949
+        },
+        {
+          "rank": 10,
+          "petId": "4036e0e12",
+          "similarity": 0.596881628036499
+        },
+        {
+          "rank": 11,
+          "petId": "3cfec8730",
+          "similarity": 0.5944093465805054
+        },
+        {
+          "rank": 12,
+          "petId": "13296aae7",
+          "similarity": 0.5911141037940979
+        },
+        {
+          "rank": 13,
+          "petId": "f2fba72d2",
+          "similarity": 0.5910313129425049
+        },
+        {
+          "rank": 14,
+          "petId": "52363327c",
+          "similarity": 0.589770495891571
+        },
+        {
+          "rank": 15,
+          "petId": "6fea8ac52",
+          "similarity": 0.589770495891571
+        },
+        {
+          "rank": 16,
+          "petId": "9dfee7db3",
+          "similarity": 0.5874959826469421
+        },
+        {
+          "rank": 17,
+          "petId": "c30f7cde0",
+          "similarity": 0.5863431692123413
+        },
+        {
+          "rank": 18,
+          "petId": "ebae250e9",
+          "similarity": 0.5830988883972168
+        },
+        {
+          "rank": 19,
+          "petId": "de43c6ce5",
+          "similarity": 0.5807746648788452
+        },
+        {
+          "rank": 20,
+          "petId": "acc76c678",
+          "similarity": 0.5790826082229614
+        }
+      ]
+    },
+    {
+      "id": "combined-french-bulldog",
+      "description": "Varios filtros + French Bulldog visual",
+      "state": {
+        "sex": "Hembra",
+        "size": "Mediano",
+        "coat": "Largo",
+        "health": "Saludable",
+        "vaccinated": "Sí"
+      },
+      "prototypeLabel": 1,
+      "referenceName": "French Bulldog",
+      "candidateCount": 45,
+      "top20": [
+        {
+          "rank": 1,
+          "petId": "e064d3504",
+          "similarity": 0.518505871295929
+        },
+        {
+          "rank": 2,
+          "petId": "37d88b689",
+          "similarity": 0.3509998917579651
+        },
+        {
+          "rank": 3,
+          "petId": "08767d88e",
+          "similarity": 0.3037790060043335
+        },
+        {
+          "rank": 4,
+          "petId": "2ba019cb8",
+          "similarity": 0.24282975494861603
+        },
+        {
+          "rank": 5,
+          "petId": "cbf20c4b0",
+          "similarity": 0.1597631871700287
+        },
+        {
+          "rank": 6,
+          "petId": "c60e6aff7",
+          "similarity": 0.14658015966415405
+        },
+        {
+          "rank": 7,
+          "petId": "c8c3eb092",
+          "similarity": 0.13431058824062347
+        },
+        {
+          "rank": 8,
+          "petId": "1cfc647dc",
+          "similarity": 0.12658244371414185
+        },
+        {
+          "rank": 9,
+          "petId": "563854d72",
+          "similarity": 0.1142185628414154
+        },
+        {
+          "rank": 10,
+          "petId": "222afe2dd",
+          "similarity": 0.10938862711191177
+        },
+        {
+          "rank": 11,
+          "petId": "3bf71f7b1",
+          "similarity": 0.10829442739486694
+        },
+        {
+          "rank": 12,
+          "petId": "1171c9a41",
+          "similarity": 0.09435025602579117
+        },
+        {
+          "rank": 13,
+          "petId": "4c31c7db9",
+          "similarity": 0.09365390241146088
+        },
+        {
+          "rank": 14,
+          "petId": "e1d86f0b6",
+          "similarity": 0.08683787286281586
+        },
+        {
+          "rank": 15,
+          "petId": "7b60f948e",
+          "similarity": 0.07872787863016129
+        },
+        {
+          "rank": 16,
+          "petId": "269caf235",
+          "similarity": 0.07135292887687683
+        },
+        {
+          "rank": 17,
+          "petId": "2533f425e",
+          "similarity": 0.05757954716682434
+        },
+        {
+          "rank": 18,
+          "petId": "8a9bdc274",
+          "similarity": 0.05206037312746048
+        },
+        {
+          "rank": 19,
+          "petId": "edef78673",
+          "similarity": 0.05163085460662842
+        },
+        {
+          "rank": 20,
+          "petId": "ec7952240",
+          "similarity": 0.046362973749637604
+        }
+      ]
+    },
+    {
+      "id": "few-secondary-breed-shiba-dog",
+      "description": "Affenpinscher observado solo como raza secundaria",
+      "state": {
+        "breed": "Affenpinscher"
+      },
+      "prototypeLabel": 0,
+      "referenceName": "Shiba Dog",
+      "candidateCount": 1,
+      "top20": [
+        {
+          "rank": 1,
+          "petId": "269a6756f",
+          "similarity": 0.1451675295829773
+        }
+      ]
+    },
+    {
+      "id": "zero-candidates-golden-retriever",
+      "description": "Combinación válida sin candidatos",
+      "state": {
+        "sex": "Hembra",
+        "size": "Extra grande",
+        "coat": "Largo",
+        "health": "Lesión grave"
+      },
+      "prototypeLabel": 125,
+      "referenceName": "Golden Retriever",
+      "candidateCount": 0,
+      "top20": []
+    },
+    {
+      "id": "all-toy-poodle",
+      "description": "Todos Indiferente + variante explícita Toy Poodle",
+      "state": {},
+      "prototypeLabel": 114,
+      "referenceName": "Toy Poodle",
+      "candidateCount": 6474,
+      "top20": [
+        {
+          "rank": 1,
+          "petId": "3b0b88ac2",
+          "similarity": 0.8375117182731628
+        },
+        {
+          "rank": 2,
+          "petId": "fc2012c7e",
+          "similarity": 0.827777087688446
+        },
+        {
+          "rank": 3,
+          "petId": "f6ae0d580",
+          "similarity": 0.7987582683563232
+        },
+        {
+          "rank": 4,
+          "petId": "492fe3371",
+          "similarity": 0.7701125741004944
+        },
+        {
+          "rank": 5,
+          "petId": "0e6b24bc4",
+          "similarity": 0.7649221420288086
+        },
+        {
+          "rank": 6,
+          "petId": "a7a44933c",
+          "similarity": 0.7640812397003174
+        },
+        {
+          "rank": 7,
+          "petId": "3060d192f",
+          "similarity": 0.759852409362793
+        },
+        {
+          "rank": 8,
+          "petId": "4a5a05ef7",
+          "similarity": 0.7528470754623413
+        },
+        {
+          "rank": 9,
+          "petId": "929528b36",
+          "similarity": 0.7508450746536255
+        },
+        {
+          "rank": 10,
+          "petId": "65de38d1d",
+          "similarity": 0.7491815090179443
+        },
+        {
+          "rank": 11,
+          "petId": "ce971a506",
+          "similarity": 0.7443752288818359
+        },
+        {
+          "rank": 12,
+          "petId": "77a6f71e8",
+          "similarity": 0.7370399236679077
+        },
+        {
+          "rank": 13,
+          "petId": "dd5f93066",
+          "similarity": 0.7355664968490601
+        },
+        {
+          "rank": 14,
+          "petId": "ddb95945a",
+          "similarity": 0.7353410124778748
+        },
+        {
+          "rank": 15,
+          "petId": "b59e875ed",
+          "similarity": 0.7341022491455078
+        },
+        {
+          "rank": 16,
+          "petId": "79d5a2615",
+          "similarity": 0.7335268259048462
+        },
+        {
+          "rank": 17,
+          "petId": "b5b84493d",
+          "similarity": 0.7296306490898132
+        },
+        {
+          "rank": 18,
+          "petId": "a7e623e5a",
+          "similarity": 0.7277742624282837
+        },
+        {
+          "rank": 19,
+          "petId": "4b628f538",
+          "similarity": 0.7254931926727295
+        },
+        {
+          "rank": 20,
+          "petId": "8599dc67a",
+          "similarity": 0.7247069478034973
+        }
+      ]
+    }
+  ]
+}

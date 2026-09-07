@@ -2,11 +2,35 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionDivider } from "@/components/SectionDivider";
-import { DEMO_DOGS, type DemoDog, type RiskLevel } from "@/data/demoDogs";
+import { LogoutButton } from "@/components/protectora/LogoutButton";
+import {
+  PROTECTORA_PETFINDER_PROFILES,
+  type ProtectoraPetfinderProfile,
+  type ProtectoraRiskLevel,
+} from "@/data/protectoraPetfinderProfiles";
+
+const TEXTMINING_CONCEPTOS_SENCILLA = [
+  "Sociable con personas", "Juguetón", "Cariñoso", "Confiado", "Desparasitado",
+  "Independiente", "Curioso", "Buen comportamiento", "Fácil adaptación", "Amigable",
+  "Esterilizado", "Adaptable", "Sociable", "Saludable", "Microchip", "Tranquilo",
+  "Activo", "Buen estado de salud", "Equilibrado", "Fácil manejo",
+  "Acostumbrado al hogar", "Educado", "Dócil", "Sociable con perros",
+  "Vacunado", "Alegre", "Paseo con correa",
+];
+
+const TEXTMINING_CONCEPTOS_LENTA = [
+  "Timidez", "Baja sociabilidad", "Encadenado", "Sin hogar", "Tratamiento",
+  "Maltrato", "Reactividad", "Historial complejo", "Inseguridad",
+  "Necesidades especiales", "Mayor", "Enfermedad", "Movilidad reducida",
+  "Miedo", "Recuperación", "Discapacidad", "Agresividad", "Abandono",
+  "Medicación", "Adaptación", "Estrés", "Trauma", "Cirugía",
+  "Problemas de conducta", "Cuidados especiales", "Herido", "Ansiedad",
+  "Paciencia", "Desconfianza", "Socialización",
+];
 
 const HISTORICAL_CATALOG_SIZE = 6474;
-const RISK_LEVELS: readonly RiskLevel[] = ["Bajo", "Medio", "Alto"];
-const MATRIX_RISK_POSITION: Record<RiskLevel, number> = {
+const RISK_LEVELS: readonly ProtectoraRiskLevel[] = ["Bajo", "Medio", "Alto"];
+const MATRIX_RISK_POSITION: Record<ProtectoraRiskLevel, number> = {
   Alto: 16.667,
   Medio: 50,
   Bajo: 83.333,
@@ -30,6 +54,7 @@ function ProtectorHeader() {
         </Link>
         <div className="flow-header-actions">
           <span className="flow-context"><i aria-hidden="true" />Vista Protectora</span>
+          <LogoutButton />
           <Link className="back-home" href="/"><BackIcon />Inicio</Link>
         </div>
       </div>
@@ -53,21 +78,21 @@ function ProtectorKpis({
     },
     {
       label: "Perfiles en esta demostración",
-      value: DEMO_DOGS.length.toLocaleString("es-ES"),
-      detail: "perfiles ilustrativos",
-      context: "Vista frontend actual",
+      value: PROTECTORA_PETFINDER_PROFILES.length.toLocaleString("es-ES"),
+      detail: "perfiles históricos",
+      context: "Selección PetFinder",
     },
     {
       label: "Riesgo complementario alto",
       value: highRiskCount.toLocaleString("es-ES"),
       detail: "perfiles",
-      context: "Derivado de la vista ilustrativa",
+      context: "Derivado de la selección PetFinder",
     },
     {
       label: "Completitud media",
       value: `${averageCompleteness} %`,
       detail: "información disponible",
-      context: "Media de la vista ilustrativa",
+      context: "Media del índice PetFinder",
     },
   ];
 
@@ -86,7 +111,7 @@ function ProtectorKpis({
   );
 }
 
-function RiskDistribution({ counts }: { counts: Record<RiskLevel, number> }) {
+function RiskDistribution({ counts }: { counts: Record<ProtectoraRiskLevel, number> }) {
   return (
     <section className="protector-panel protector-risk-panel" aria-labelledby="risk-distribution-title">
       <header className="protector-panel-heading">
@@ -96,7 +121,7 @@ function RiskDistribution({ counts }: { counts: Record<RiskLevel, number> }) {
       </header>
       <div className="protector-risk-list">
         {RISK_LEVELS.map((level) => {
-          const width = (counts[level] / DEMO_DOGS.length) * 100;
+          const width = (counts[level] / PROTECTORA_PETFINDER_PROFILES.length) * 100;
           return (
             <div className="protector-risk-row" key={level}>
               <div><span className={`protector-risk-dot risk-${level.toLocaleLowerCase()}`} aria-hidden="true" /><strong>{level}</strong></div>
@@ -111,7 +136,7 @@ function RiskDistribution({ counts }: { counts: Record<RiskLevel, number> }) {
   );
 }
 
-function CompletenessOverview({ dogs }: { dogs: readonly DemoDog[] }) {
+function CompletenessOverview({ dogs }: { dogs: readonly ProtectoraPetfinderProfile[] }) {
   return (
     <section className="protector-panel protector-completeness-panel" aria-labelledby="completeness-title">
       <header className="protector-panel-heading">
@@ -151,7 +176,7 @@ function RiskCompletenessMatrix() {
           <div className="protector-matrix-y-labels" aria-hidden="true"><span>Alto</span><span>Medio</span><span>Bajo</span></div>
           <div className="protector-matrix-plot" role="img" aria-label="Matriz con los seis perfiles según su riesgo complementario y completitud de ficha">
             <div className="protector-matrix-stage">
-              {DEMO_DOGS.map((dog) => (
+              {PROTECTORA_PETFINDER_PROFILES.map((dog) => (
                 <div
                   className={`protector-matrix-point matrix-risk-${dog.risk.toLocaleLowerCase()}`}
                   style={{ "--matrix-x": `${dog.completeness}%`, "--matrix-y": `${MATRIX_RISK_POSITION[dog.risk]}%` } as CSSProperties}
@@ -175,13 +200,18 @@ function RiskCompletenessMatrix() {
   );
 }
 
-function ProtectorReviewCard({ dog }: { dog: DemoDog }) {
+function ProtectorReviewCard({ dog }: { dog: ProtectoraPetfinderProfile }) {
   return (
     <article className="protector-review-card">
-      <div className="protector-review-photo" aria-label={`Espacio reservado para la fotografía del perfil de ${dog.name}`}>
-        <span aria-hidden="true">{dog.name[0]}</span>
-        <p>Fotografía del perfil</p>
-        <small>Vista ilustrativa</small>
+      <div className="protector-review-photo">
+        <Image
+          className="protector-review-image"
+          src={dog.imagePath}
+          alt={`Fotografía de ${dog.name}`}
+          width={640}
+          height={480}
+          sizes="(max-width: 760px) 100vw, 50vw"
+        />
       </div>
       <div className="protector-review-body">
         <div className="protector-review-title">
@@ -197,22 +227,32 @@ function ProtectorReviewCard({ dog }: { dog: DemoDog }) {
           <span style={{ width: `${dog.completeness}%` }} />
         </div>
         <p className="protector-review-context">Este perfil aparece en esta sección por pertenecer al nivel Alto de riesgo complementario. La completitud se muestra como una dimensión independiente.</p>
-        <button type="button" disabled aria-label={`Revisar el perfil de ${dog.name}, disponible próximamente`}>Revisar perfil <small>Próximamente</small></button>
+        <Link className="protector-review-action" href={`/protectora/perro/${dog.id}`}>Revisar perfil</Link>
       </div>
     </article>
   );
 }
 
 export default function ProtectorPage() {
-  const demoCount = DEMO_DOGS.length;
-  const riskCounts = DEMO_DOGS.reduce<Record<RiskLevel, number>>(
-    (counts, dog) => ({ ...counts, [dog.risk]: counts[dog.risk] + 1 }),
+  const demoCount = PROTECTORA_PETFINDER_PROFILES.length;
+  const riskCounts = PROTECTORA_PETFINDER_PROFILES.reduce<Record<ProtectoraRiskLevel, number>>(
+    (counts, dog) => ({
+      ...counts,
+      [dog.source.nivel_riesgo_relativo]: counts[dog.source.nivel_riesgo_relativo] + 1,
+    }),
     { Bajo: 0, Medio: 0, Alto: 0 },
   );
-  const averageCompleteness = DEMO_DOGS.reduce((total, dog) => total + dog.completeness, 0) / demoCount;
+  const averageCompleteness = (
+    PROTECTORA_PETFINDER_PROFILES.reduce(
+      (total, dog) => total + dog.source.indice_completitud_ficha,
+      0,
+    ) / demoCount
+  ) * 100;
   const averageCompletenessLabel = averageCompleteness.toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  const dogsByCompleteness = [...DEMO_DOGS].sort((first, second) => second.completeness - first.completeness);
-  const highRiskDogs = DEMO_DOGS.filter((dog) => dog.risk === "Alto");
+  const dogsByCompleteness = [...PROTECTORA_PETFINDER_PROFILES].sort((first, second) => second.completeness - first.completeness);
+  const highRiskDogs = PROTECTORA_PETFINDER_PROFILES.filter(
+    (dog) => dog.source.nivel_riesgo_relativo === "Alto",
+  );
 
   return (
     <main className="protector-page">
@@ -245,8 +285,8 @@ export default function ProtectorPage() {
           <aside className="protector-demo-notice" aria-labelledby="protector-demo-title">
             <span>Vista de demostración</span>
             <div>
-              <h2 id="protector-demo-title">Lectura operativa con perfiles ilustrativos</h2>
-              <p>Los perfiles y métricas mostrados en esta pantalla se utilizan para validar la experiencia de usuario. La versión final se conectará al catálogo histórico y a los componentes analíticos preparados.</p>
+              <h2 id="protector-demo-title">Lectura operativa con perfiles históricos</h2>
+              <p>Los seis perfiles y sus métricas proceden del artefacto histórico PetFinder preparado para esta demostración. La selección se mantiene separada del catálogo completo y del modelo Austin.</p>
             </div>
             <p>Los animales mostrados no deben interpretarse como actualmente disponibles para adopción.</p>
           </aside>
@@ -254,7 +294,7 @@ export default function ProtectorPage() {
           <section className="protector-summary" aria-labelledby="protector-summary-title">
             <header className="protector-section-heading">
               <div><p className="section-kicker">Contexto operativo</p><h2 id="protector-summary-title">Resumen de la vista</h2></div>
-              <p>El catálogo histórico preparado y los seis perfiles de esta demostración se muestran como ámbitos claramente diferenciados.</p>
+              <p>El catálogo histórico preparado y los seis perfiles PetFinder seleccionados se muestran como ámbitos claramente diferenciados.</p>
             </header>
             <ProtectorKpis highRiskCount={riskCounts.Alto} averageCompleteness={averageCompletenessLabel} />
           </section>
@@ -297,6 +337,68 @@ export default function ProtectorPage() {
               <span aria-hidden="true">i</span>
               <p>El modelo de Austin y el score complementario de PetFinder tienen objetivos y contratos de entrada diferentes. No se combinan directamente ni se aplica el modelo Austin sobre los perfiles históricos de PetFinder.</p>
             </aside>
+          </section>
+
+          <section className="protector-textmining-section" aria-labelledby="protector-textmining-title">
+            <header className="protector-section-heading">
+              <div>
+                <p className="section-kicker">Análisis textual</p>
+                <h2 id="protector-textmining-title">Cómo se analiza la descripción del perfil</h2>
+              </div>
+              <p>La descripción histórica aporta señales lingüísticas que complementan la información estructurada del perfil dentro del modelo complementario PetFinder.</p>
+            </header>
+
+            <div className="protector-textmining-panel protector-textmining-chart">
+                <h3>Términos que diferencian las descripciones de ambos grupos</h3>
+
+                <div className="protector-textmining-clouds">
+                  <figure className="protector-textmining-cloud">
+                    <figcaption><i className="text-mining-legend-dot text-mining-legend-dot--no-lenta" aria-hidden="true" />Adopción potencialmente más sencilla</figcaption>
+                    <Image
+                      src="/images/text-mining/adopcion-sencilla.png"
+                      alt="Nube de palabras con los términos aprobados asociados a una adopción potencialmente más sencilla."
+                      width={1500}
+                      height={900}
+                      className="protector-textmining-cloud-image"
+                    />
+                    <p className="visually-hidden">{TEXTMINING_CONCEPTOS_SENCILLA.join(", ")}.</p>
+                  </figure>
+                  <figure className="protector-textmining-cloud">
+                    <figcaption><i className="text-mining-legend-dot text-mining-legend-dot--lenta" aria-hidden="true" />Adopción potencialmente más lenta</figcaption>
+                    <Image
+                      src="/images/text-mining/adopcion-lenta.png"
+                      alt="Nube de palabras con los términos aprobados asociados a una adopción potencialmente más lenta."
+                      width={1500}
+                      height={900}
+                      className="protector-textmining-cloud-image"
+                    />
+                    <p className="visually-hidden">{TEXTMINING_CONCEPTOS_LENTA.join(", ")}.</p>
+                  </figure>
+                </div>
+
+                <p className="protector-textmining-summary">Los términos de la nube morada (izquierda o superior) corresponden a una adopción potencialmente más sencilla; los de la nube naranja (derecha o inferior), a una adopción potencialmente más lenta.</p>
+
+                <div className="reference-choice-note">
+                  <span aria-hidden="true">i</span>
+                  <p>Las palabras se muestran en castellano para facilitar su interpretación y se han organizado a partir de los patrones observados en las descripciones de PetFinder.</p>
+                </div>
+            </div>
+
+            <div className="protector-textmining-side">
+              <div className="protector-textmining-panel protector-textmining-signals">
+                <h3>Señales extraídas del texto</h3>
+                <ul>
+                  <li><span>TF-IDF</span><p>Representa el texto según la relevancia de cada palabra dentro del conjunto de descripciones.</p></li>
+                  <li><span>Sentimiento</span><p>Polaridad y magnitud del tono de la descripción.</p></li>
+                  <li><span>Riqueza léxica</span><p>Diversidad de vocabulario dentro de cada descripción.</p></li>
+                  <li><span>Longitud de la descripción</span><p>Número de palabras y caracteres del texto del perfil.</p></li>
+                </ul>
+              </div>
+              <div className="protector-textmining-panel protector-textmining-usage">
+                <h3>Cómo se utiliza</h3>
+                <p>Estas señales alimentan la rama textual del modelo complementario PetFinder y se combinan con la información estructurada para estimar el riesgo relativo de adopción lenta.</p>
+              </div>
+            </div>
           </section>
 
           <aside className="protector-responsible-note">

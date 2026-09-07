@@ -1,0 +1,25 @@
+# Pinned to match G:\Mi unidad\TFM\invisible-dogs-tfm\requirements.txt exactly,
+# so this service reproduces the same DINOv2 chain as the validated notebooks.
+torch==2.7.1
+transformers==5.15.1
+Pillow==12.3.0
+
+# NOT in the TFM project's requirements.txt, but required at runtime:
+# transformers' AutoImageProcessor for DINOv2 raises ImportError without it
+# ("AutoImageProcessor requires the Torchvision library"). The notebooks ran
+# on Google Colab, which ships torchvision preinstalled, so this dependency
+# was always implicitly present there and never needed to be declared.
+# Pinned to the release matching torch==2.7.1 per PyTorch's compatibility table.
+torchvision==0.22.1
+
+# New to this service only (absent from the TFM project entirely): the local
+# inference API itself. Not pinned to a notebook because none exists there;
+# minimum-version constraints instead of exact pins to avoid requiring a
+# release that may not exist yet.
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+
+# Test suite
+pytest>=8.0
+httpx>=0.27

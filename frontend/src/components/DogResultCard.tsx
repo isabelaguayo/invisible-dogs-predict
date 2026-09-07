@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import type { DemoDog } from "@/data/demoDogs";
+import type { AdopterDogResult } from "@/types/adopterResult";
+import { useAdopterFavorite } from "@/hooks/useAdopterFavorites";
 
 function HeartIcon({ active }: { active: boolean }) {
   return (
@@ -12,58 +14,88 @@ function HeartIcon({ active }: { active: boolean }) {
   );
 }
 
-export function DogResultCard({ dog }: { dog: DemoDog }) {
-  const [favorite, setFavorite] = useState(false);
+export function DogResultCard({
+  dog,
+  profileHref,
+  variant = "search",
+}: {
+  dog: AdopterDogResult;
+  profileHref: string;
+  /** "favorite": card shown on /adoptante/favoritos — no similarity/context claim (favorites can come from A, B or C, and that context isn't stored), no "por qué te lo mostramos" toggle. */
+  variant?: "search" | "favorite";
+}) {
+  const { isFavorite, toggle } = useAdopterFavorite(dog.profile.petId);
   const [explanationOpen, setExplanationOpen] = useState(false);
-  const explanationId = `result-explanation-${dog.id}`;
+  const { profile, search } = dog;
+  const explanationId = `result-explanation-${profile.petId}`;
+  const hasVisualSimilarity = variant === "search" && search.similarityPercent !== undefined && search.rank !== undefined;
+  const visualBarWidth = hasVisualSimilarity
+    ? Math.min(100, Math.max(0, search.similarityPercent!))
+    : undefined;
 
   return (
-    <article className="dog-result-card">
+    <article
+      className="dog-result-card"
+      data-pet-id={profile.petId}
+      data-rank={search.rank}
+      data-result-mode={variant === "favorite" ? "favorite" : hasVisualSimilarity ? "similarity" : "compatible"}
+    >
       <div className="result-photo">
-        <div className="result-photo-placeholder" aria-label={`Espacio reservado para la fotografía del perfil de ${dog.name}`}>
-          <span aria-hidden="true">{dog.name[0]}</span>
-          <p>Fotografía del perfil</p>
-          <small>Vista ilustrativa</small>
-        </div>
+        {profile.photoUrl ? (
+          <Image
+            src={profile.photoUrl}
+            alt={`Fotografía de ${profile.displayName}`}
+            fill
+            sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1040px) 50vw, 33vw"
+            style={{ objectFit: "cover", objectPosition: profile.objectPosition }}
+          />
+        ) : (
+          <div className="result-photo-placeholder" aria-label={`Fotografía no disponible para el perfil de ${profile.displayName}`}>
+            <span aria-hidden="true">{profile.displayName.charAt(0) || "?"}</span>
+            <p>Fotografía no disponible</p>
+            <small>No incluida en esta revisión</small>
+          </div>
+        )}
         <button
           className="favorite-button"
           type="button"
-          aria-label={favorite ? `Quitar a ${dog.name} de favoritos` : `Añadir a ${dog.name} a favoritos`}
-          aria-pressed={favorite}
-          onClick={() => setFavorite((current) => !current)}
+          aria-label={isFavorite ? `Quitar ${profile.displayName} de favoritos` : `Añadir ${profile.displayName} a favoritos`}
+          aria-pressed={isFavorite}
+          onClick={toggle}
         >
-          <HeartIcon active={favorite} />
+          <HeartIcon active={isFavorite} />
         </button>
       </div>
 
       <div className="result-card-body">
         <header className="result-dog-heading">
-          <div><p>Perfil ilustrativo</p><h3>{dog.name}</h3></div>
-          <span>{dog.breed}</span>
+          <div><p>{variant === "favorite" ? "Favorito" : hasVisualSimilarity ? `Resultado ${search.rank}` : "Perfil compatible"}</p><h3>{profile.displayName}</h3></div>
+          <span>{profile.breedLabel}</span>
         </header>
 
-        <p className="result-dog-meta">{dog.age} <i aria-hidden="true">·</i> {dog.sex} <i aria-hidden="true">·</i> {dog.size}</p>
+        <p className="result-dog-meta">{profile.ageLabel} <i aria-hidden="true">·</i> {profile.sex} <i aria-hidden="true">·</i> {profile.size}</p>
 
-        <section className="similarity-metric" aria-label={`Similitud visual de ${dog.name}: ${dog.similarity} por ciento`}>
-          <div><span>Similitud visual</span><strong>{dog.similarity} %</strong></div>
-          <div className="metric-track" role="progressbar" aria-label="Similitud visual" aria-valuemin={0} aria-valuemax={100} aria-valuenow={dog.similarity}>
-            <span style={{ width: `${dog.similarity}%` }} />
-          </div>
-        </section>
+        {variant === "favorite" ? null : hasVisualSimilarity ? (
+          <section className="similarity-metric" aria-label={`Similitud visual de ${profile.displayName}: ${search.similarityPercent} por ciento`}>
+            <div><span>Similitud visual</span><strong>{search.similarityPercent} %</strong></div>
+            <div className="metric-track" role="progressbar" aria-label="Similitud visual" aria-valuemin={0} aria-valuemax={100} aria-valuenow={visualBarWidth}>
+              <span style={{ width: `${visualBarWidth}%` }} />
+            </div>
+          </section>
+        ) : (
+          <section className="compatible-profile-note" aria-label={`${profile.displayName} cumple las preferencias seleccionadas`}>
+            <span aria-hidden="true">✓</span>
+            <div><strong>Compatible con tus preferencias</strong><small>Sin puntuación de similitud visual</small></div>
+          </section>
+        )}
 
         <div className="secondary-metrics">
           <section className="risk-metric">
             <div className="metric-label">
               <span>Riesgo complementario</span>
-              <span
-                className="metric-info"
-                tabIndex={0}
-                role="note"
-                aria-label="Score complementario de riesgo de adopción lenta. No mide compatibilidad con el adoptante."
-                title="Score complementario de riesgo de adopción lenta. No mide compatibilidad con el adoptante."
-              >i</span>
+              <span className="metric-info" tabIndex={0} role="note" aria-label="Indicador complementario de riesgo de adopción lenta. No mide compatibilidad con el adoptante." title="Indicador complementario de riesgo de adopción lenta. No mide compatibilidad con el adoptante.">i</span>
             </div>
-            <strong className={`risk-level risk-${dog.risk.toLocaleLowerCase()}`}>{dog.risk}</strong>
+            <strong className={`risk-level risk-${profile.riskLevel.toLocaleLowerCase()}`}>{profile.riskLevel}</strong>
           </section>
 
           <section className="completeness-metric">
@@ -71,31 +103,31 @@ export function DogResultCard({ dog }: { dog: DemoDog }) {
               <span>Completitud de ficha</span>
               <span className="metric-info" tabIndex={0} role="note" aria-label="Indica cuánta información contiene la ficha; no evalúa al perro.">i</span>
             </div>
-            <div className="completeness-value"><strong>{dog.completeness} %</strong></div>
-            <div className="completeness-track" role="progressbar" aria-label="Completitud de ficha" aria-valuemin={0} aria-valuemax={100} aria-valuenow={dog.completeness}>
-              <span style={{ width: `${dog.completeness}%` }} />
+            <div className="completeness-value"><strong>{profile.completenessPercent} %</strong></div>
+            <div className="completeness-track" role="progressbar" aria-label="Completitud de ficha" aria-valuemin={0} aria-valuemax={100} aria-valuenow={profile.completenessPercent}>
+              <span style={{ width: `${profile.completenessPercent}%` }} />
             </div>
           </section>
         </div>
 
-        <button
-          className="result-explanation-toggle"
-          type="button"
-          aria-expanded={explanationOpen}
-          aria-controls={explanationId}
-          onClick={() => setExplanationOpen((current) => !current)}
-        >
-          Por qué te lo mostramos <span aria-hidden="true">{explanationOpen ? "−" : "+"}</span>
-        </button>
+        {variant !== "favorite" && (
+          <>
+            <button className="result-explanation-toggle" type="button" aria-expanded={explanationOpen} aria-controls={explanationId} onClick={() => setExplanationOpen((current) => !current)}>
+              Por qué te lo mostramos <span aria-hidden="true">{explanationOpen ? "−" : "+"}</span>
+            </button>
 
-        {explanationOpen && (
-          <div className="result-explanation" id={explanationId}>
-            <p>Este perfil forma parte del conjunto compatible con tus preferencias y se ordena según su similitud visual respecto a la referencia elegida.</p>
-            {dog.risk === "Alto" && <p>Además, presenta un riesgo relativo alto de adopción lenta, mostrado separadamente como contexto adicional.</p>}
-          </div>
+            {explanationOpen && (
+              <div className="result-explanation" id={explanationId}>
+                <p>{hasVisualSimilarity
+                  ? "Este perfil pertenece al catálogo histórico PetFinder y se ordena según su similitud visual respecto a la referencia Tsinghua elegida."
+                  : "Este perfil cumple los filtros estructurados que has seleccionado. No se ha calculado similitud visual."}</p>
+                {hasVisualSimilarity && profile.riskLevel === "Alto" && <p>Además, presenta un riesgo relativo alto de adopción lenta, mostrado separadamente como contexto adicional.</p>}
+              </div>
+            )}
+          </>
         )}
 
-        <Link className="view-profile-button" href={`/adoptante/perro/${dog.id}`}>Ver perfil</Link>
+        <Link className="view-profile-button" href={profileHref}>Ver ficha</Link>
       </div>
     </article>
   );

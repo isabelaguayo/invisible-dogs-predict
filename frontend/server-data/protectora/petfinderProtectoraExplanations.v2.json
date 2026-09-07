@@ -1,0 +1,349 @@
+{
+  "version": "2.1.0",
+  "sourceArtifact": "outputs/app_ready/petfinder_protectora_local_explanations.v2.json",
+  "generationNote": "Curated for UI: structured SHAP factors only (no textual/SVM signals, no raw SHAP numbers), deduplicated by concept (see method), max 3 per direction, residual factors omitted below 20% of the top factor's magnitude or below an absolute floor of 0.003. v2.1.0 (presentation-only microajuste): adds an optional per-factor 'tooltip' string for visual/technical and sensitive variables — selection, dedup, and values are byte-identical to v2.0.0.",
+  "methodologicalNote": "Estos factores reflejan patrones estadísticos aprendidos a partir de datos históricos. Indican cómo el modelo llegó a su predicción y no representan relaciones causales.",
+  "riskLevelContext": {
+    "Alto": "Este perfil se encuentra en el tercio superior de riesgo relativo del conjunto histórico PetFinder.",
+    "Medio": "Este perfil se encuentra en el tercio intermedio de riesgo relativo del conjunto histórico PetFinder.",
+    "Bajo": "Este perfil se encuentra en el tercio inferior de riesgo relativo del conjunto histórico PetFinder."
+  },
+  "profiles": {
+    "485bebd4f": {
+      "petId": "485bebd4f",
+      "riskLevel": "Alto",
+      "increases": [
+        {
+          "technicalFeature": "sterilized_label",
+          "label": "Estado de esterilización",
+          "value": "Sí",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Esta característica contribuyó a aumentar la predicción en los datos históricos. No implica que el estado de esterilización cause una adopción más lenta."
+        },
+        {
+          "technicalFeature": "label_score_mean",
+          "label": "Características detectadas en las fotografías",
+          "value": null,
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Señal obtenida mediante análisis automático de las imágenes del perfil."
+        },
+        {
+          "technicalFeature": "Age",
+          "label": "Edad",
+          "value": "6 años",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": null
+        }
+      ],
+      "decreases": [
+        {
+          "technicalFeature": "n_label_annotations_mean",
+          "label": "Cantidad de información visual detectada en las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Resume cuánta información visual fue identificada automáticamente en las fotografías."
+        },
+        {
+          "technicalFeature": "dominant_color_pixel_fraction_mean",
+          "label": "Color dominante en las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Característica visual basada en los colores predominantes de las imágenes."
+        },
+        {
+          "technicalFeature": "brightness_mean",
+          "label": "Luminosidad de las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Característica visual relacionada con el nivel de brillo de las fotografías."
+        }
+      ]
+    },
+    "a9085cdde": {
+      "petId": "a9085cdde",
+      "riskLevel": "Alto",
+      "increases": [
+        {
+          "technicalFeature": "label_score_mean",
+          "label": "Características detectadas en las fotografías",
+          "value": null,
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Señal obtenida mediante análisis automático de las imágenes del perfil."
+        },
+        {
+          "technicalFeature": "age_months",
+          "label": "Edad",
+          "value": "3 años",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": null
+        },
+        {
+          "technicalFeature": "n_label_annotations_mean",
+          "label": "Cantidad de información visual detectada en las fotografías",
+          "value": null,
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Resume cuánta información visual fue identificada automáticamente en las fotografías."
+        }
+      ],
+      "decreases": [
+        {
+          "technicalFeature": "gender_label",
+          "label": "Sexo",
+          "value": "Macho",
+          "direction": "decrease",
+          "sensitive": true,
+          "tooltip": "Esta característica contribuyó a reducir la predicción en los datos históricos. No implica que el sexo del animal cause una adopción más rápida."
+        },
+        {
+          "technicalFeature": "Fee",
+          "label": "Coste de adopción indicado en el anuncio",
+          "value": "350",
+          "direction": "decrease",
+          "sensitive": true,
+          "tooltip": "Esta característica contribuyó a reducir la predicción en los datos históricos. No implica que el coste de adopción indicado cause una adopción más rápida."
+        },
+        {
+          "technicalFeature": "dominant_color_score_mean",
+          "label": "Color dominante en las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Característica visual basada en los colores predominantes de las imágenes."
+        }
+      ]
+    },
+    "c3a2d4d83": {
+      "petId": "c3a2d4d83",
+      "riskLevel": "Medio",
+      "increases": [
+        {
+          "technicalFeature": "Age",
+          "label": "Edad",
+          "value": "3.5 años",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": null
+        },
+        {
+          "technicalFeature": "maturity_size_label",
+          "label": "Tamaño",
+          "value": "Mediano",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": null
+        },
+        {
+          "technicalFeature": "state_name",
+          "label": "Ubicación del anuncio",
+          "value": "Pulau Pinang",
+          "direction": "increase",
+          "sensitive": true,
+          "tooltip": "Esta característica contribuyó a aumentar la predicción en los datos históricos. No implica que la ubicación del anuncio cause una adopción más lenta."
+        }
+      ],
+      "decreases": [
+        {
+          "technicalFeature": "label_score_mean",
+          "label": "Características detectadas en las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Señal obtenida mediante análisis automático de las imágenes del perfil."
+        },
+        {
+          "technicalFeature": "n_label_annotations_mean",
+          "label": "Cantidad de información visual detectada en las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Resume cuánta información visual fue identificada automáticamente en las fotografías."
+        },
+        {
+          "technicalFeature": "sterilized_label",
+          "label": "Estado de esterilización",
+          "value": "No",
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Esta característica contribuyó a reducir la predicción en los datos históricos. No implica que el estado de esterilización cause una adopción más rápida."
+        }
+      ]
+    },
+    "ad2423b1f": {
+      "petId": "ad2423b1f",
+      "riskLevel": "Medio",
+      "increases": [
+        {
+          "technicalFeature": "Age",
+          "label": "Edad",
+          "value": "1 año",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": null
+        },
+        {
+          "technicalFeature": "label_score_mean",
+          "label": "Características detectadas en las fotografías",
+          "value": null,
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Señal obtenida mediante análisis automático de las imágenes del perfil."
+        },
+        {
+          "technicalFeature": "description_unique_tokens",
+          "label": "Extensión de la descripción",
+          "value": "7 palabras",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": null
+        }
+      ],
+      "decreases": [
+        {
+          "technicalFeature": "n_label_annotations_mean",
+          "label": "Cantidad de información visual detectada en las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Resume cuánta información visual fue identificada automáticamente en las fotografías."
+        },
+        {
+          "technicalFeature": "maturity_size_label",
+          "label": "Tamaño",
+          "value": "Grande",
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": null
+        },
+        {
+          "technicalFeature": "breed1_name",
+          "label": "Raza registrada",
+          "value": "German Shepherd Dog",
+          "direction": "decrease",
+          "sensitive": true,
+          "tooltip": "Esta característica contribuyó a reducir la predicción en los datos históricos. No implica que la raza registrada cause una adopción más rápida."
+        }
+      ]
+    },
+    "fff4a6420": {
+      "petId": "fff4a6420",
+      "riskLevel": "Bajo",
+      "increases": [
+        {
+          "technicalFeature": "label_score_mean",
+          "label": "Características detectadas en las fotografías",
+          "value": null,
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Señal obtenida mediante análisis automático de las imágenes del perfil."
+        },
+        {
+          "technicalFeature": "sentiment_score",
+          "label": "Tono emocional de la descripción",
+          "value": null,
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Señal obtenida mediante análisis automático del texto de la descripción."
+        },
+        {
+          "technicalFeature": "dominant_color_score_mean",
+          "label": "Color dominante en las fotografías",
+          "value": null,
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Característica visual basada en los colores predominantes de las imágenes."
+        }
+      ],
+      "decreases": [
+        {
+          "technicalFeature": "gender_label",
+          "label": "Sexo",
+          "value": "Macho",
+          "direction": "decrease",
+          "sensitive": true,
+          "tooltip": "Esta característica contribuyó a reducir la predicción en los datos históricos. No implica que el sexo del animal cause una adopción más rápida."
+        },
+        {
+          "technicalFeature": "age_months",
+          "label": "Edad",
+          "value": "2 meses",
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": null
+        },
+        {
+          "technicalFeature": "sterilized_label",
+          "label": "Estado de esterilización",
+          "value": "No",
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Esta característica contribuyó a reducir la predicción en los datos históricos. No implica que el estado de esterilización cause una adopción más rápida."
+        }
+      ]
+    },
+    "c749028bb": {
+      "petId": "c749028bb",
+      "riskLevel": "Bajo",
+      "increases": [
+        {
+          "technicalFeature": "Age",
+          "label": "Edad",
+          "value": "6 años",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": null
+        },
+        {
+          "technicalFeature": "sterilized_label",
+          "label": "Estado de esterilización",
+          "value": "No seguro",
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Esta característica contribuyó a aumentar la predicción en los datos históricos. No implica que el estado de esterilización cause una adopción más lenta."
+        },
+        {
+          "technicalFeature": "sentiment_magnitude",
+          "label": "Intensidad emocional de la descripción",
+          "value": null,
+          "direction": "increase",
+          "sensitive": false,
+          "tooltip": "Señal obtenida mediante análisis automático del texto de la descripción."
+        }
+      ],
+      "decreases": [
+        {
+          "technicalFeature": "label_score_mean",
+          "label": "Características detectadas en las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Señal obtenida mediante análisis automático de las imágenes del perfil."
+        },
+        {
+          "technicalFeature": "breed1_name",
+          "label": "Raza registrada",
+          "value": "Golden Retriever",
+          "direction": "decrease",
+          "sensitive": true,
+          "tooltip": "Esta característica contribuyó a reducir la predicción en los datos históricos. No implica que la raza registrada cause una adopción más rápida."
+        },
+        {
+          "technicalFeature": "n_label_annotations_mean",
+          "label": "Cantidad de información visual detectada en las fotografías",
+          "value": null,
+          "direction": "decrease",
+          "sensitive": false,
+          "tooltip": "Resume cuánta información visual fue identificada automáticamente en las fotografías."
+        }
+      ]
+    }
+  }
+}

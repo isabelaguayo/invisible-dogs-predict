@@ -24,7 +24,7 @@ const paths = [
     description: "Una lectura operativa para comprender el riesgo y reforzar la visibilidad de los perfiles que más pueden beneficiarse de ella.",
     items: ["Riesgo", "Completitud de fichas", "Priorización"],
     cta: "Descubrir recorrido",
-    href: "/protectora",
+    href: "/protectora/login",
     className: "journey-shelter",
   },
 ];
@@ -47,6 +47,32 @@ function CheckIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
       <path d="m5 10 3 3 7-7" />
+    </svg>
+  );
+}
+
+function StructuredIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+      <path d="M4 6h16M4 12h16M4 18h10" />
+    </svg>
+  );
+}
+
+function TextIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+      <path d="M5 5h14M5 12h14M5 19h9" />
+    </svg>
+  );
+}
+
+function ImageIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2.4" />
+      <circle cx="9" cy="10" r="1.6" />
+      <path d="m5 17 4.5-4.5 3 3 3-4 4.5 5.5" />
     </svg>
   );
 }
@@ -98,7 +124,7 @@ export default function Home() {
             <p className="hero-description">InvisibleDogs Predict combina predicción de larga estancia, búsqueda visual inteligente y modelado multimodal para ayudar a identificar perros que podrían necesitar una mayor visibilidad.</p>
             <div className="hero-actions" aria-label="Recorridos disponibles">
               <Link className="button button-primary" href="/adoptante/encontrar">Quiero adoptar<ArrowIcon /></Link>
-              <Link className="button button-secondary" href="/protectora">Soy una protectora</Link>
+              <Link className="button button-secondary" href="/protectora/login">Soy una protectora</Link>
             </div>
             <p className="technology-line">
               <span>Inteligencia Artificial</span><i aria-hidden="true" /><span>DINOv2</span><i aria-hidden="true" /><span>Modelado Multimodal</span>
@@ -143,6 +169,19 @@ export default function Home() {
                 <div><h3>{step.title}</h3><p>{step.description}</p></div>
               </article>
             ))}
+          </div>
+
+          <div className="how-multimodal-strip">
+            <p>Datos estructurados, texto e imagen se analizan de forma complementaria para enriquecer la interpretación de los perfiles.</p>
+            <div className="how-multimodal-chips" aria-hidden="true">
+              <span><StructuredIcon />Datos estructurados</span>
+              <span className="how-multimodal-op">+</span>
+              <span><TextIcon />Texto</span>
+              <span className="how-multimodal-op">+</span>
+              <span><ImageIcon />Imagen</span>
+              <span className="how-multimodal-op how-multimodal-arrow"><ArrowIcon /></span>
+              <strong>Análisis multimodal</strong>
+            </div>
           </div>
         </div>
       </section>
@@ -201,7 +240,7 @@ export default function Home() {
           <p>Descubre perros compatibles contigo o explora herramientas para mejorar la visibilidad de quienes podrían necesitar más atención.</p>
           <div className="cta-actions">
             <Link className="button cta-primary" href="/adoptante/encontrar">Descubrir mi match <ArrowIcon /></Link>
-            <Link className="button cta-secondary" href="/protectora">Soy una protectora</Link>
+            <Link className="button cta-secondary" href="/protectora/login">Soy una protectora</Link>
           </div>
         </div>
       </section>

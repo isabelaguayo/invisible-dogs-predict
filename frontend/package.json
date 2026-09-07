@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "npm run test:home && npm run test:adopter && npm run test:protectora",
+    "test:adopter": "node --conditions=react-server --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/adoptante-*.test.mjs",
+    "test:protectora": "node --conditions=react-server --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/protectora-*.test.mjs",
+    "test:home": "node --conditions=react-server --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/home-*.test.mjs",
+    "benchmark:adopter": "node --conditions=react-server --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/benchmark-adopter-search.mjs"
   },
   "dependencies": {
     "next": "16.3.3",

@@ -1,0 +1,24 @@
+{
+  "artifactVersion": "adopter-search-v1",
+  "file": "petfinderDinov2Embeddings.v1.f32",
+  "rows": 6474,
+  "dimension": 384,
+  "dtype": "float32-little-endian",
+  "byteLength": 9944064,
+  "sourceNpz": "petfinder_dinov2_embeddings.npz",
+  "sourceNpzSha256": "ed73a13a13b3a07faa697cd1a99895c277d9e2ebedbb66c102e00427af2c2d83",
+  "sourceRows": 7938,
+  "artifactSha256": "eee9a9164893a6a8776a1b3e1b1908aec1d8358eeaaff66f8f43e983b72a0e26",
+  "profilesArtifact": "petfinderProfiles.v1.json",
+  "profilesArtifactSha256": "066a99c66745959b28b77fc07e9ef529de0b25c823a3a6023735bcaff4973e08",
+  "order": "Same stable row order as petfinderProfiles.v1.json",
+  "correspondence": "For every output row i, profiles[i].embeddingIndex selected the source NPZ row and source PetID was verified equal to profiles[i].petId",
+  "verifiedPetIdCount": 6474,
+  "normalizationTolerance": 0.0005,
+  "norms": {
+    "minimum": 0.999647855758667,
+    "maximum": 1.0003641843795776,
+    "mean": 1.0000019073486328,
+    "maximumAbsoluteErrorFromOne": 0.0003641843795776367
+  }
+}

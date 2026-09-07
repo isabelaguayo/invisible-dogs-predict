@@ -1,0 +1,571 @@
+{
+  "artifactVersion": "adopter-phase-c-demo-photos-v1",
+  "sourceProfilesSha256": "b635facde0905967514c12d6ff49cba8f197361a762fbdd531b42141cd74372c",
+  "scenarioIds": [
+    "all-golden-retriever",
+    "female-golden-retriever",
+    "medium-shiba-dog",
+    "adult-female-medium-characteristics",
+    "all-chihuahua",
+    "photo-search-external-chihuahua"
+  ],
+  "topResultsPerScenario": 12,
+  "uniquePhotoCount": 69,
+  "photos": [
+    {
+      "petId": "013527aeb",
+      "file": "013527aeb-1.jpg",
+      "sha256": "8b945dd5ae665f09923075f5a6faf714f9ec41ad5117f58f356b4d6c486d262c",
+      "scenarios": [
+        "all-golden-retriever",
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "0143edd0a",
+      "file": "0143edd0a-1.jpg",
+      "sha256": "df850845f41d7585ba8c03a43d74b7187686805b1f4a7864f1988b2659efeb42",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "052c95a93",
+      "file": "052c95a93-1.jpg",
+      "sha256": "1dea6a53cc7a748c681c7737d4e9ecb0dd5e96451484a7482807264b06fcf43e",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "060d1de98",
+      "file": "060d1de98-1.jpg",
+      "sha256": "87a4e820aa17405f6cee4545ade55aeacffd7607314d61e8541eb037d5f6bdd9",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "0636650db",
+      "file": "0636650db-1.jpg",
+      "sha256": "8cd53ff255f2112ee13a6fccf9902e4fbe64e594c817f50aa9943c789335adeb",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "064217ca4",
+      "file": "064217ca4-1.jpg",
+      "sha256": "1cdb6b491b05651f8e61fba17c4e3cf9a4d6d7052f5a0d6151cdc6b5c83b5ca4",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "069762ec2",
+      "file": "069762ec2-1.jpg",
+      "sha256": "df3c3a4d90b329a9c29e95b031107c983117fab7a7870e3e9b7f3ea55d6f248a",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "079332bdc",
+      "file": "079332bdc-1.jpg",
+      "sha256": "581b4cee834aa18f35efe9a0dfd65c4d532408256f2e97343a9ad63fc99088e3",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "0806f9e3f",
+      "file": "0806f9e3f-1.jpg",
+      "sha256": "ff0779b17c64be14a9acd37c80b23b18225fb35780a642fa49e03961488d729b",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "0819ac2f6",
+      "file": "0819ac2f6-1.jpg",
+      "sha256": "21e4d4b4b1681c526423df73fb8090ec02b93e6722b046b0a2c368f6f24fb705",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "08bfdc66f",
+      "file": "08bfdc66f-1.jpg",
+      "sha256": "4d1bb96fab29b95b797a7d274760a7faae7bd9237ac994a2e9c3c1a8ec9d61b4",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "08f40f232",
+      "file": "08f40f232-1.jpg",
+      "sha256": "c9bfd85d310ab6f1113225ebd3e1f0123d030ad2e52efb9c0c7f0755e5b5f646",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "09807c555",
+      "file": "09807c555-1.jpg",
+      "sha256": "46a22dcd19fbae9e4f602ea65b5bfe08729d29f08ca5e80e4b6114cfa99dfb06",
+      "scenarios": [
+        "adult-female-medium-characteristics"
+      ]
+    },
+    {
+      "petId": "11960b9ed",
+      "file": "11960b9ed-1.jpg",
+      "sha256": "0e6de85faac697a9030bbba042571166d9ea48161d04746c1ed910b4d0b55846",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "13296aae7",
+      "file": "13296aae7-1.jpg",
+      "sha256": "301f215f742659d8f5df249e4329f9869696bab31028001b52f3ff2d2b2f4809",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "13485ebf1",
+      "file": "13485ebf1-1.jpg",
+      "sha256": "dba2c0034d7897144b3be0c4fbc523ebf7950bde608892505083504dedc77ab0",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "1635eac9a",
+      "file": "1635eac9a-1.jpg",
+      "sha256": "65eb23fe0025ac8bd98ca6543c35217d80cf44d81a8a19968fd050abfa493796",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "1712ba40e",
+      "file": "1712ba40e-1.jpg",
+      "sha256": "e7e29ddd947b7c2aec6981b9ac0e6cf8870473e083028ba0a45a85c406ce7f71",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "1b0d28fab",
+      "file": "1b0d28fab-1.jpg",
+      "sha256": "bd195429b3ca592ebb9bcefb80f277f40a902a8eeb45dd5c7defba34baf46139",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "1c16e813b",
+      "file": "1c16e813b-1.jpg",
+      "sha256": "7acfb82ce52c20d73a7040ecaab3c3bbdadb4a14a7267d61060e6e414d884496",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "1c9a2baf6",
+      "file": "1c9a2baf6-1.jpg",
+      "sha256": "e8fa2ac70685be3ee09ad34d2a2ef4ddceaa437b15faecd81be442291cf1636d",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "1cbe873e7",
+      "file": "1cbe873e7-1.jpg",
+      "sha256": "02a7ca11b7989cb9111dd95a71a758cf3d0761724b25a2a4f59fe2836c438ac5",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "295b1eef3",
+      "file": "295b1eef3-1.jpg",
+      "sha256": "0c3d5e43fc161597434af5a6c36b9b1712edd6d36797d08f7c1897f3565824fa",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "2b6e5343e",
+      "file": "2b6e5343e-1.jpg",
+      "sha256": "87db5324817c2661a50509c036e377b6b09adf7ad5c3720307e5892bdd37d71f",
+      "scenarios": [
+        "all-chihuahua",
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "2cf6b6627",
+      "file": "2cf6b6627-1.jpg",
+      "sha256": "07bf52712f1af528779598f83cf03d538377231d6b682cd0a0486fb6fef9a5bf",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "32148e0fc",
+      "file": "32148e0fc-1.jpg",
+      "sha256": "04b58288c325d63c59d5ccc5e32c0f96fce7af464d4bc8a988deadd8490b58c1",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "36ab1bdc9",
+      "file": "36ab1bdc9-1.jpg",
+      "sha256": "a872f8c6a8fb20647b4134d1ab0cf09f66c29ed4e8ac2e801ca40a9df7fe4861",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "3b3349318",
+      "file": "3b3349318-1.jpg",
+      "sha256": "a99b84a3b816608e3faf777edce1c6fb2ccbcfd6654c01b071d6e014535d9d13",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "3cfec8730",
+      "file": "3cfec8730-1.jpg",
+      "sha256": "34dd48e51a5eaf94cdc71bf5aaac6f3ee8b41e4a061444a2decdaa9eb0a710fc",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "3e158c21e",
+      "file": "3e158c21e-1.jpg",
+      "sha256": "be1b5fc8c4244d797ba5dc9299100c89b494512be24d3dddd2ae022728cbaae0",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "4036e0e12",
+      "file": "4036e0e12-1.jpg",
+      "sha256": "ff826aedf422b24f97273d8d0532ae46070aa7a32e9390994e6fa68a6b5f29ec",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "41e4cc1de",
+      "file": "41e4cc1de-1.jpg",
+      "sha256": "79f50338074e24e652a1f3dc23a59cdd06f0e5e5042f1cf01f318f48d810a9bb",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "43b277272",
+      "file": "43b277272-1.jpg",
+      "sha256": "c5c76d51610f5932112f650b2123e1f14b93e822dcb562e3ae8b35b5a1c85790",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "47453584e",
+      "file": "47453584e-1.jpg",
+      "sha256": "18e2086709b93565f85154a06e098a3f5a06eb72cf171b05e42ca084a3cd7a8b",
+      "scenarios": [
+        "all-golden-retriever",
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "485cff597",
+      "file": "485cff597-1.jpg",
+      "sha256": "f75b1a49024a07e028e4803a05948ff542733b2b1780c4deaeac5853866a5c8a",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "518e71b74",
+      "file": "518e71b74-1.jpg",
+      "sha256": "66cccf1f9b8124a3032966b0c63dda721c1ab09891a6a33a1bd5e7dd3cbf9f10",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "56b0b72b1",
+      "file": "56b0b72b1-1.jpg",
+      "sha256": "8399c3aa3ab8850c78a9424ea505ccdad582e04062ee0cdf721c3475de1b05ac",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "5b3559bf2",
+      "file": "5b3559bf2-1.jpg",
+      "sha256": "c0961d664f3a07b7536c90e189a1a2a91f11e5ef0aa8e03211f425f9321a76a8",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "5bf976dd7",
+      "file": "5bf976dd7-1.jpg",
+      "sha256": "4980dd2afa3d3f7d38079668d2caa047cb0fbd1b27a2df9ba9df7748402b9b75",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "5d792dd24",
+      "file": "5d792dd24-1.jpg",
+      "sha256": "fe920c4489e834bef7b347dc920c0c626f1846ac426bd99b1f9461caa7e4f11e",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "719917454",
+      "file": "719917454-1.jpg",
+      "sha256": "82870da6832cd9cff7a535d82d7cc141ac15f7c5cafb1ba9d67917668f298752",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "71eda06c6",
+      "file": "71eda06c6-1.jpg",
+      "sha256": "4d98cc867fd12b5e86b88bb8659a298cf7e7664857e90240b2739483e98444dc",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "747c82f83",
+      "file": "747c82f83-1.jpg",
+      "sha256": "9b91aa151483eeeb6056806391f0956a5c7d2c8e0a17a4bcd6e8c213f617fc13",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "77fa5cdd7",
+      "file": "77fa5cdd7-1.jpg",
+      "sha256": "7a30c809a839f2dcb6fb350ade8c9822f8d1bcfc3d6a9a142428e967bcdbcb8d",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "82a97cd8d",
+      "file": "82a97cd8d-1.jpg",
+      "sha256": "164d1d58c3c0f932dc95e45cb70156c1d21506af840df822b6cb1223c63a5542",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "83976eb62",
+      "file": "83976eb62-1.jpg",
+      "sha256": "1618603e7e5d3c27bc008e86ec7110a6aeaa8c0ba5a5e2c19ea0abec44e6f850",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "8b9739cef",
+      "file": "8b9739cef-1.jpg",
+      "sha256": "047fa809b53a768e801afdb0cd1602cede4f3a03063bb427146c92eeb927e1a1",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "933da53ee",
+      "file": "933da53ee-1.jpg",
+      "sha256": "af17aeb0234535f524ec93ab4c96221309711527f95e555ce6800952137b9530",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "95636a0d9",
+      "file": "95636a0d9-1.jpg",
+      "sha256": "843a13a612a7dd9f4bf78706d9313def225b0ea7c7fe2e7f145990df1473f92b",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "9da5c9d23",
+      "file": "9da5c9d23-1.jpg",
+      "sha256": "d68292709ae94851fdd4a3e664f84d6fd4c5c2dc145cc81226bc82f1016f62f3",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "a36b60379",
+      "file": "a36b60379-1.jpg",
+      "sha256": "8eda6dfd89623cfc6fb38735da7bec70ecd48e38782c925ff31e7274fdbc7b41",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "ab5964338",
+      "file": "ab5964338-1.jpg",
+      "sha256": "3bc62538637532c8623c91a28759f6158246d6e20b16ae55956f153c1c758a0e",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "adc3a477a",
+      "file": "adc3a477a-1.jpg",
+      "sha256": "5ea597ceb4fd2b86921cba2c6ac9f0901460c5806e57a2e382b4d0a6ffb443a6",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "b47109e90",
+      "file": "b47109e90-1.jpg",
+      "sha256": "0bef17c482cd09f2f3274ffa98b8781a00a2dc97b65854613a5fc47b85e12d0f",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "b88fa24c2",
+      "file": "b88fa24c2-1.jpg",
+      "sha256": "ac6cef9b51e4a3b556396c5785737b06d8355f395250cdf066b8bc8158cb6f92",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "bdde3b5ca",
+      "file": "bdde3b5ca-1.jpg",
+      "sha256": "1be3ed8f57349df8fcf54b1b574709f12bef11d7747d9596db4c8d2096052d67",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "be3247b2c",
+      "file": "be3247b2c-1.jpg",
+      "sha256": "0edea870e2968d6429ace63bac2e2b28f1c52c49425bcd8295e5191db75e416f",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "c7bb75711",
+      "file": "c7bb75711-1.jpg",
+      "sha256": "3e6c16cf80a6fabc086ac45e71ecf2461138a4d3cd44082cb3c5ab6b27913f6b",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "c8e941dbd",
+      "file": "c8e941dbd-1.jpg",
+      "sha256": "47c79b71b067ccd18b921b6b30677e34a6ce05608bbfcd71fff757c52d54aa98",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "caa16cc3c",
+      "file": "caa16cc3c-1.jpg",
+      "sha256": "3fd0874a6ccb38da64d6680d040b053f6cbd5ed58fcecc4034dc2019eb6684c5",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "cfd0757cf",
+      "file": "cfd0757cf-1.jpg",
+      "sha256": "971847af0b9c6fbc1b698cd9a624c0b3996fbc4cc5cab185f1ebb60a302926ef",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "df2d9957f",
+      "file": "df2d9957f-1.jpg",
+      "sha256": "698061e9395a68e8c0ba2d36f44032a6d50406c3f9f6c9a881314c7f84ec41a6",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "e0667be3b",
+      "file": "e0667be3b-1.jpg",
+      "sha256": "62e0e61fcda58b567970536dbfa82a3f35d1bea262e28e6754cea2412d4ab5af",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "e470b6bd3",
+      "file": "e470b6bd3-1.jpg",
+      "sha256": "026d73c227fd8f3350d1b45241f3ecce0581fb89554ad5e523a5c01cde4feae4",
+      "scenarios": [
+        "female-golden-retriever"
+      ]
+    },
+    {
+      "petId": "ea03ccbba",
+      "file": "ea03ccbba-1.jpg",
+      "sha256": "8471a78add97139d3f5b66001fec288678f8996ea4d5e554e32d36f898ef5488",
+      "scenarios": [
+        "medium-shiba-dog"
+      ]
+    },
+    {
+      "petId": "f477f306f",
+      "file": "f477f306f-1.jpg",
+      "sha256": "751208828ef533e4acd6fe4c57cc10ab3e51bf5d32367598123babbeed1c18b5",
+      "scenarios": [
+        "all-chihuahua"
+      ]
+    },
+    {
+      "petId": "f618c35b8",
+      "file": "f618c35b8-1.jpg",
+      "sha256": "91dbe91d77e32c5ceca976dd6e760482cef05c89a4d587aa550dfccb965cf2c8",
+      "scenarios": [
+        "photo-search-external-chihuahua"
+      ]
+    },
+    {
+      "petId": "f89c6f6a6",
+      "file": "f89c6f6a6-1.jpg",
+      "sha256": "da581b40747714c1cd545288c5ca0cac7f400dd64df2d174ef7862602d66bd63",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    },
+    {
+      "petId": "fc46e61c5",
+      "file": "fc46e61c5-1.jpg",
+      "sha256": "06d578071d5b34dc8535bf1c7560215f93dd701f1a258f2d518ad10573399147",
+      "scenarios": [
+        "all-golden-retriever"
+      ]
+    }
+  ]
+}
