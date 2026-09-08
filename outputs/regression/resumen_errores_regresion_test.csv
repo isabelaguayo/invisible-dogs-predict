@@ -1,0 +1,2 @@
+modelo,prediccion_media_dias,prediccion_mediana_dias,estancia_real_media_dias,estancia_real_mediana_dias,error_medio,error_mediano,error_abs_medio,error_abs_mediano,pct_infraestima,pct_sobreestima
+CatBoost Regressor log1p,10.5316,7.7613,21.6741,6.0,-11.1425,0.5064,16.6526,3.8935,0.4534,0.5466
