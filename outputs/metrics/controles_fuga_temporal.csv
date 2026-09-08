@@ -1,0 +1,21 @@
+control,resultado,detalle
+Historial enriquecido restringido a estancias previas cerradas,OK,"El cálculo de previous_outcome_type, previous_stay_days y contadores históricos solo utiliza estancias anteriores con outcome_datetime < intake_datetime. Se detectaron 18 casos en los que la estancia inmediatamente anterior no estaba cerrada antes de la nueva entrada; dichos casos quedan excluidos del historial."
+Días desde entrada previa no negativos,OK,days_since_previous_intake solo presenta valores nulos o mayores/iguales a cero.
+Variables de contexto no negativas,OK,"Los conteos de entradas, salidas, adopciones y activos estimados no presentan valores negativos."
+Ratio entradas/salidas calculable,OK,ratio_intakes_outcomes_30d se calcula dividiendo por n_outcomes_dogs_last_30d + 1 para evitar divisiones por cero.
+Ventanas temporales anteriores a la entrada,OK,"Las ventanas de 7 y 30 días se calculan con np.searchsorted(..., side='left'), excluyendo el evento actual y eventos posteriores."
+Fecha de entrada interpretable en modelización,OK,intake_datetime se convierte correctamente a formato temporal en más del 99 % de los registros.
+Variables de historial disponibles en el dataset preparado,OK,Las variables de historial enriquecido necesarias para la modelización están presentes en el dataset preparado.
+previous_intake_count no negativa y finita,OK,previous_intake_count no presenta valores negativos ni infinitos en los registros informados.
+previous_long_stay_count no negativa y finita,OK,previous_long_stay_count no presenta valores negativos ni infinitos en los registros informados.
+previous_owner_surrender_count no negativa y finita,OK,previous_owner_surrender_count no presenta valores negativos ni infinitos en los registros informados.
+previous_stray_count no negativa y finita,OK,previous_stray_count no presenta valores negativos ni infinitos en los registros informados.
+n_intakes_dogs_last_7d no negativa y finita,OK,n_intakes_dogs_last_7d no presenta valores negativos ni infinitos en los registros informados.
+n_intakes_dogs_last_30d no negativa y finita,OK,n_intakes_dogs_last_30d no presenta valores negativos ni infinitos en los registros informados.
+n_outcomes_dogs_last_7d no negativa y finita,OK,n_outcomes_dogs_last_7d no presenta valores negativos ni infinitos en los registros informados.
+n_outcomes_dogs_last_30d no negativa y finita,OK,n_outcomes_dogs_last_30d no presenta valores negativos ni infinitos en los registros informados.
+n_adoptions_dogs_last_30d no negativa y finita,OK,n_adoptions_dogs_last_30d no presenta valores negativos ni infinitos en los registros informados.
+estimated_active_dogs_at_intake no negativa y finita,OK,estimated_active_dogs_at_intake no presenta valores negativos ni infinitos en los registros informados.
+ratio_intakes_outcomes_30d no negativa y finita,OK,ratio_intakes_outcomes_30d no presenta valores negativos ni infinitos en los registros informados.
+Primer registro del perro sin duración previa,OK,"En el primer registro temporal de cada perro, previous_stay_days debe estar vacío."
+Primer registro del perro sin tipo de salida previo,OK,"En el primer registro temporal de cada perro, previous_outcome_type debe indicar ausencia de historial."
