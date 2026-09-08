@@ -1,0 +1,7 @@
+prioridad_combinada,n_perros,porcentaje_perros,score_medio,dias_predichos_mediana,estancia_real_mediana,tasa_real_larga_estancia
+Seguimiento ordinario,14610,77.9117,7.9657,6.3285,5.0,0.068
+Prioridad media,2925,15.5983,35.0853,16.4948,18.0,0.3785
+Prioridad media-alta,122,0.6506,46.3418,32.2619,33.0,0.5656
+Prioridad alta,755,4.0262,59.198,29.5888,38.0,0.5841
+Prioridad muy alta,101,0.5386,86.1743,22.6062,52.0,0.9307
+Prioridad máxima,239,1.2745,91.0126,49.0687,58.0,0.9247
