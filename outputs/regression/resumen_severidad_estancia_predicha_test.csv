@@ -1,0 +1,6 @@
+severidad_estancia_predicha,n_perros,porcentaje_perros,estancia_real_media,estancia_real_mediana,prediccion_media,prediccion_mediana,tasa_real_larga_estancia,error_abs_medio,error_abs_mediano
+Muy baja: 0-7 días,8295,44.2353,7.8832,4.0,4.5666,4.6638,0.0316,5.6604,1.9422
+Baja: 8-14 días,6224,33.1911,19.9099,8.0,9.8821,9.5416,0.1387,15.4746,5.2685
+Media: 15-30 días,3530,18.8247,46.1297,19.0,19.2882,18.2492,0.3742,37.0765,13.2406
+Alta: 31-60 días,633,3.3756,77.7188,49.0,39.1768,36.8554,0.6667,56.1099,25.6707
+Muy alta: >60 días,70,0.3733,72.7,61.0,74.516,70.1737,0.8143,37.2024,19.5302
