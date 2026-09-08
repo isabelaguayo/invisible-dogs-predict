@@ -1,0 +1,7 @@
+# Git LFS — artefactos binarios grandes del TFM
+artifacts/models/*.pkl filter=lfs diff=lfs merge=lfs -text
+artifacts/models/*.joblib filter=lfs diff=lfs merge=lfs -text
+artifacts/embeddings/*.npz filter=lfs diff=lfs merge=lfs -text
+artifacts/embeddings/*.npy filter=lfs diff=lfs merge=lfs -text
+data/processed/austin/*.csv filter=lfs diff=lfs merge=lfs -text
+data/raw/austin/*.csv filter=lfs diff=lfs merge=lfs -text
