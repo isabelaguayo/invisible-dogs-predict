@@ -1,0 +1,5 @@
+banda_riesgo,n_perros,porcentaje_perros,score_medio,score_minimo,score_maximo,casos_larga_estancia,tasa_real_larga_estancia
+Bajo riesgo,14610,77.9117,7.9657,0.1,24.9,993,0.068
+Riesgo medio,3013,16.0676,35.2705,25.0,49.9,1154,0.383
+Riesgo alto,789,4.2076,59.1921,50.0,74.9,463,0.5868
+Riesgo crítico,340,1.8131,89.5753,75.0,99.3,315,0.9265
