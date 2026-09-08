@@ -1,0 +1,2 @@
+modelo,umbral,accuracy,precision,recall,f1_score,roc_auc,average_precision,brier_score
+Ensemble CatBoost + LightGBM,0.24,0.8242,0.457,0.6756,0.5452,0.8593,0.5721,0.0946
