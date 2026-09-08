@@ -1,0 +1,5 @@
+banda_riesgo,n_perros,intake_type_mas_frecuente,intake_type_porcentaje,intake_condition_mas_frecuente,intake_condition_porcentaje,sex_mas_frecuente,sex_porcentaje,sterilized_intake_mas_frecuente,sterilized_intake_porcentaje,age_group_mas_frecuente,age_group_porcentaje,breed_intake_mas_frecuente,breed_intake_porcentaje,color_intake_mas_frecuente,color_intake_porcentaje,found_location_mas_frecuente,found_location_porcentaje
+Bajo riesgo,14610,Stray,69.74,Normal,91.16,Macho,52.23,No esterilizado,64.59,Joven,41.75,Chihuahua Shorthair Mix,8.99,Black/White,11.03,Austin (TX),17.99
+Riesgo medio,3013,Stray,58.78,Normal,82.48,Macho,54.33,No esterilizado,68.1,Joven,55.53,Pit Bull Mix,27.18,Black/White,12.51,Austin (TX),25.06
+Riesgo alto,789,Stray,55.13,Normal,76.3,Macho,55.89,No esterilizado,69.07,Joven,53.74,Pit Bull Mix,27.5,Black/White,16.86,Austin (TX),25.22
+Riesgo crítico,340,Stray,73.24,Normal,68.24,Macho,55.29,No esterilizado,89.12,Cachorro,84.71,Labrador Retriever Mix,13.82,Black/White,16.76,Austin (TX),26.47
