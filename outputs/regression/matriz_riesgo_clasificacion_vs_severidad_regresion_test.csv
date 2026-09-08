@@ -1,0 +1,21 @@
+banda_riesgo_clasificacion,severidad_estancia_predicha,n_perros,porcentaje_perros,score_medio,dias_predichos_mediana,estancia_real_mediana,tasa_real_larga_estancia
+Bajo riesgo,Muy baja: 0-7 días,8260,44.0486,4.8509,4.6558,4.0,0.0314
+Bajo riesgo,Baja: 8-14 días,5402,28.8076,11.4904,9.2585,8.0,0.1074
+Bajo riesgo,Media: 15-30 días,930,4.9595,15.0618,16.1712,12.0,0.1645
+Bajo riesgo,Alta: 31-60 días,18,0.096,12.8778,33.8145,13.5,0.0556
+Bajo riesgo,Muy alta: >60 días,0,0.0,,,,
+Riesgo medio,Muy baja: 0-7 días,33,0.176,29.8606,6.0268,2.0,0.0606
+Riesgo medio,Baja: 8-14 días,781,4.1649,31.1183,11.7594,11.0,0.3252
+Riesgo medio,Media: 15-30 días,2111,11.2575,36.6346,18.2758,21.0,0.4031
+Riesgo medio,Alta: 31-60 días,88,0.4693,41.4273,33.5059,33.0,0.5341
+Riesgo medio,Muy alta: >60 días,0,0.0,,,,
+Riesgo alto,Muy baja: 0-7 días,2,0.0107,55.25,6.4845,22.0,0.5
+Riesgo alto,Baja: 8-14 días,32,0.1706,59.3,12.2203,35.5,0.6562
+Riesgo alto,Media: 15-30 días,397,2.1171,56.9851,24.4546,37.0,0.5819
+Riesgo alto,Alta: 31-60 días,349,1.8611,61.4905,36.6795,42.0,0.5931
+Riesgo alto,Muy alta: >60 días,9,0.048,67.9111,64.0208,16.0,0.3333
+Riesgo crítico,Muy baja: 0-7 días,0,0.0,,,,
+Riesgo crítico,Baja: 8-14 días,9,0.048,85.3,13.043,44.0,0.8889
+Riesgo crítico,Media: 15-30 días,92,0.4906,86.2598,23.0587,52.5,0.9348
+Riesgo crítico,Alta: 31-60 días,178,0.9492,90.8612,44.1107,56.0,0.9382
+Riesgo crítico,Muy alta: >60 días,61,0.3253,91.4541,70.5908,62.0,0.8852
