@@ -1,0 +1,2 @@
+modelo,conjunto,umbral,brier_score,roc_auc,average_precision,accuracy,precision,recall,f1_score,tasa_base_adopcion_lenta
+Estructurado + texto TF-IDF,test,0.31,0.2188,0.7058,0.7255,0.6238,0.5988,0.9061,0.7211,0.5366
