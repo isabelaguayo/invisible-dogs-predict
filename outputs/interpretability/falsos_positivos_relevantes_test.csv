@@ -1,0 +1,21 @@
+animal_id,invisible_dog_score,probabilidad_larga_estancia,banda_riesgo,stay_days_rounded,intake_type,intake_condition,sex,sterilized_intake,age_months_intake,age_group,breed_intake,color_intake,found_location,previous_intake_count,previous_stay_days,previous_long_stay_count,estimated_active_dogs_at_intake,ratio_intakes_outcomes_30d
+A719806,97.1,0.9708882025917387,Riesgo crítico,30,Stray,Normal,Macho,No esterilizado,0.6904487917146145,Cachorro,Queensland Heeler Mix,Black/Tan,11819 Edward St in Travis (TX),0,,0.0,416.0,0.9758162
+A693787,92.2,0.9218595618310239,Riesgo crítico,1,Stray,Normal,Macho,No esterilizado,0.0328515111695138,Cachorro,Labrador Retriever Mix,Brown,13808  Maha Rd in Austin (TX),0,,0.0,396.0,0.9074074
+A834807,90.2,0.9021387501497397,Riesgo crítico,30,Stray,Normal,Hembra,No esterilizado,0.9205983889528194,Cachorro,Australian Shepherd Mix,Black/White,South Pleasant Valley And Quicksilver in Austin (TX),0,,0.0,334.0,0.87673956
+A742456,87.7,0.8774090904763407,Riesgo crítico,24,Stray,Normal,Hembra,No esterilizado,0.9205983889528194,Cachorro,Pit Bull Mix,Brown/Black,9100 Fm 812 Road in Travis (TX),0,,0.0,422.0,0.97471553
+A893955,87.2,0.8717111038427897,Riesgo crítico,20,Stray,Normal,Macho,No esterilizado,11.0,Joven,Pit Bull Mix,Black/White,Rockwood Ln And Foster Ln in Austin (TX),0,,0.0,525.0,0.93798447
+A845837,85.4,0.8542851952622244,Riesgo crítico,10,Owner Surrender,Normal,Macho,Esterilizado,24.0,Joven,Pit Bull Mix,Brown Brindle/White,Austin (TX),1,141.0,1.0,574.0,1.0298507
+A732750,85.0,0.850307525113166,Riesgo crítico,7,Stray,Nursing,Macho,No esterilizado,0.0,Cachorro,Labrador Retriever Mix,Sable/White,Austin (TX),0,,0.0,511.0,0.94910944
+A854601,84.9,0.84929047456652,Riesgo crítico,14,Owner Surrender,Normal,Macho,Esterilizado,24.0,Joven,American Bulldog Mix,White/Black,2108 Tillery St in Austin (TX),1,502.0,1.0,472.0,0.85365856
+A814101,84.7,0.8468550302598347,Riesgo crítico,24,Stray,Normal,Macho,No esterilizado,0.9205983889528194,Cachorro,Golden Retriever Mix,Tan,Point North Drive And Johnny Morris Road in Austin (TX),0,,0.0,509.0,1.0025575
+A731452,84.6,0.8455453275414672,Riesgo crítico,3,Owner Surrender,Normal,Macho,Esterilizado,72.0,Adulto,Labrador Retriever Mix,Tan,Travis (TX),2,306.0,1.0,439.0,1.1387832
+A811251,83.2,0.8318516259540844,Riesgo crítico,30,Stray,Normal,Hembra,No esterilizado,0.9205983889528194,Cachorro,Labrador Retriever/Pointer,Black/White,Burleson Road And Esat Stassney Lane in Austin (TX),0,,0.0,514.0,0.91947114
+A704549,81.4,0.8137353463678298,Riesgo crítico,28,Stray,Nursing,Hembra,No esterilizado,0.9205983889528194,Cachorro,German Shepherd/Boxer,Brown/Black,1605 Barney Drive in Austin (TX),0,,0.0,473.0,1.0169661
+A909059,80.5,0.8047680867910421,Riesgo crítico,15,Stray,Normal,Hembra,No esterilizado,0.1971090670170827,Cachorro,Border Collie Mix,Chocolate,5403 West Gate Blvd in Austin (TX),0,,0.0,503.0,0.8375527
+A889286,79.9,0.7988243681083276,Riesgo crítico,14,Stray,Injured,Macho,No esterilizado,24.0,Joven,Labrador Retriever/Pit Bull,Blue/White,16901 Hayride Cir in Travis (TX),0,,0.0,516.0,1.1348684
+A783590,78.6,0.7857223938583469,Riesgo crítico,3,Owner Surrender,Normal,Hembra,Esterilizado,132.0,Senior,Labrador Retriever Mix,Black,Outside Jurisdiction,1,283.0,1.0,537.0,0.94091415
+A784577,78.5,0.7850524065426642,Riesgo crítico,4,Stray,Normal,Macho,No esterilizado,1.0,Cachorro,Great Pyrenees Mix,Brown Brindle/White,Hunters Trace in Austin (TX),0,,0.0,694.0,1.2371706
+A624298,78.3,0.7831672968275654,Riesgo crítico,2,Owner Surrender,Aged,Macho,No esterilizado,144.0,Senior,Pit Bull,Blue/White,Austin (TX),1,9.0,0.0,564.0,1.1975684
+A705228,78.1,0.7809710391827911,Riesgo crítico,20,Owner Surrender,Normal,Hembra,Esterilizado,72.0,Adulto,Pit Bull Mix,Brown Brindle/White,Outside Jurisdiction,3,97.0,2.0,539.0,1.1383109
+A668664,77.8,0.7779430035773186,Riesgo crítico,19,Owner Surrender,Normal,Macho,Esterilizado,84.0,Adulto,Pit Bull Mix,White/Black,Austin (TX),3,95.0,1.0,384.0,0.74793386
+A811282,77.7,0.7765412835522673,Riesgo crítico,13,Owner Surrender,Normal,Hembra,Esterilizado,24.0,Joven,Pit Bull,White/Black,Outside Jurisdiction,1,176.0,1.0,390.0,1.0938417
