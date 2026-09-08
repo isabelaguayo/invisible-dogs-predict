@@ -1,0 +1,21 @@
+animal_id,invisible_dog_score,probabilidad_larga_estancia,banda_riesgo,stay_days_rounded,intake_type,intake_condition,sex,sterilized_intake,age_months_intake,age_group,breed_intake,color_intake,found_location,previous_intake_count,previous_stay_days,previous_long_stay_count,estimated_active_dogs_at_intake,ratio_intakes_outcomes_30d
+A701365,14.9,0.14944958074165665,Bajo riesgo,1010,Stray,Normal,Hembra,No esterilizado,120.0,Senior,Labrador Retriever,Tan,501 Bastrop Hwy in Austin (TX),0,,0.0,503.0,1.0311005
+A667878,18.9,0.18892257049729544,Bajo riesgo,807,Owner Surrender,Normal,Hembra,No esterilizado,9.0,Joven,American Bulldog Mix,Black/White,Austin (TX),0,,0.0,323.0,1.0708661
+A782837,14.4,0.14415080900408997,Bajo riesgo,646,Stray,Normal,Hembra,No esterilizado,7.0,Joven,German Shepherd,Black/Tan,2100 Barton Spring Road in Austin (TX),0,,0.0,578.0,1.1149701
+A783420,3.3,0.033216501238566704,Bajo riesgo,637,Stray,Normal,Hembra,No esterilizado,60.0,Adulto,Chihuahua Shorthair Mix,Brown,2027 Anchor Lane in Austin (TX),0,,0.0,569.0,1.0751173
+A783499,10.8,0.10775669678378602,Bajo riesgo,636,Owner Surrender,Normal,Hembra,No esterilizado,48.0,Adulto,Yorkshire Terrier Mix,Gold,Austin (TX),0,,0.0,586.0,1.1036949
+A765229,17.0,0.17009957562728253,Bajo riesgo,556,Stray,Normal,Macho,No esterilizado,12.0,Joven,Pointer Mix,White/Red,1313 Montpolis Drive in Austin (TX),0,,0.0,429.0,0.9973009
+A768706,22.2,0.2224241766418214,Bajo riesgo,536,Stray,Normal,Hembra,No esterilizado,12.0,Joven,Staffordshire Mix,Brown/White,14611 Burnet Road in Austin (TX),0,,0.0,477.0,1.0506971
+A713196,17.3,0.1730190945510243,Bajo riesgo,524,Owner Surrender,Normal,Hembra,Esterilizado,108.0,Senior,Australian Cattle Dog/Australian Cattle Dog,Black/White,Austin (TX),2,7.0,1.0,340.0,0.91520166
+A737340,18.2,0.18214763607702614,Bajo riesgo,512,Owner Surrender,Normal,Macho,Esterilizado,12.0,Joven,Anatol Shepherd Mix,Tan/Black,Austin (TX),1,83.0,1.0,432.0,0.99496853
+A856438,23.4,0.23433367171518435,Bajo riesgo,507,Stray,Normal,Macho,No esterilizado,12.0,Joven,Chinese Sharpei Mix,Chocolate/White,Austin (TX),0,,0.0,447.0,0.9847199
+A788444,13.9,0.1388651705037206,Bajo riesgo,497,Stray,Normal,Hembra,Esterilizado,120.0,Senior,Staffordshire Mix,Black/White,Fort Clark Drive And Battle Bend in Austin (TX),0,,0.0,616.0,0.91157895
+A691987,18.2,0.1822919385332433,Bajo riesgo,476,Owner Surrender,Normal,Hembra,Esterilizado,108.0,Senior,Flat Coat Retriever Mix,Black,Austin (TX),0,,0.0,463.0,0.99523807
+A761760,16.7,0.16739206456625927,Bajo riesgo,473,Stray,Normal,Macho,Esterilizado,96.0,Senior,Pit Bull Mix,Blue/White,8801 Research Boulevard Nb in Austin (TX),2,1.0,0.0,536.0,0.92873305
+A635775,22.3,0.22320043370786175,Bajo riesgo,472,Public Assist,Normal,Hembra,Esterilizado,84.0,Adulto,Pit Bull/Labrador Retriever,Brown/White,6002 Idlewood Cv in Austin (TX),0,,0.0,682.0,0.84404635
+A738735,16.8,0.1683934242206342,Bajo riesgo,469,Public Assist,Normal,Macho,Esterilizado,36.0,Adulto,Pit Bull Mix,Brown/White,Austin (TX),3,214.0,2.0,457.0,1.0092226
+A721767,14.5,0.14466669403510868,Bajo riesgo,459,Stray,Injured,Macho,Esterilizado,84.0,Adulto,Chihuahua Shorthair/Rat Terrier,Black,Cedar Park (TX),0,,0.0,430.0,1.0
+A701431,18.1,0.18089777728481757,Bajo riesgo,455,Stray,Normal,Hembra,Esterilizado,120.0,Senior,Labrador Retriever/Border Collie,Black/White,Mcneil And Parmer in Austin (TX),0,,0.0,506.0,1.0433213
+A780000,22.2,0.2220470657100142,Bajo riesgo,451,Stray,Normal,Macho,No esterilizado,12.0,Joven,Staffordshire Mix,Brown/White,Braker And Ih 35 in Austin (TX),0,,0.0,448.0,0.90103567
+A693611,6.2,0.061983193840510604,Bajo riesgo,447,Stray,Normal,Macho,Esterilizado,120.0,Senior,Miniature Poodle Mix,White,Georgian Drive & Anderson Lane in Austin (TX),0,,0.0,381.0,0.9010417
+A700997,9.3,0.0931538850475828,Bajo riesgo,445,Stray,Normal,Hembra,Esterilizado,60.0,Adulto,Collie Smooth Mix,Tan/White,6803 Viewing Pl in Austin (TX),0,,0.0,488.0,1.0117924
