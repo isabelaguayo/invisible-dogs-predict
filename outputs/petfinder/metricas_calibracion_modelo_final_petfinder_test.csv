@@ -1,0 +1,2 @@
+﻿modelo,conjunto,umbral,brier_score,roc_auc,average_precision,accuracy,precision,recall,f1_score,tasa_base_adopcion_lenta
+Ensemble texto + estructurado,test,0.39,0.2093,0.7384,0.758,0.6386,0.6077,0.921,0.7322,0.5366

@@ -9,7 +9,9 @@ outputs/
 ├── metrics/              # Evaluación del modelo principal de clasificación
 ├── interpretability/     # Invisible Dog Score, SHAP, perfiles y análisis de errores
 ├── regression/           # Modelización complementaria de duración de estancia
-└── testing/              # Validación funcional e integración final
+├── testing/              # Validación funcional e integración final
+├── petfinder/            # Resultados del análisis complementario PetFinder
+└── tsinghua_visual/      # Validación externa y recuperación visual
 ```
 
 ## Contenido
@@ -18,16 +20,20 @@ outputs/
 Incluye comparación de modelos base y candidatos finales, evaluación sobre test, calibración por deciles, métricas Top-K, análisis de umbrales operativos y controles de fuga temporal.
 
 ### `interpretability/`
-Incluye resultados del Invisible Dog Score, métricas con intervalos de confianza, calibración y ganancia acumulada, importancia de variables de CatBoost y LightGBM, SHAP global y local, perfiles por bandas de riesgo y ejemplos de aciertos, falsos positivos y falsos negativos.
+Incluye resultados del Invisible Dog Score, métricas con intervalos de confianza, calibración y ganancia acumulada, importancia de variables, SHAP global y local, perfiles por bandas de riesgo y ejemplos de errores.
 
 ### `regression/`
-Incluye comparación de modelos de regresión, análisis de errores, importancia de variables, severidad estimada de estancia y comparación entre el enfoque de clasificación y el enfoque complementario de regresión.
+Incluye comparación de modelos de regresión, análisis de errores, importancia de variables, severidad estimada de estancia y comparación con el enfoque de clasificación.
 
 ### `testing/`
-Incluye el informe final de validación e integración y su resumen ejecutivo. El resultado final documentado es de 132 pruebas superadas, sin fallos ni bloqueos críticos, con resultado global `GO`.
+Incluye el informe final de validación e integración y su resumen ejecutivo.
+
+### `petfinder/`
+Incluye resultados agregados y evidencias del análisis complementario de PetFinder: selección de modelos, métricas sobre test, calibración, Top-K y bandas del score final. Los datasets de mayor tamaño y caches intermedias se conservan en `data/` o se gestionan separadamente cuando requieren Git LFS.
+
+### `tsinghua_visual/`
+Incluye índices reproducibles de train/validation, embeddings CLIP y DINOv2, prototipos de raza, catálogo de razas y configuración del buscador visual. Los `.npz` se gestionan mediante Git LFS.
 
 ## Criterio de versionado
 
-Se incluyen aquí CSV y JSON derivados que aportan evidencia científica o funcional directa. Los artefactos binarios necesarios para inferencia, como modelos serializados o embeddings, se almacenarán en `artifacts/` y se gestionarán mediante Git LFS cuando corresponda.
-
-Los paths absolutos que puedan aparecer dentro del informe de testing reflejan el entorno local en el que se ejecutó la validación original; no constituyen rutas necesarias para reproducir el proyecto desde este repositorio.
+Se incluyen CSV y JSON derivados que aportan evidencia científica o funcional directa. Los artefactos binarios necesarios para inferencia, como modelos serializados o embeddings, se almacenan en `artifacts/` o en su carpeta experimental correspondiente y se gestionan mediante Git LFS cuando aplica.

@@ -1,0 +1,5 @@
+﻿banda_riesgo_petfinder_final,n_perros,porcentaje_perros,score_medio,score_mediano,n_adopcion_lenta,tasa_adopcion_lenta,adoption_speed_medio,adoption_speed_mediano,fotos_mediana,palabras_descripcion_mediana
+Riesgo bajo,1627,20.0074,33.4423,34.35,411,0.2526,1.9133,2.0,3.0,42.0
+Riesgo medio,2860,35.1697,47.5894,47.59,1297,0.4535,2.3867,2.0,3.0,42.0
+Riesgo alto,2351,28.9105,62.1794,61.99,1564,0.6652,2.9328,3.0,3.0,43.0
+Riesgo muy alto,1294,15.9124,76.0303,75.38,1091,0.8431,3.425,4.0,3.0,42.0

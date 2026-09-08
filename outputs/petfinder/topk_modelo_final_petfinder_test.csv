@@ -1,0 +1,6 @@
+﻿segmento,porcentaje,n_perros,casos_adopcion_lenta_detectados,precision_topk,recall_topk,lift
+Top 5%,0.05,82,71,0.8659,0.0813,1.6137
+Top 10%,0.1,163,144,0.8834,0.1649,1.6464
+Top 20%,0.2,326,263,0.8067,0.3013,1.5035
+Top 30%,0.3,489,378,0.773,0.433,1.4406
+Top 50%,0.5,814,577,0.7088,0.6609,1.3211

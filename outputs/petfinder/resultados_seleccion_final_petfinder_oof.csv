@@ -1,0 +1,6 @@
+﻿modelo,umbral,accuracy,precision,recall,f1_score,roc_auc,average_precision,n_predichos_adopcion_lenta,pct_predichos_adopcion_lenta,conjunto
+Random Forest ajustado,0.41,0.6338,0.6091,0.886,0.7219,0.7254,0.7479,5076,0.7803,OOF_train_valid
+SVM lineal calibrado,0.36,0.6146,0.5895,0.9272,0.7208,0.7172,0.7378,5489,0.8438,OOF_train_valid
+LR + palabras + caracteres,0.31,0.6284,0.6039,0.8937,0.7207,0.7204,0.7407,5165,0.794,OOF_train_valid
+LR + TF-IDF palabras,0.34,0.6229,0.598,0.9066,0.7206,0.7186,0.7372,5291,0.8134,OOF_train_valid
+LightGBM ajustado,0.35,0.6117,0.589,0.914,0.7164,0.7157,0.7428,5416,0.8326,OOF_train_valid

@@ -1,0 +1,3 @@
+﻿version,modelo,umbral,accuracy,precision,recall,f1_score,roc_auc,average_precision,n_predichos_adopcion_lenta,pct_predichos_adopcion_lenta
+Modelo de referencia,Estructurado + texto TF-IDF,0.31,0.6238475722188076,0.5987887963663892,0.9060710194730813,0.7210574293527803,0.7058376706439273,0.7254513300033127,1321,0.8119237861094039
+Modelo final (CV OOF),Ensemble texto + estructurado,0.39,0.6386,0.6077,0.921,0.7322,0.7384,0.758,1323,0.8132
