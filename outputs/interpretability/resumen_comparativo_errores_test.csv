@@ -1,0 +1,7 @@
+,invisible_dog_score,invisible_dog_score,stay_days_rounded,stay_days_rounded,age_months_intake,age_months_intake,previous_intake_count,previous_intake_count,previous_stay_days,previous_stay_days,previous_long_stay_count,previous_long_stay_count,estimated_active_dogs_at_intake,estimated_active_dogs_at_intake,ratio_intakes_outcomes_30d,ratio_intakes_outcomes_30d
+,mean,median,mean,median,mean,median,mean,median,mean,median,mean,median,mean,median,mean,median
+tipo_resultado_modelo,,,,,,,,,,,,,,,,
+Verdadero negativo,7.33,5.6,6.64,5.0,29.42,12.0,0.19,0.0,8.51,5.0,0.01,0.0,468.68,463.0,1.02,1.0
+Falso positivo,37.74,34.8,10.6,9.0,33.0,24.0,0.29,0.0,43.79,20.0,0.1,0.0,484.4,482.0,1.02,1.01
+Falso negativo,13.84,14.0,91.4,54.0,34.51,24.0,0.26,0.0,13.89,7.0,0.03,0.0,475.68,470.0,1.01,1.0
+Verdadero positivo,50.24,44.15,103.91,66.0,27.91,24.0,0.26,0.0,53.95,29.0,0.11,0.0,489.26,485.0,1.02,1.01
