@@ -1,0 +1,7 @@
+modelo,umbral,accuracy,precision,recall,f1_score,roc_auc,average_precision,n_predichos_adopcion_lenta,pct_predichos_adopcion_lenta,conjunto
+Random Forest estructurado,0.4,0.6343,0.604,0.9244,0.7306,0.7238,0.7422,1336,0.8211,test
+Estructurado + texto TF-IDF,0.31,0.6238,0.5988,0.9061,0.7211,0.7058,0.7255,1321,0.8119,test
+Regresión logística estructurada,0.32,0.6023,0.5813,0.9255,0.7141,0.6948,0.7263,1390,0.8543,test
+LightGBM estructurado,0.41,0.646,0.6374,0.7892,0.7052,0.7133,0.7368,1081,0.6644,test
+Solo texto TF-IDF,0.28,0.547,0.543,0.984,0.6998,0.6113,0.6382,1582,0.9723,test
+Baseline clase mayoritaria,0.5,0.5366,0.5366,1.0,0.6984,0.5,0.5366,1627,1.0,test
