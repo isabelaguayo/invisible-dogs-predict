@@ -1,0 +1,5 @@
+banda_riesgo,rango_score,interpretacion,accion_recomendada,prioridad_operativa
+Bajo riesgo,0-24,Riesgo reducido de larga estancia,Seguimiento ordinario dentro del flujo habitual del refugio,Baja
+Riesgo medio,25-49,Riesgo moderado de larga estancia,"Revisar ficha, fotografías y visibilidad si existen recursos disponibles",Media
+Riesgo alto,50-74,Riesgo elevado de larga estancia,"Priorizar revisión de ficha, difusión y seguimiento temprano",Alta
+Riesgo crítico,75-100,Riesgo muy elevado de larga estancia,"Actuación prioritaria desde la entrada: revisión individual, campaña de visibilidad y seguimiento recurrente",Muy alta
