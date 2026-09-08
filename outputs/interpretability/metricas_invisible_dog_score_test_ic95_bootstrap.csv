@@ -1,0 +1,8 @@
+metrica,valor_puntual,ic_95_inf,ic_95_sup,n_bootstrap_validos
+accuracy,0.8242,0.819,0.8297,500
+precision,0.457,0.4425,0.4712,500
+recall,0.6756,0.6591,0.6933,500
+f1_score,0.5452,0.5319,0.5589,500
+roc_auc,0.8593,0.8523,0.8661,500
+average_precision,0.5721,0.5544,0.5894,500
+brier_score,0.0946,0.092,0.0974,500
