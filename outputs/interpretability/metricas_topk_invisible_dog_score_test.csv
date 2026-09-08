@@ -1,0 +1,6 @@
+segmento_priorizado,porcentaje_priorizado,n_perros_priorizados,casos_larga_estancia_detectados,precision_topk,recall_topk,lift_topk,tasa_base_larga_estancia
+Top 1%,0.01,188,186,0.9894,0.0636,6.3427,0.156
+Top 5%,0.05,938,674,0.7186,0.2304,4.6066,0.156
+Top 10%,0.1,1876,1145,0.6103,0.3915,3.9129,0.156
+Top 20%,0.2,3751,1819,0.4849,0.6219,3.1089,0.156
+Top 30%,0.3,5626,2258,0.4014,0.772,2.573,0.156
