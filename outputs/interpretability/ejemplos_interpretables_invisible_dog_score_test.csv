@@ -1,0 +1,26 @@
+grupo_ejemplo,indice_original,animal_id,invisible_dog_score,banda_riesgo,resultado_real,prediccion_modelo,tipo_resultado_modelo,stay_days_rounded,intake_type,intake_condition,age_group,breed_intake
+Mayor score,56083,A787251,99.3,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,62,Stray,Normal,Cachorro,Black Mouth Cur Mix
+Mayor score,56078,A787246,99.2,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,75,Stray,Normal,Cachorro,Black Mouth Cur Mix
+Mayor score,16978,A693792,99.0,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,56,Stray,Normal,Cachorro,Labrador Retriever Mix
+Mayor score,16983,A693796,99.0,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,56,Stray,Normal,Cachorro,Labrador Retriever Mix
+Mayor score,65854,A811286,99.0,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,57,Stray,Nursing,Cachorro,Labrador Retriever/Border Collie
+Verdadero positivo adicional,65856,A811288,99.0,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,59,Stray,Nursing,Cachorro,Labrador Retriever/Border Collie
+Verdadero positivo adicional,65857,A811289,98.9,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,63,Stray,Nursing,Cachorro,Labrador Retriever/Border Collie
+Verdadero positivo adicional,24365,A711264,98.9,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,51,Stray,Nursing,Cachorro,Flat Coat Retriever/Papillon
+Verdadero positivo adicional,63492,A805615,98.5,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,72,Owner Surrender,Normal,Cachorro,Labrador Retriever/Dachshund
+Verdadero positivo adicional,16985,A693798,98.5,Riesgo crítico,Larga estancia,Riesgo de larga estancia,Verdadero positivo,56,Stray,Normal,Cachorro,Labrador Retriever Mix
+Bajo riesgo correcto,93706,A928297,0.1,Bajo riesgo,No larga estancia,Sin riesgo estimado,Verdadero negativo,1,Stray,Sick,Joven,French Bulldog
+Bajo riesgo correcto,93746,A928689,0.1,Bajo riesgo,No larga estancia,Sin riesgo estimado,Verdadero negativo,1,Abandoned,Neonatal,Cachorro,Unknown
+Bajo riesgo correcto,19764,A699266,0.1,Bajo riesgo,No larga estancia,Sin riesgo estimado,Verdadero negativo,1,Stray,Normal,Cachorro,Lhasa Apso Mix
+Bajo riesgo correcto,20932,A701977,0.1,Bajo riesgo,No larga estancia,Sin riesgo estimado,Verdadero negativo,1,Owner Surrender,Sick,Cachorro,German Shepherd Mix
+Bajo riesgo correcto,72942,A836507,0.1,Bajo riesgo,No larga estancia,Sin riesgo estimado,Verdadero negativo,18,Stray,Nursing,Cachorro,German Shepherd Mix
+Falso positivo,28095,A719806,97.1,Riesgo crítico,No larga estancia,Riesgo de larga estancia,Falso positivo,30,Stray,Normal,Cachorro,Queensland Heeler Mix
+Falso positivo,16973,A693787,92.2,Riesgo crítico,No larga estancia,Riesgo de larga estancia,Falso positivo,1,Stray,Normal,Cachorro,Labrador Retriever Mix
+Falso positivo,72546,A834807,90.2,Riesgo crítico,No larga estancia,Riesgo de larga estancia,Falso positivo,30,Stray,Normal,Cachorro,Australian Shepherd Mix
+Falso positivo,37594,A742456,87.7,Riesgo crítico,No larga estancia,Riesgo de larga estancia,Falso positivo,24,Stray,Normal,Cachorro,Pit Bull Mix
+Falso positivo,87476,A893955,87.2,Riesgo crítico,No larga estancia,Riesgo de larga estancia,Falso positivo,20,Stray,Normal,Joven,Pit Bull Mix
+Falso negativo,20684,A701365,14.9,Bajo riesgo,Larga estancia,Sin riesgo estimado,Falso negativo,1010,Stray,Normal,Senior,Labrador Retriever
+Falso negativo,5851,A667878,18.9,Bajo riesgo,Larga estancia,Sin riesgo estimado,Falso negativo,807,Owner Surrender,Normal,Joven,American Bulldog Mix
+Falso negativo,54044,A782837,14.4,Bajo riesgo,Larga estancia,Sin riesgo estimado,Falso negativo,646,Stray,Normal,Joven,German Shepherd
+Falso negativo,54290,A783420,3.3,Bajo riesgo,Larga estancia,Sin riesgo estimado,Falso negativo,637,Stray,Normal,Adulto,Chihuahua Shorthair Mix
+Falso negativo,54326,A783499,10.8,Bajo riesgo,Larga estancia,Sin riesgo estimado,Falso negativo,636,Owner Surrender,Normal,Adulto,Yorkshire Terrier Mix
