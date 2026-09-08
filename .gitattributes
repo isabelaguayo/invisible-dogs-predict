@@ -5,3 +5,5 @@ artifacts/embeddings/*.npz filter=lfs diff=lfs merge=lfs -text
 artifacts/embeddings/*.npy filter=lfs diff=lfs merge=lfs -text
 data/processed/austin/*.csv filter=lfs diff=lfs merge=lfs -text
 data/raw/austin/*.csv filter=lfs diff=lfs merge=lfs -text
+data/raw/tsinghua/*.parquet filter=lfs diff=lfs merge=lfs -text
+outputs/tsinghua_visual/*.npz filter=lfs diff=lfs merge=lfs -text
