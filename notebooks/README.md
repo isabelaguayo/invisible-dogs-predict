@@ -14,4 +14,4 @@ Orden recomendado:
 8. `08_validacion_testing_integracion_componentes.ipynb`
 9. `09_desarrollo_mvp_invisible_dogs.ipynb`
 
-Los notebooks se han incorporado desde la copia final almacenada en Google Drive, preservando su numeración y orden metodológico.
+La numeración refleja el orden metodológico del trabajo y facilita el seguimiento del desarrollo experimental completo.
