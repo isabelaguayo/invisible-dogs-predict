@@ -1,0 +1,12 @@
+{
+    "modelo_visual": "facebook/dinov2-small",
+    "dimension_embedding": 384,
+    "metrica_similitud": "cosine_similarity",
+    "n_razas": 130,
+    "n_perros_petfinder": 7938,
+    "umbral_riesgo_bajo_medio": 0.4582939392795886,
+    "umbral_riesgo_medio_alto": 0.6051373469810215,
+    "orden_ranking_principal": "similitud_visual_descendente",
+    "score_riesgo_fuente": "prob_adopcion_lenta_petfinder_final - Notebook 05",
+    "niveles_riesgo": "terciles definidos sobre scores OOF de desarrollo"
+}
