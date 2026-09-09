@@ -155,11 +155,11 @@ test("J: un PetID con fotografía local expone photoUrl", () => {
   assert.equal(view.dog.profile.photoUrl, "/images/petfinder/adoptante/e0667be3b-1.jpg");
 });
 
-// K. Foto no disponible localmente -> sin photoUrl (placeholder en la UI).
-test("K: un PetID válido sin fotografía local no expone photoUrl", () => {
+// K. Todos los perfiles PetFinder publicados disponen ahora de su foto principal materializada.
+test("K: un PetID válido fuera del catálogo previo expone su foto principal", () => {
   const view = resolveAdopterProfileView("3422e4906", {});
   assert.equal(view.status, "found");
-  assert.equal(view.dog.profile.photoUrl, undefined);
+  assert.equal(view.dog.profile.photoUrl, "/images/petfinder/catalog/3422e4906-1.jpg");
 });
 
 // L. "Volver a resultados" conserva la query exacta.
