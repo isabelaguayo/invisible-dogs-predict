@@ -19,5 +19,5 @@ export function formatTfmMetric(value: string | number, digits = 4): string {
 
 export function getAdditionalPetfinderPhoto(petId: string): string | undefined {
   const photos: Readonly<Record<string, { url: string }>> = sources.additionalPhotos;
-  return photos[petId]?.url;
+  return photos[petId]?.url ?? `/images/petfinder/catalog/${petId}-1.jpg`;
 }
