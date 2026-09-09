@@ -42,7 +42,9 @@ def rows(name: str, sources: dict) -> list[dict[str, str]]:
 
 
 def write_json(name: str, data: object) -> None:
-    (DEST / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # Write canonical LF bytes on every OS so generated checksums are stable in Git/CI.
+    text = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
+    (DEST / name).write_bytes(text.encode("utf-8"))
 
 
 def main() -> None:
