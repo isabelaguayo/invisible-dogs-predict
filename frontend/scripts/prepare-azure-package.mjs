@@ -35,6 +35,7 @@ for (const requiredPath of [
   path.join(".next", "BUILD_ID"),
   path.join(".next", "static"),
   "public",
+  path.join("public", "images", "petfinder", "catalog"),
   path.join("server-data", "adoptante", "petfinderProfiles.v1.json"),
   path.join("server-data", "adoptante", "petfinderDinov2Embeddings.v1.f32"),
 ]) {
