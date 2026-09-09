@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { tfmResults, austinTestCount, formatTfmMetric } from "@/lib/tfm/results";
 import Link from "next/link";
 import { SectionDivider } from "@/components/SectionDivider";
 import { LogoutButton } from "@/components/protectora/LogoutButton";
@@ -339,8 +340,8 @@ export default async function ProtectorDogProfilePage({ params }: ProtectorDogPr
               </article>
               <article>
                 <span>Austin Animal Center</span><h3>Predicción de larga estancia</h3>
-                <strong>No calculado en esta demostración</strong>
-                <p>El modelo de Austin requiere un conjunto de entradas compatible con su contrato analítico. No se aplica directamente a este perfil histórico de PetFinder.</p>
+                <strong>ROC AUC {formatTfmMetric(tfmResults.austin.metrics.roc_auc)} · test Austin</strong>
+                <p>Rendimiento histórico sobre {austinTestCount.toLocaleString("es-ES")} registros Austin. No es una predicción para este perro: el modelo requiere entradas compatibles con su contrato analítico y no se aplica directamente a este perfil PetFinder.</p>
               </article>
             </div>
           </section>

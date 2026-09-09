@@ -1,0 +1,339 @@
+{
+  "repository": "isabelaguayo/invisible-dogs-predict",
+  "branch": "documentacion-tfm",
+  "commit": "1fe0bcff9a1fa13b86f5d028b05a526f839b6aef",
+  "sources": {
+    "frontend/server-data/adoptante/petfinderProfiles.v1.json": {
+      "sha256": "066a99c66745959b28b77fc07e9ef529de0b25c823a3a6023735bcaff4973e08",
+      "bytes": 3159675
+    },
+    "data/processed/petfinder_dogs_enriched_scored.csv": {
+      "sha256": "ea8e09bb10638287d0139def42d533085065fc97ed1e9f7e02c7fe16d3346404",
+      "bytes": 19689068
+    },
+    "artifacts/visual_search/invisible_dogs_petfinder_search_index.csv": {
+      "sha256": "1725389b46ac6e2708ad5ef25e916c98a71e61f969bf5a6e28b1e07215e9b379",
+      "bytes": 978004
+    },
+    "outputs/interpretability/metricas_invisible_dog_score_test.csv": {
+      "sha256": "e51de8b382e8cb971c55eb4a9295a86724303e8b99f2507c4bbf166f68401501",
+      "bytes": 169
+    },
+    "outputs/interpretability/resumen_bandas_riesgo_test.csv": {
+      "sha256": "7c6d04e2fece405a814b09966bc3b5cdfd926d727417b6d2beeb4ff5491e40f9",
+      "bytes": 339
+    },
+    "outputs/interpretability/metricas_topk_invisible_dog_score_test.csv": {
+      "sha256": "95097451f04031704ddf16bdc13d53a32f4dd20788246de34cd9c5e9acd843ed",
+      "bytes": 396
+    },
+    "outputs/interpretability/importancia_ensemble_por_familias.csv": {
+      "sha256": "eff6ad13c1c15b5e420da8bb605572cf4022372b1d71c862a6aefdcd1cf4475a",
+      "bytes": 339
+    },
+    "data/processed/austin/invisible_dogs_dataset_preparado.csv": {
+      "sha256": "7dc86fa598c8cb5d3e8358c7aa5aea07b9fe6222b51b15d496aa2697c618aecb",
+      "bytes": 46605280
+    },
+    "outputs/petfinder/resultados_modelo_final_petfinder_test.csv": {
+      "sha256": "7554472285d870ac14ccd2585990384e908215883303c4feb2c4031d91bfd4b5",
+      "bytes": 237
+    },
+    "artifacts/visual_search/invisible_dogs_search_config.json": {
+      "sha256": "2a76846658bf623e8ca973f9a3f9920473bb83b7825da606eaa31cba22e11ea8",
+      "bytes": 500
+    },
+    "data/raw_petfinder/train_images/000a290e4-1.jpg": {
+      "sha256": "3cc8df239d3beef723349cdc7c4a6b0689e510de08c47ee698ee5fbee88caca6",
+      "bytes": 40076
+    },
+    "data/raw_petfinder/train_images/000fb9572-1.jpg": {
+      "sha256": "466bd9f92168747b4596f133e9a4bb4a5e743286621c82d108d52b9b761b4741",
+      "bytes": 17985
+    },
+    "data/raw_petfinder/train_images/00156db4a-1.jpg": {
+      "sha256": "0c37529b84d1488284bcf1f460285b25f323b2aa960741ec7f2257c03c5d5e90",
+      "bytes": 13293
+    },
+    "data/raw_petfinder/train_images/0038234c6-1.jpg": {
+      "sha256": "e40733a48384cf437fe02d78a1838dc201552130c04325bca44990e35597bf68",
+      "bytes": 20048
+    },
+    "data/raw_petfinder/train_images/0038c9343-1.jpg": {
+      "sha256": "df786342367062d133cec98c9bfccdc892908234449bd34eac2cfd59de5ffaf0",
+      "bytes": 18105
+    },
+    "data/raw_petfinder/train_images/004a26127-1.jpg": {
+      "sha256": "e0513b1fcad8b9f21b5accc9371d054a7eb8d7a62faa25dbb93b88f9f4c1916d",
+      "bytes": 12436
+    },
+    "data/raw_petfinder/train_images/0058586f1-1.jpg": {
+      "sha256": "d9e0db06b804b82f0b284e92f6c82e2ba8846f277e10aa60329ddc6c90ee57b3",
+      "bytes": 24142
+    },
+    "data/raw_petfinder/train_images/005bb92d8-1.jpg": {
+      "sha256": "01246b320fb8068b6739cb4296f60bc8460debdc748207ee897489850a9a9e36",
+      "bytes": 50141
+    },
+    "data/raw_petfinder/train_images/0063bd7e0-1.jpg": {
+      "sha256": "4f48a6874533101b8180146f48eb2d79768a0495372fafdf607eaee310dfd551",
+      "bytes": 19201
+    },
+    "data/raw_petfinder/train_images/00648f96f-1.jpg": {
+      "sha256": "814b1d85213e895aa6a73454cf03524e73d904980206f1a922b37c3fff9811d4",
+      "bytes": 23967
+    },
+    "data/raw_petfinder/train_images/006610fe3-1.jpg": {
+      "sha256": "3a3238f417e6b3615279e6a26912b6071039cd1bc2a3efc95e32812317532e19",
+      "bytes": 27534
+    },
+    "data/raw_petfinder/train_images/00709d75b-1.jpg": {
+      "sha256": "24eb6a458c90bdb8906ea6b5bf49da02403ec0a2941f21d3c583b33abdccdccf",
+      "bytes": 35996
+    },
+    "frontend/server-data/tfm/petfinderDescriptions.v1.json": {
+      "sha256": "7f382c3e8d07306cadb698ffc2df64a62bb0e1d958eaa0fcbad99faa0be8209b",
+      "derivedFrom": "data/processed/petfinder_dogs_enriched_scored.csv:Description,PetID"
+    }
+  },
+  "austin": {
+    "metrics": {
+      "modelo": "Ensemble CatBoost + LightGBM",
+      "umbral": "0.24",
+      "accuracy": "0.8242",
+      "precision": "0.457",
+      "recall": "0.6756",
+      "f1_score": "0.5452",
+      "roc_auc": "0.8593",
+      "average_precision": "0.5721",
+      "brier_score": "0.0946"
+    },
+    "bands": [
+      {
+        "banda_riesgo": "Bajo riesgo",
+        "n_perros": "14610",
+        "porcentaje_perros": "77.9117",
+        "score_medio": "7.9657",
+        "score_minimo": "0.1",
+        "score_maximo": "24.9",
+        "casos_larga_estancia": "993",
+        "tasa_real_larga_estancia": "0.068"
+      },
+      {
+        "banda_riesgo": "Riesgo medio",
+        "n_perros": "3013",
+        "porcentaje_perros": "16.0676",
+        "score_medio": "35.2705",
+        "score_minimo": "25.0",
+        "score_maximo": "49.9",
+        "casos_larga_estancia": "1154",
+        "tasa_real_larga_estancia": "0.383"
+      },
+      {
+        "banda_riesgo": "Riesgo alto",
+        "n_perros": "789",
+        "porcentaje_perros": "4.2076",
+        "score_medio": "59.1921",
+        "score_minimo": "50.0",
+        "score_maximo": "74.9",
+        "casos_larga_estancia": "463",
+        "tasa_real_larga_estancia": "0.5868"
+      },
+      {
+        "banda_riesgo": "Riesgo crítico",
+        "n_perros": "340",
+        "porcentaje_perros": "1.8131",
+        "score_medio": "89.5753",
+        "score_minimo": "75.0",
+        "score_maximo": "99.3",
+        "casos_larga_estancia": "315",
+        "tasa_real_larga_estancia": "0.9265"
+      }
+    ],
+    "topK": [
+      {
+        "segmento_priorizado": "Top 1%",
+        "porcentaje_priorizado": "0.01",
+        "n_perros_priorizados": "188",
+        "casos_larga_estancia_detectados": "186",
+        "precision_topk": "0.9894",
+        "recall_topk": "0.0636",
+        "lift_topk": "6.3427",
+        "tasa_base_larga_estancia": "0.156"
+      },
+      {
+        "segmento_priorizado": "Top 5%",
+        "porcentaje_priorizado": "0.05",
+        "n_perros_priorizados": "938",
+        "casos_larga_estancia_detectados": "674",
+        "precision_topk": "0.7186",
+        "recall_topk": "0.2304",
+        "lift_topk": "4.6066",
+        "tasa_base_larga_estancia": "0.156"
+      },
+      {
+        "segmento_priorizado": "Top 10%",
+        "porcentaje_priorizado": "0.1",
+        "n_perros_priorizados": "1876",
+        "casos_larga_estancia_detectados": "1145",
+        "precision_topk": "0.6103",
+        "recall_topk": "0.3915",
+        "lift_topk": "3.9129",
+        "tasa_base_larga_estancia": "0.156"
+      },
+      {
+        "segmento_priorizado": "Top 20%",
+        "porcentaje_priorizado": "0.2",
+        "n_perros_priorizados": "3751",
+        "casos_larga_estancia_detectados": "1819",
+        "precision_topk": "0.4849",
+        "recall_topk": "0.6219",
+        "lift_topk": "3.1089",
+        "tasa_base_larga_estancia": "0.156"
+      },
+      {
+        "segmento_priorizado": "Top 30%",
+        "porcentaje_priorizado": "0.3",
+        "n_perros_priorizados": "5626",
+        "casos_larga_estancia_detectados": "2258",
+        "precision_topk": "0.4014",
+        "recall_topk": "0.772",
+        "lift_topk": "2.573",
+        "tasa_base_larga_estancia": "0.156"
+      }
+    ],
+    "families": [
+      {
+        "familia_variable": "Características individuales",
+        "importancia_total": "0.2858",
+        "n_variables": "5",
+        "porcentaje_importancia": "28.5795"
+      },
+      {
+        "familia_variable": "Contexto operativo del refugio",
+        "importancia_total": "0.2842",
+        "n_variables": "7",
+        "porcentaje_importancia": "28.4199"
+      },
+      {
+        "familia_variable": "Raza, color y composición",
+        "importancia_total": "0.1439",
+        "n_variables": "11",
+        "porcentaje_importancia": "14.3888"
+      },
+      {
+        "familia_variable": "Interacciones",
+        "importancia_total": "0.0931",
+        "n_variables": "4",
+        "porcentaje_importancia": "9.3058"
+      },
+      {
+        "familia_variable": "Entrada al refugio",
+        "importancia_total": "0.0845",
+        "n_variables": "4",
+        "porcentaje_importancia": "8.4498"
+      },
+      {
+        "familia_variable": "Historial previo",
+        "importancia_total": "0.0549",
+        "n_variables": "8",
+        "porcentaje_importancia": "5.4895"
+      },
+      {
+        "familia_variable": "Temporalidad",
+        "importancia_total": "0.0537",
+        "n_variables": "5",
+        "porcentaje_importancia": "5.3667"
+      }
+    ]
+  },
+  "petfinder": {
+    "metrics": {
+      "modelo": "Ensemble texto + estructurado",
+      "umbral": "0.39",
+      "accuracy": "0.6386",
+      "precision": "0.6077",
+      "recall": "0.921",
+      "f1_score": "0.7322",
+      "roc_auc": "0.7384",
+      "average_precision": "0.758",
+      "n_predichos_adopcion_lenta": "1323",
+      "pct_predichos_adopcion_lenta": "0.8132",
+      "conjunto": "test"
+    }
+  },
+  "tsinghua": {
+    "modelo_visual": "facebook/dinov2-small",
+    "dimension_embedding": 384,
+    "metrica_similitud": "cosine_similarity",
+    "n_razas": 130,
+    "n_perros_petfinder": 7938,
+    "umbral_riesgo_bajo_medio": 0.4582939392795886,
+    "umbral_riesgo_medio_alto": 0.6051373469810215,
+    "orden_ranking_principal": "similitud_visual_descendente",
+    "score_riesgo_fuente": "prob_adopcion_lenta_petfinder_final - Notebook 05",
+    "niveles_riesgo": "terciles definidos sobre scores OOF de desarrollo"
+  },
+  "additionalPhotos": {
+    "000a290e4": {
+      "url": "/images/petfinder/historical/000a290e4-1.jpg",
+      "source": "data/raw_petfinder/train_images/000a290e4-1.jpg",
+      "sha256": "3cc8df239d3beef723349cdc7c4a6b0689e510de08c47ee698ee5fbee88caca6"
+    },
+    "000fb9572": {
+      "url": "/images/petfinder/historical/000fb9572-1.jpg",
+      "source": "data/raw_petfinder/train_images/000fb9572-1.jpg",
+      "sha256": "466bd9f92168747b4596f133e9a4bb4a5e743286621c82d108d52b9b761b4741"
+    },
+    "00156db4a": {
+      "url": "/images/petfinder/historical/00156db4a-1.jpg",
+      "source": "data/raw_petfinder/train_images/00156db4a-1.jpg",
+      "sha256": "0c37529b84d1488284bcf1f460285b25f323b2aa960741ec7f2257c03c5d5e90"
+    },
+    "0038234c6": {
+      "url": "/images/petfinder/historical/0038234c6-1.jpg",
+      "source": "data/raw_petfinder/train_images/0038234c6-1.jpg",
+      "sha256": "e40733a48384cf437fe02d78a1838dc201552130c04325bca44990e35597bf68"
+    },
+    "0038c9343": {
+      "url": "/images/petfinder/historical/0038c9343-1.jpg",
+      "source": "data/raw_petfinder/train_images/0038c9343-1.jpg",
+      "sha256": "df786342367062d133cec98c9bfccdc892908234449bd34eac2cfd59de5ffaf0"
+    },
+    "004a26127": {
+      "url": "/images/petfinder/historical/004a26127-1.jpg",
+      "source": "data/raw_petfinder/train_images/004a26127-1.jpg",
+      "sha256": "e0513b1fcad8b9f21b5accc9371d054a7eb8d7a62faa25dbb93b88f9f4c1916d"
+    },
+    "0058586f1": {
+      "url": "/images/petfinder/historical/0058586f1-1.jpg",
+      "source": "data/raw_petfinder/train_images/0058586f1-1.jpg",
+      "sha256": "d9e0db06b804b82f0b284e92f6c82e2ba8846f277e10aa60329ddc6c90ee57b3"
+    },
+    "005bb92d8": {
+      "url": "/images/petfinder/historical/005bb92d8-1.jpg",
+      "source": "data/raw_petfinder/train_images/005bb92d8-1.jpg",
+      "sha256": "01246b320fb8068b6739cb4296f60bc8460debdc748207ee897489850a9a9e36"
+    },
+    "0063bd7e0": {
+      "url": "/images/petfinder/historical/0063bd7e0-1.jpg",
+      "source": "data/raw_petfinder/train_images/0063bd7e0-1.jpg",
+      "sha256": "4f48a6874533101b8180146f48eb2d79768a0495372fafdf607eaee310dfd551"
+    },
+    "00648f96f": {
+      "url": "/images/petfinder/historical/00648f96f-1.jpg",
+      "source": "data/raw_petfinder/train_images/00648f96f-1.jpg",
+      "sha256": "814b1d85213e895aa6a73454cf03524e73d904980206f1a922b37c3fff9811d4"
+    },
+    "006610fe3": {
+      "url": "/images/petfinder/historical/006610fe3-1.jpg",
+      "source": "data/raw_petfinder/train_images/006610fe3-1.jpg",
+      "sha256": "3a3238f417e6b3615279e6a26912b6071039cd1bc2a3efc95e32812317532e19"
+    },
+    "00709d75b": {
+      "url": "/images/petfinder/historical/00709d75b-1.jpg",
+      "source": "data/raw_petfinder/train_images/00709d75b-1.jpg",
+      "sha256": "24eb6a458c90bdb8906ea6b5bf49da02403ec0a2941f21d3c583b33abdccdccf"
+    }
+  }
+}

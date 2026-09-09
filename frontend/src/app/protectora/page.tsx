@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionDivider } from "@/components/SectionDivider";
 import { LogoutButton } from "@/components/protectora/LogoutButton";
+import { adopterProfiles } from "@/lib/adoptante/artifacts";
+import { tfmResults, austinTestCount, austinTopTen, formatTfmMetric } from "@/lib/tfm/results";
 import {
   PROTECTORA_PETFINDER_PROFILES,
   type ProtectoraPetfinderProfile,
@@ -28,7 +30,7 @@ const TEXTMINING_CONCEPTOS_LENTA = [
   "Paciencia", "Desconfianza", "Socialización",
 ];
 
-const HISTORICAL_CATALOG_SIZE = 6474;
+const HISTORICAL_CATALOG_SIZE = adopterProfiles.length;
 const RISK_LEVELS: readonly ProtectoraRiskLevel[] = ["Bajo", "Medio", "Alto"];
 const MATRIX_RISK_POSITION: Record<ProtectoraRiskLevel, number> = {
   Alto: 16.667,
@@ -325,12 +327,12 @@ export default function ProtectorPage() {
               <article>
                 <span>01 · Austin Animal Center</span>
                 <h3>Predicción de larga estancia</h3>
-                <p>Austin constituye el núcleo predictivo principal de InvisibleDogs Predict para estimar el riesgo de larga estancia cuando se dispone de entradas compatibles con el modelo preparado.</p>
+                <p>{tfmResults.austin.metrics.modelo} para estancias superiores a 30 días. En test Austin ({austinTestCount.toLocaleString("es-ES")} registros): ROC AUC {formatTfmMetric(tfmResults.austin.metrics.roc_auc)} y recall {formatTfmMetric(Number(tfmResults.austin.metrics.recall) * 100, 2)} %. La precisión del Top 10 % es {formatTfmMetric(Number(austinTopTen.precision_topk) * 100, 2)} %. Son resultados históricos del modelo, no predicciones de estas fichas PetFinder.</p>
               </article>
               <article>
                 <span>02 · PetFinder</span>
                 <h3>Riesgo complementario de adopción lenta</h3>
-                <p>PetFinder aporta una capa complementaria basada en datos históricos de adopción y presentación de perfiles, utilizada en esta demostración para contextualizar qué perros podrían necesitar una mayor visibilidad.</p>
+                <p>PetFinder aporta una capa complementaria basada en datos históricos de adopción y presentación de perfiles. El modelo final ({tfmResults.petfinder.metrics.modelo}) obtiene ROC AUC {formatTfmMetric(tfmResults.petfinder.metrics.roc_auc)} en test. Sus scores contextualizan qué perros podrían necesitar una mayor visibilidad.</p>
               </article>
             </div>
             <aside className="protector-methodology-note">
@@ -380,7 +382,7 @@ export default function ProtectorPage() {
 
                 <div className="reference-choice-note">
                   <span aria-hidden="true">i</span>
-                  <p>Las palabras se muestran en castellano para facilitar su interpretación y se han organizado a partir de los patrones observados en las descripciones de PetFinder.</p>
+                  <p>Las palabras se muestran en castellano para facilitar su interpretación y se han organizado a partir de los patrones observados en las descripciones de PetFinder. Esta visualización es ilustrativa: el tamaño de las palabras no representa frecuencias ni pesos del modelo.</p>
                 </div>
             </div>
 

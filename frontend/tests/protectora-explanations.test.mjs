@@ -128,7 +128,8 @@ test("O: la completitud no aparece como causa dentro de la sección de factores"
 // P: Austin no interviene.
 test("P: Austin no interviene en la explicación del riesgo PetFinder", () => {
   assert.doesNotMatch(contractRaw, /austin/i);
-  assert.match(pageSource, /No calculado en esta demostración/);
+  assert.match(pageSource, /No es una predicción para este perro/);
+  assert.match(pageSource, /no se aplica directamente a este perfil PetFinder/);
 });
 
 // Q: ninguna explicación es causal.

@@ -11,6 +11,8 @@ import type {
   AdopterSearchResult,
 } from "../../types/adopterResult.ts";
 import { adopterProfiles } from "./artifacts.ts";
+import { PROTECTORA_PETFINDER_PROFILES } from "../../data/protectoraPetfinderProfiles.ts";
+import { getAdditionalPetfinderPhoto } from "../tfm/results.ts";
 
 const COLOR_LABELS = {
   Black: "Negro",
@@ -86,6 +88,9 @@ const PREFERENCE_LABELS: ReadonlyArray<{
 
 const photoByPetId = new Map(
   photoCatalog.photos.map((photo) => [photo.petId, photo.file]),
+);
+const protectoraPhotoByPetId = new Map(
+  PROTECTORA_PETFINDER_PROFILES.map((profile) => [profile.id, profile.imagePath]),
 );
 
 export type AdopterPreferenceSummaryItem = {
@@ -173,7 +178,7 @@ export function createAdopterDogResult(
       primaryImageFile: profile.primaryImageFile,
       photoUrl: controlledPhoto
         ? `/images/petfinder/adoptante/${controlledPhoto}`
-        : undefined,
+        : protectoraPhotoByPetId.get(profile.petId) ?? getAdditionalPetfinderPhoto(profile.petId),
       objectPosition: ADOPTER_PHOTO_OBJECT_POSITION_OVERRIDES[profile.petId]
         ?? DEFAULT_ADOPTER_PHOTO_OBJECT_POSITION,
       ageMonths: profile.ageMonths,

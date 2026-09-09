@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SectionDivider } from "@/components/SectionDivider";
+import { PROTECTORA_PETFINDER_PROFILES } from "@/data/protectoraPetfinderProfiles";
+import { tfmResults, formatTfmMetric } from "@/lib/tfm/results";
 
 const steps = [
   { number: "01", title: "Preferencias", description: "El adoptante define qué características busca." },
@@ -30,9 +32,9 @@ const paths = [
 ];
 
 const researchSources = [
-  { index: "01", name: "Austin", role: "Predicción de larga estancia" },
-  { index: "02", name: "PetFinder", role: "Datos, fotografías y adopción lenta" },
-  { index: "03", name: "Tsinghua", role: "Validación y referencias visuales" },
+  { index: "01", name: "Austin", role: `Predicción de larga estancia · ROC AUC test ${formatTfmMetric(tfmResults.austin.metrics.roc_auc)}` },
+  { index: "02", name: "PetFinder", role: `Datos, fotografías y adopción lenta · ROC AUC test ${formatTfmMetric(tfmResults.petfinder.metrics.roc_auc)}` },
+  { index: "03", name: "Tsinghua", role: `Validación y ${tfmResults.tsinghua.n_razas} referencias visuales` },
 ];
 
 function ArrowIcon() {
@@ -100,6 +102,7 @@ function StepIcon({ name }: { name: string }) {
 }
 
 export default function Home() {
+  const featuredDog = PROTECTORA_PETFINDER_PROFILES[0];
   return (
     <main>
       <header className="site-header">
@@ -139,14 +142,14 @@ export default function Home() {
             <div className="hero-image-wrap">
               <Image src="/brand/invisibledogs-predict-logo-completo.png" alt="Símbolo de InvisibleDogs Predict: un perro integrado con visualizaciones de datos" width={1254} height={1254} priority className="hero-image" />
             </div>
-            <div className="demo-card" aria-label="Ejemplo visual ficticio de una futura ficha de resultado">
-              <div className="demo-label">Vista de demostración</div>
+            <div className="demo-card" aria-label="Ficha histórica de PetFinder">
+              <div className="demo-label">Perfil histórico PetFinder</div>
               <div className="demo-profile">
-                <span className="demo-avatar" aria-hidden="true">A</span>
-                <div><strong>Akira</strong><span>Perfil de ejemplo · 3 años</span></div>
+                <span className="demo-avatar" aria-hidden="true">{featuredDog.name[0]}</span>
+                <div><strong>{featuredDog.name}</strong><span>Perfil histórico · {featuredDog.age}</span></div>
               </div>
-              <div className="demo-metric"><span>Similitud visual</span><strong>87 %</strong></div>
-              <div className="demo-metric"><span>Riesgo relativo</span><strong className="risk-high">Alto</strong></div>
+              <div className="demo-metric"><span>Completitud de ficha</span><strong>{featuredDog.completeness} %</strong></div>
+              <div className="demo-metric"><span>Riesgo relativo</span><strong className="risk-high">{featuredDog.risk}</strong></div>
             </div>
             <div className="visual-dots" aria-hidden="true"><span /><span /><span /><span /><span /></div>
           </div>
