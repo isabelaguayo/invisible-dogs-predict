@@ -43,7 +43,10 @@ test("Austin metrics retain the scientific test cohort and do not become PetFind
 test("original descriptions cover the historical catalog and retain the packaged checksum", () => {
   const bytes = readFileSync(new URL("../server-data/tfm/petfinderDescriptions.v1.json", import.meta.url));
   const expected = tfmResults.sources["frontend/server-data/tfm/petfinderDescriptions.v1.json"].sha256;
-  assert.equal(createHash("sha256").update(bytes).digest("hex"), expected);
+  const normalizedText = bytes.toString("utf8").replaceAll("\r\n", "\n");
+  const lfHash = createHash("sha256").update(Buffer.from(normalizedText, "utf8")).digest("hex");
+  const crlfHash = createHash("sha256").update(Buffer.from(normalizedText.replaceAll("\n", "\r\n"), "utf8")).digest("hex");
+  assert.ok(expected === lfHash || expected === crlfHash, "description checksum differs beyond line endings");
   assert.equal(Object.keys(JSON.parse(bytes)).length, adopterProfiles.length);
   assert.match(getPetfinderHistoricalDescription("485bebd4f"), /Introducing Sophie/);
   assert.equal(getPetfinderHistoricalDescription("not-a-profile"), undefined);
