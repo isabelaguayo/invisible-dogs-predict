@@ -3,6 +3,9 @@ node_modules/
 .next/
 out/
 
+# Generated deployment photo catalog
+frontend/public/images/petfinder/catalog/
+
 # Variables de entorno
 .env
 .env.local
