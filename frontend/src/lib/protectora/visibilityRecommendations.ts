@@ -16,7 +16,6 @@ export function getVisibilityRecommendations(
   const recommendations: VisibilityRecommendation[] = [];
   const description = dog.source.Description?.trim() ?? "";
   const photoCount = Number(dog.source.PhotoAmt) || 0;
-  const videoCount = Number(dog.source.VideoAmt) || 0;
 
   const missingStructuredFields = [
     ["estado de salud", dog.healthStatus],
@@ -59,17 +58,10 @@ export function getVisibilityRecommendations(
     });
   }
 
-  if (videoCount === 0) {
-    recommendations.push({
-      action: "Incorporar un vídeo breve si la protectora dispone de él",
-      reason: "La ficha histórica no registra vídeos. Un clip corto puede aportar contexto visual sobre movimiento e interacción que una fotografía no muestra, siempre sin atribuir comportamientos que no hayan sido observados.",
-    });
-  } else {
-    recommendations.push({
-      action: "Dar mayor protagonismo al vídeo disponible",
-      reason: `La ficha registra ${videoCount} ${videoCount === 1 ? "vídeo" : "vídeos"}. Colocarlo en una posición visible y acompañarlo de un texto descriptivo puede complementar la información visual del perfil.`,
-    });
-  }
+  recommendations.push({
+    action: "Incluir un vídeo breve en la presentación del perfil",
+    reason: "Un vídeo puede mostrar al perro en movimiento y en situaciones cotidianas, aportando información visual complementaria a las fotografías y haciendo el perfil más atractivo para posibles adoptantes.",
+  });
 
   if (missingStructuredFields.length > 0) {
     const labels = missingStructuredFields.map(([label]) => label).join(", ");
