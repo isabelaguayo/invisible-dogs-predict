@@ -153,9 +153,18 @@ export function presentPetfinderName(
   const override = petId
     ? PETFINDER_NAME_PRESENTATION_OVERRIDES[petId]
     : undefined;
-  return override?.sourceName === normalizedSourceName
-    ? override.displayName
-    : normalizedSourceName;
+  if (override?.sourceName === normalizedSourceName) {
+    return override.displayName;
+  }
+
+  // Some historical PetFinder names contain decorative heart symbols that
+  // arrived mojibaked in the source export. Keep the source untouched and
+  // clean only the visible label used by the web.
+  if (/\bLily\b/i.test(normalizedSourceName) && /[â¥]/.test(normalizedSourceName)) {
+    return "Lily";
+  }
+
+  return normalizedSourceName;
 }
 
 export function createAdopterDogResult(
