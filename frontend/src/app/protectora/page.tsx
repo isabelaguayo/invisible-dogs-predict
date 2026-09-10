@@ -63,6 +63,7 @@ function ProtectorHeader() {
         </Link>
         <div className="flow-header-actions">
           <span className="flow-context"><i aria-hidden="true" />Vista Protectora</span>
+          <Link className="protector-header-overview" href="/protectora/catalogo">Catálogo</Link>
           <LogoutButton />
           <Link className="back-home" href="/"><BackIcon />Inicio</Link>
         </div>
@@ -367,6 +368,13 @@ export default function ProtectorPage() {
             </header>
             <div className="protector-review-grid">
               {highRiskDogs.map((dog) => <ProtectorReviewCard dog={dog} key={dog.petId} />)}
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "18px", marginTop: "26px", padding: "22px 24px", border: "1px solid rgba(91, 42, 134, 0.12)", borderRadius: "18px", background: "#fff" }}>
+              <div>
+                <strong style={{ display: "block", marginBottom: "6px" }}>Explorar el catálogo completo</strong>
+                <p style={{ margin: 0, color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.55 }}>Busca y filtra cualquiera de los {HISTORICAL_CATALOG_SIZE.toLocaleString("es-ES")} perfiles para revisar su ficha y sus acciones recomendadas de visibilidad.</p>
+              </div>
+              <Link className="protector-review-action" href="/protectora/catalogo">Ver los {HISTORICAL_CATALOG_SIZE.toLocaleString("es-ES")} perfiles</Link>
             </div>
           </section>
 
