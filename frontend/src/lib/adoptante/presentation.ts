@@ -157,6 +157,10 @@ export function presentPetfinderName(
     return override.displayName;
   }
 
+  if (normalizedSourceName === "Bailey (Great With Kids).") {
+    return "Bailey";
+  }
+
   // Some historical PetFinder names contain decorative heart symbols that
   // arrived mojibaked in the source export. Keep the source untouched and
   // clean only the visible label used by the web.
