@@ -135,7 +135,7 @@ export default function PhotoSearchPage() {
             <h1>Busca a partir de una fotografía</h1>
           </div>
           <div className="reference-intro-copy">
-            <p>Sube una imagen para buscar perfiles PetFinder con un aspecto visual parecido, calculado con DINOv2 en un servicio local.</p>
+            <p>Sube una imagen para buscar perfiles PetFinder con un aspecto visual parecido mediante DINOv2.</p>
             <div className="reference-choice-note">
               <span aria-hidden="true">i</span>
               <p>La fotografía se procesa para calcular un embedding visual y no se conserva una vez analizada.</p>
@@ -225,7 +225,7 @@ export default function PhotoSearchPage() {
                 <p>
                   <strong>{photo ? "Todo listo para analizar tu fotografía." : "Selecciona una fotografía para continuar."}</strong>{" "}
                   {photo
-                    ? "Se calculará un embedding visual DINOv2 y se comparará con los 6.474 perfiles PetFinder preparados."
+                    ? "Se calculará un embedding visual DINOv2 y se comparará con los 6.474 perfiles históricos PetFinder."
                     : "Sube una imagen para buscar perfiles PetFinder con un aspecto visual parecido."}
                 </p>
               </div>
@@ -250,7 +250,7 @@ export default function PhotoSearchPage() {
                 <span>Catálogo histórico</span>
                 <div>
                   <h2 id="photo-search-summary-title">Referencia: fotografía proporcionada</h2>
-                  <p>Los perfiles proceden del catálogo histórico PetFinder preparado para esta demostración y no representan perros actualmente disponibles para adopción.</p>
+                  <p>Los perfiles proceden de datos históricos PetFinder y no reflejan disponibilidad actual para adopción.</p>
                 </div>
                 <p><strong>Fotografía analizada:</strong><br />{photo?.file.name}</p>
               </aside>
@@ -310,8 +310,8 @@ export default function PhotoSearchPage() {
                   <button type="button" onClick={removePhoto}><BackIcon />Cambiar fotografía</button>
                 </div>
                 <aside className="historical-results-note">
-                  <strong>Prototipo desarrollado con datos históricos.</strong>
-                  <p>Los perfiles mostrados proceden del catálogo histórico preparado. No deben interpretarse como animales actualmente disponibles para adopción.</p>
+                  <strong>Información basada en datos históricos.</strong>
+                  <p>Los perfiles mostrados proceden de datos históricos PetFinder y no reflejan disponibilidad actual para adopción.</p>
                 </aside>
               </div>
             </>
@@ -320,7 +320,7 @@ export default function PhotoSearchPage() {
       </section>
 
       <footer className="flow-footer">
-        <div className="page-shell"><span>InvisibleDogs Predict</span><p>Búsqueda visual mediante fotografía, procesada en local.</p></div>
+        <div className="page-shell"><span>InvisibleDogs Predict</span><p>Búsqueda visual mediante fotografía y DINOv2.</p></div>
       </footer>
     </main>
   );

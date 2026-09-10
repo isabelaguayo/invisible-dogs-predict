@@ -261,7 +261,7 @@ function FindDogContent({ initialSearchState }: { initialSearchState: AdopterSea
 
           <aside className="preferences-aside" aria-label="Resumen de la búsqueda">
             <div className="catalog-count">
-              <p>Catálogo de demostración</p>
+              <p>Perfiles disponibles</p>
               <strong>6.474</strong>
               <span>perfiles individuales históricos</span>
               <small>El número de candidatos compatibles se actualizará según tus preferencias.</small>

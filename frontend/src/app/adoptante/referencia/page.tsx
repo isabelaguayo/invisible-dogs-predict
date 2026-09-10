@@ -391,7 +391,7 @@ function VisualReferenceContent({ initialSearchState }: { initialSearchState: Ad
                   <h2 id="visual-search-title">Búsqueda por similitud visual</h2>
                 </div>
               </div>
-              <p>El prototipo elegido se compara con los embeddings de los perfiles PetFinder para ordenarlos por parecido visual.</p>
+              <p>La referencia elegida se compara con los embeddings de los perfiles PetFinder para ordenarlos por parecido visual.</p>
               <div className="visual-search-sequence" aria-label="Referencia visual Tsinghua, comparación con PetFinder y resultados PetFinder">
                 <strong>Referencia Tsinghua</strong><i aria-hidden="true">→</i><strong>Comparación PetFinder</strong><i aria-hidden="true">→</i><strong>Resultados PetFinder</strong>
               </div>

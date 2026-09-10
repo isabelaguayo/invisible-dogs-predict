@@ -72,8 +72,8 @@ function ResultState({ view, searchState }: { view: AdopterResultsView; searchSt
   const content = {
     "photo-pending": {
       kicker: "Búsqueda por fotografía",
-      title: "Esta modalidad estará disponible en una fase posterior",
-      description: "No se ha ejecutado DINOv2 ni se han generado resultados simulados. Puedes volver y elegir otro método de búsqueda.",
+      title: "Continúa la búsqueda desde el método de fotografía",
+      description: "Utiliza el método C para subir una fotografía y obtener resultados mediante DINOv2.",
     },
     "invalid-reference": {
       kicker: "Referencia visual no válida",
@@ -82,8 +82,8 @@ function ResultState({ view, searchState }: { view: AdopterResultsView; searchSt
     },
     error: {
       kicker: "Búsqueda no disponible",
-      title: "No hemos podido consultar el catálogo histórico",
-      description: "Los resultados no se han sustituido por perfiles ficticios. Puedes volver a intentarlo desde el paso anterior.",
+      title: "No hemos podido consultar los perfiles",
+      description: "No hemos podido completar la consulta. Puedes volver a intentarlo desde el paso anterior.",
     },
   }[view.status];
 
@@ -171,12 +171,12 @@ export default async function AdopterResultsPage({ searchParams }: AdopterResult
       <section className="results-area">
         <div className="page-shell">
           <aside className="demo-results-notice" aria-labelledby="search-summary-title">
-            <span>Catálogo histórico</span>
+            <span>Datos históricos</span>
             <div>
               <h2 id="search-summary-title">{isBreedMode
                 ? `Referencia visual: ${referenceName}`
                 : "Método: por características"}</h2>
-              <p>Los perfiles proceden del catálogo histórico PetFinder preparado para esta demostración y no representan perros actualmente disponibles para adopción.</p>
+              <p>Los perfiles proceden de datos históricos PetFinder y no reflejan disponibilidad actual para adopción.</p>
             </div>
             <p><strong>Preferencias activas:</strong><br />{preferenceSummary.length
               ? preferenceSummary.map((item) => `${item.label}: ${item.value}`).join(" · ")
@@ -191,7 +191,7 @@ export default async function AdopterResultsPage({ searchParams }: AdopterResult
             <div className="ranking-sequence" aria-label={isBreedMode
               ? "Referencia Tsinghua, perfiles PetFinder, similitud visual y resultados"
               : "Preferencias, candidatos compatibles y resultados"}>
-              <span><strong>{isBreedMode ? "Referencia Tsinghua" : "Preferencias"}</strong><small>{isBreedMode ? "Prototipo visual" : "Definen la búsqueda"}</small></span>
+              <span><strong>{isBreedMode ? "Referencia Tsinghua" : "Preferencias"}</strong><small>{isBreedMode ? "Referencia visual" : "Definen la búsqueda"}</small></span>
               <i aria-hidden="true">→</i>
               <span><strong>{isBreedMode ? "Perfiles PetFinder" : "Candidatos compatibles"}</strong><small>{isBreedMode ? "6.474 perfiles históricos" : "Conjunto filtrado"}</small></span>
               {isBreedMode && <><i aria-hidden="true">→</i><span><strong>Similitud visual</strong><small>Ordena los perfiles</small></span></>}
@@ -222,8 +222,8 @@ export default async function AdopterResultsPage({ searchParams }: AdopterResult
               <Link href="/adoptante/encontrar"><BackIcon />Cambiar método</Link>
             </div>
             <aside className="historical-results-note">
-              <strong>Prototipo desarrollado con datos históricos.</strong>
-              <p>Los perfiles mostrados proceden del catálogo histórico preparado. No deben interpretarse como animales actualmente disponibles para adopción.</p>
+              <strong>Información basada en datos históricos.</strong>
+              <p>Los perfiles mostrados proceden de datos históricos PetFinder y no reflejan disponibilidad actual para adopción.</p>
             </aside>
           </div>
         </div>

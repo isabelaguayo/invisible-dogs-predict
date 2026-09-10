@@ -228,7 +228,7 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
                   </>
                 ) : (
                   <>
-                    <article><span>01</span><h3>Referencia Tsinghua</h3><p>{context.referenceName}, usada solo como prototipo visual.</p></article>
+                    <article><span>01</span><h3>Referencia Tsinghua</h3><p>{context.referenceName}, usada únicamente como referencia visual.</p></article>
                     <article><span>02</span><h3>Similitud visual</h3><p>{context.similarityPercent} % de parecido, puesto {context.rank} de {context.candidateCount} perfiles comparados.</p></article>
                     <article><span>03</span><h3>Riesgo complementario</h3><p>Contexto adicional independiente de la similitud.</p></article>
                   </>
@@ -239,7 +239,7 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
 
           <aside className="profile-demo-note">
             <strong>Perfil histórico</strong>
-            <p>Este perfil procede del catálogo histórico PetFinder preparado para esta demostración. No debe interpretarse como un perro actualmente disponible para adopción; la aplicación no es un portal real de adopción.</p>
+            <p>Este perfil procede de datos históricos PetFinder y no refleja disponibilidad actual para adopción.</p>
           </aside>
 
           <div className="results-footer-area">
@@ -251,7 +251,7 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
               )}
             </div>
             <aside className="historical-results-note">
-              <strong>Prototipo desarrollado con datos históricos.</strong>
+              <strong>Información basada en datos históricos.</strong>
               <p>El nombre y la descripción originales del anuncio PetFinder permanecen intactos en los datos; esta ficha solo presenta información derivada y estructurada.</p>
             </aside>
           </div>
