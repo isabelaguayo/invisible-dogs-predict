@@ -47,7 +47,7 @@ export default async function ProtectoraLoginPage({ searchParams }: ProtectoraLo
           </div>
           <div className="protectora-login-card">
             <LoginForm nextPath={nextPath} />
-            <p className="protectora-login-demo-note">Acceso de demostración: utiliza la credencial proporcionada para esta revisión.</p>
+            <p className="protectora-login-demo-note">Acceso profesional: utiliza la credencial proporcionada.</p>
           </div>
         </div>
       </section>

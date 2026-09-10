@@ -248,10 +248,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="academic-note" aria-label="Aviso académico">
+      <section className="academic-note" aria-label="Información sobre los datos">
         <div className="page-shell note-inner">
           <span className="note-mark" aria-hidden="true">i</span>
-          <p><strong>Prototipo desarrollado con datos históricos.</strong>Los animales mostrados en futuras demostraciones no deben interpretarse como actualmente disponibles para adopción.</p>
+          <p><strong>Información basada en datos históricos.</strong> Los animales mostrados no deben interpretarse como actualmente disponibles para adopción.</p>
         </div>
       </section>
 

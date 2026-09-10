@@ -92,7 +92,7 @@ function CatalogCard({ dog }: { dog: AdopterDogResult["profile"] }) {
       </div>
       <div className="protector-review-body">
         <div className="protector-review-title">
-          <div><p>Perfil del catálogo</p><h3>{dog.displayName}</h3></div>
+          <div><p>Perfil analizado</p><h3>{dog.displayName}</h3></div>
           <span>{dog.breedLabel}</span>
         </div>
         <p className="protector-review-meta">{dog.ageLabel} <i aria-hidden="true">·</i> {dog.sex} <i aria-hidden="true">·</i> {dog.size}</p>
@@ -157,8 +157,8 @@ export default async function ProtectoraCatalogPage({ searchParams }: CatalogPag
         <div className="page-shell">
           <header className="protector-section-heading" style={{ marginBottom: "30px" }}>
             <div>
-              <p className="section-kicker">Catálogo completo PetFinder</p>
-              <h1 style={{ margin: 0, fontSize: "var(--heading-md)", letterSpacing: "-0.04em", lineHeight: 1.08 }}>Explorar los 6.474 perfiles</h1>
+              <p className="section-kicker">Explorador de perfiles</p>
+              <h1 style={{ margin: 0, fontSize: "var(--heading-md)", letterSpacing: "-0.04em", lineHeight: 1.08 }}>Explora los 6.474 perfiles históricos</h1>
             </div>
             <p>Busca cualquier perfil histórico, filtra por nivel de riesgo y ordénalo para acceder a su ficha y a las acciones recomendadas de visibilidad.</p>
           </header>
@@ -204,12 +204,12 @@ export default async function ProtectoraCatalogPage({ searchParams }: CatalogPag
             <div style={{ padding: "34px", border: "1px solid rgba(91, 42, 134, 0.12)", borderRadius: "18px", background: "#fff", textAlign: "center" }}>
               <h2 style={{ marginTop: 0 }}>No se han encontrado perfiles</h2>
               <p style={{ color: "var(--text-muted)" }}>Prueba con otro nombre, raza, PetID o nivel de riesgo.</p>
-              <Link className="protector-review-action" href="/protectora/catalogo">Ver catálogo completo</Link>
+              <Link className="protector-review-action" href="/protectora/catalogo">Ver todos los perfiles</Link>
             </div>
           )}
 
           {filtered.length > PAGE_SIZE && (
-            <nav aria-label="Paginación del catálogo" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "14px", marginTop: "32px", marginBottom: "40px" }}>
+            <nav aria-label="Paginación del explorador de perfiles" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "14px", marginTop: "32px", marginBottom: "40px" }}>
               {page > 1 ? (
                 <Link className="protector-review-action" href={buildCatalogHref({ query, risk, sort, page: page - 1 })}>← Anterior</Link>
               ) : <span />}
@@ -223,7 +223,7 @@ export default async function ProtectoraCatalogPage({ searchParams }: CatalogPag
       </section>
 
       <footer className="flow-footer protector-footer">
-        <div className="page-shell"><span>InvisibleDogs Predict</span><p>Catálogo histórico · Revisión y acciones de visibilidad bajo criterio profesional.</p></div>
+        <div className="page-shell"><span>InvisibleDogs Predict</span><p>Explorador de perfiles · Revisión y acciones de visibilidad bajo criterio profesional.</p></div>
       </footer>
     </main>
   );
