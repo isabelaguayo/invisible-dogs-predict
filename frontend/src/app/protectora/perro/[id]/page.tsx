@@ -65,7 +65,7 @@ function ProtectorProfileHeader() {
         <div className="flow-header-actions">
           <span className="flow-context"><i aria-hidden="true" />Vista Protectora</span>
           <Link className="protector-header-overview" href="/protectora">Vista general</Link>
-          <Link className="protector-header-overview" href="/protectora/catalogo">Catálogo</Link>
+          <Link className="protector-header-overview" href="/protectora/catalogo">Explorador de perfiles</Link>
           <LogoutButton />
           <Link className="back-home" href="/"><BackIcon />Inicio</Link>
         </div>
@@ -102,7 +102,7 @@ function ProtectorProfileMetrics({ dog }: { dog: ProtectoraPetfinderProfile }) {
           <h2 id="protector-profile-risk-title">Riesgo complementario de adopción lenta</h2>
         </div>
         <strong className={`risk-${dog.risk.toLocaleLowerCase()}`}>{dog.risk}</strong>
-        <p>Este nivel aporta contexto sobre el riesgo relativo de adopción lenta en la demostración PetFinder. No mide compatibilidad, calidad del perro ni constituye una probabilidad calibrada.</p>
+        <p>Este nivel aporta contexto sobre el riesgo relativo de adopción lenta dentro del conjunto histórico PetFinder. No mide compatibilidad, calidad del perro ni constituye una probabilidad calibrada.</p>
       </section>
 
       <section className="protector-profile-completeness" aria-labelledby="protector-profile-completeness-title">
@@ -261,8 +261,8 @@ function ProtectorProfileNotFound() {
         <div className="page-shell">
           <p className="section-kicker">Vista Protectora</p>
           <h1>Perfil no encontrado</h1>
-          <p>No encontramos el perfil solicitado en esta demostración.</p>
-          <Link className="protector-profile-primary-link" href="/protectora/catalogo"><BackIcon />Volver al catálogo</Link>
+          <p>No encontramos el perfil solicitado entre los perfiles disponibles.</p>
+          <Link className="protector-profile-primary-link" href="/protectora/catalogo"><BackIcon />Volver al explorador</Link>
         </div>
       </section>
       <footer className="flow-footer protector-footer">
@@ -286,7 +286,7 @@ export default async function ProtectorDogProfilePage({ params }: ProtectorDogPr
 
       <section className="protector-profile-hero">
         <div className="page-shell">
-          <Link className="protector-profile-back" href="/protectora/catalogo"><BackIcon />Volver al catálogo</Link>
+          <Link className="protector-profile-back" href="/protectora/catalogo"><BackIcon />Volver al explorador</Link>
           <div className="protector-profile-hero-grid">
             <ProtectorProfilePhoto dog={dog} />
             <div className="protector-profile-summary">
@@ -297,7 +297,7 @@ export default async function ProtectorDogProfilePage({ params }: ProtectorDogPr
               <ProtectorProfileMetrics dog={dog} />
               <aside className="protector-profile-demo-note">
                 <strong>Perfil histórico</strong>
-                <p>Este perfil y sus métricas proceden del artefacto histórico PetFinder preparado para la demostración.</p>
+                <p>Este perfil y sus métricas proceden de la fuente histórica PetFinder utilizada por InvisibleDogs Predict.</p>
                 <small>El animal mostrado no debe interpretarse como actualmente disponible para adopción.</small>
               </aside>
             </div>
@@ -312,7 +312,7 @@ export default async function ProtectorDogProfilePage({ params }: ProtectorDogPr
           <section className="protector-profile-why" aria-labelledby="protector-profile-why-title">
             <div><p className="section-kicker">Riesgo relativo</p><h2 id="protector-profile-why-title">Interpretación del resultado</h2></div>
             <div>
-              <p>{riskExplanation?.riskContext ?? `Este perfil presenta un nivel ${dog.risk} de riesgo complementario de adopción lenta en la demostración PetFinder.`}</p>
+              <p>{riskExplanation?.riskContext ?? `Este perfil presenta un nivel ${dog.risk} de riesgo complementario de adopción lenta dentro del conjunto histórico PetFinder.`}</p>
               <p>La completitud de la ficha se muestra como una dimensión independiente y no determina por sí sola que un perfil deba priorizarse.</p>
             </div>
           </section>
@@ -342,7 +342,7 @@ export default async function ProtectorDogProfilePage({ params }: ProtectorDogPr
               <article>
                 <span>PetFinder</span><h3>Riesgo complementario de adopción lenta</h3>
                 <strong>{dog.risk}</strong>
-                <p>Es la señal utilizada en esta demostración para aportar contexto de visibilidad.</p>
+                <p>Es la señal utilizada para aportar contexto de visibilidad.</p>
               </article>
               <article>
                 <span>Austin Animal Center</span><h3>Predicción de larga estancia</h3>
@@ -362,8 +362,8 @@ export default async function ProtectorDogProfilePage({ params }: ProtectorDogPr
           </section>
 
           <div className="protector-profile-final">
-            <div><strong>Seguir revisando perfiles</strong><p>Vuelve al catálogo completo para consultar otros perros, filtrar por riesgo y revisar sus acciones recomendadas de visibilidad.</p></div>
-            <Link className="protector-profile-primary-link" href="/protectora/catalogo"><BackIcon />Volver al catálogo</Link>
+            <div><strong>Seguir revisando perfiles</strong><p>Vuelve al explorador de perfiles para consultar otros perros, filtrar por riesgo y revisar sus acciones recomendadas de visibilidad.</p></div>
+            <Link className="protector-profile-primary-link" href="/protectora/catalogo"><BackIcon />Volver al explorador</Link>
           </div>
         </div>
       </section>
