@@ -9,6 +9,7 @@ import {
   type ProtectoraPetfinderProfile,
 } from "@/data/protectoraPetfinderProfiles";
 import { getProtectoraRiskExplanation } from "@/lib/protectora/explanations";
+import { getVisibilityRecommendations } from "@/lib/protectora/visibilityRecommendations";
 import { InfoTooltip } from "@/components/protectora/InfoTooltip";
 import type { ProtectoraRiskExplanation, ProtectoraRiskFactor } from "@/types/protectoraRiskExplanation";
 
@@ -64,6 +65,7 @@ function ProtectorProfileHeader() {
         <div className="flow-header-actions">
           <span className="flow-context"><i aria-hidden="true" />Vista Protectora</span>
           <Link className="protector-header-overview" href="/protectora">Vista general</Link>
+          <Link className="protector-header-overview" href="/protectora/catalogo">Catálogo</Link>
           <LogoutButton />
           <Link className="back-home" href="/"><BackIcon />Inicio</Link>
         </div>
@@ -143,11 +145,12 @@ function ProfileFacts({ dog }: { dog: ProtectoraPetfinderProfile }) {
 
 function ProfileReview({ dog }: { dog: ProtectoraPetfinderProfile }) {
   const missingFields = REVIEWABLE_FIELDS.filter(([key]) => dog[key].trim().toLocaleLowerCase() === "no consta");
-  const descriptionMissing = dog.description.trim().length === 0;
+  const descriptionMissing = dog.source.Description.trim().length === 0;
   const availableFields: string[] = [...PROFILE_CHARACTERISTICS, ...PROFILE_CARE]
     .filter(([key]) => dog[key].trim().length > 0 && dog[key].trim().toLocaleLowerCase() !== "no consta")
     .map(([, label]) => label);
   if (!descriptionMissing) availableFields.push("Descripción del perfil");
+  const visibilityRecommendations = getVisibilityRecommendations(dog);
 
   return (
     <section className="protector-profile-review" aria-labelledby="protector-profile-review-title">
@@ -168,15 +171,15 @@ function ProfileReview({ dog }: { dog: ProtectoraPetfinderProfile }) {
           <h3 id="missing-fields-title">Aspectos a revisar</h3>
           {missingFields.length === 0 && !descriptionMissing ? (
             <div className="protector-no-missing">
-              <strong>No se han identificado campos estructurados sin información entre los datos disponibles en esta demostración.</strong>
-              <p>El porcentaje de completitud puede reflejar otros componentes de la ficha que no se detallan individualmente en esta vista.</p>
+              <strong>No se han identificado ausencias explícitas en los campos principales mostrados.</strong>
+              <p>Una ficha completa todavía puede mejorar su presentación, contenido visual y difusión. Las acciones propuestas debajo se generan igualmente para todos los perfiles.</p>
             </div>
           ) : (
             <ul>
               {missingFields.map(([key, label]) => (
                 <li key={key}><strong>{label} · No consta</strong><p>Completar esta información si la protectora dispone del dato.</p></li>
               ))}
-              {descriptionMissing && <li><strong>Descripción del perfil</strong><p>Completar o ampliar la descripción si existe información disponible.</p></li>}
+              {descriptionMissing && <li><strong>Descripción histórica del perfil</strong><p>La fuente no contiene una descripción disponible; conviene crear una si la protectora dispone de información verificable.</p></li>}
             </ul>
           )}
         </section>
@@ -184,15 +187,18 @@ function ProfileReview({ dog }: { dog: ProtectoraPetfinderProfile }) {
 
       <section className="protector-review-opportunities" aria-labelledby="review-opportunities-title">
         <div>
-          <p className="section-kicker">Orientaciones descriptivas</p>
-          <h3 id="review-opportunities-title">Oportunidades de revisión</h3>
+          <p className="section-kicker">Acciones recomendadas</p>
+          <h3 id="review-opportunities-title">Cómo mejorar su visibilidad</h3>
         </div>
         <ul>
-          {missingFields.map(([key, label]) => <li key={key}>Comprobar si existe información disponible sobre {label.toLocaleLowerCase()}.</li>)}
-          {descriptionMissing && <li>Revisar si existe una descripción del perfil que pueda incorporarse.</li>}
-          {missingFields.length === 0 && !descriptionMissing && <li>No se han identificado ausencias explícitas entre los campos revisables mostrados.</li>}
+          {visibilityRecommendations.map((recommendation) => (
+            <li key={recommendation.action}>
+              <strong style={{ display: "block", color: "var(--purple-950)", marginBottom: "3px" }}>{recommendation.action}</strong>
+              <p style={{ margin: 0 }}><strong>Por qué:</strong> {recommendation.reason}</p>
+            </li>
+          ))}
         </ul>
-        <p>Estas orientaciones se basan en la información disponible en la ficha y no son predicciones del modelo.</p>
+        <p>Estas acciones se basan en elementos de presentación, información y difusión que pueden revisarse en la ficha. Son orientaciones de apoyo: no representan relaciones causales ni garantizan una reducción del tiempo de adopción.</p>
       </section>
     </section>
   );
@@ -256,7 +262,7 @@ function ProtectorProfileNotFound() {
           <p className="section-kicker">Vista Protectora</p>
           <h1>Perfil no encontrado</h1>
           <p>No encontramos el perfil solicitado en esta demostración.</p>
-          <Link className="protector-profile-primary-link" href="/protectora"><BackIcon />Volver a Vista Protectora</Link>
+          <Link className="protector-profile-primary-link" href="/protectora/catalogo"><BackIcon />Volver al catálogo</Link>
         </div>
       </section>
       <footer className="flow-footer protector-footer">
@@ -280,7 +286,7 @@ export default async function ProtectorDogProfilePage({ params }: ProtectorDogPr
 
       <section className="protector-profile-hero">
         <div className="page-shell">
-          <Link className="protector-profile-back" href="/protectora"><BackIcon />Volver a Vista Protectora</Link>
+          <Link className="protector-profile-back" href="/protectora/catalogo"><BackIcon />Volver al catálogo</Link>
           <div className="protector-profile-hero-grid">
             <ProtectorProfilePhoto dog={dog} />
             <div className="protector-profile-summary">
@@ -351,13 +357,13 @@ export default async function ProtectorDogProfilePage({ params }: ProtectorDogPr
             <div className="protector-profile-interpretation-grid">
               <article><span>01</span><h3>Riesgo complementario</h3><p>Aporta contexto sobre adopción lenta.</p></article>
               <article><span>02</span><h3>Completitud</h3><p>Describe cuánta información contiene la ficha.</p></article>
-              <article><span>03</span><h3>Criterio profesional</h3><p>La decisión sobre cualquier actuación corresponde a la protectora.</p></article>
+              <article><span>03</span><h3>Acciones de visibilidad</h3><p>Orientan mejoras de presentación y difusión sin sustituir el criterio profesional.</p></article>
             </div>
           </section>
 
           <div className="protector-profile-final">
-            <div><strong>Próximas fases</strong><p>Las acciones operativas sobre los perfiles se incorporarán en fases posteriores del prototipo.</p></div>
-            <Link className="protector-profile-primary-link" href="/protectora"><BackIcon />Volver a Vista Protectora</Link>
+            <div><strong>Seguir revisando perfiles</strong><p>Vuelve al catálogo completo para consultar otros perros, filtrar por riesgo y revisar sus acciones recomendadas de visibilidad.</p></div>
+            <Link className="protector-profile-primary-link" href="/protectora/catalogo"><BackIcon />Volver al catálogo</Link>
           </div>
         </div>
       </section>
