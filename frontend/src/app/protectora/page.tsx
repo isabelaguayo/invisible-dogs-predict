@@ -4,12 +4,10 @@ import Link from "next/link";
 import { SectionDivider } from "@/components/SectionDivider";
 import { LogoutButton } from "@/components/protectora/LogoutButton";
 import { adopterProfiles } from "@/lib/adoptante/artifacts";
+import { createAdopterDogResult } from "@/lib/adoptante/presentation";
 import { tfmResults, austinTestCount, austinTopTen, formatTfmMetric } from "@/lib/tfm/results";
-import {
-  PROTECTORA_PETFINDER_PROFILES,
-  type ProtectoraPetfinderProfile,
-  type ProtectoraRiskLevel,
-} from "@/data/protectoraPetfinderProfiles";
+import type { AdopterDogResult } from "@/types/adopterResult";
+import type { ProtectoraRiskLevel } from "@/data/protectoraPetfinderProfiles";
 
 const TEXTMINING_CONCEPTOS_SENCILLA = [
   "Sociable con personas", "Juguetón", "Cariñoso", "Confiado", "Desparasitado",
@@ -66,29 +64,31 @@ function ProtectorHeader() {
 
 function ProtectorKpis({
   highRiskCount,
+  highRiskPercent,
   averageCompleteness,
 }: {
   highRiskCount: number;
+  highRiskPercent: string;
   averageCompleteness: string;
 }) {
   const kpis = [
     {
-      label: "Catálogo histórico preparado",
-      value: HISTORICAL_CATALOG_SIZE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
-      detail: "perfiles individuales",
-      context: "Contexto del proyecto",
-    },
-    {
-      label: "Perfiles en esta demostración",
-      value: PROTECTORA_PETFINDER_PROFILES.length.toLocaleString("es-ES"),
+      label: "Perfiles analizados",
+      value: HISTORICAL_CATALOG_SIZE.toLocaleString("es-ES"),
       detail: "perfiles históricos",
-      context: "Selección PetFinder",
+      context: "Catálogo completo PetFinder",
     },
     {
       label: "Riesgo complementario alto",
       value: highRiskCount.toLocaleString("es-ES"),
       detail: "perfiles",
-      context: "Derivado de la selección PetFinder",
+      context: "Clasificación del modelo PetFinder",
+    },
+    {
+      label: "Peso del nivel Alto",
+      value: `${highRiskPercent} %`,
+      detail: "del catálogo",
+      context: "Sobre todos los perfiles analizados",
     },
     {
       label: "Completitud media",
@@ -117,51 +117,63 @@ function RiskDistribution({ counts }: { counts: Record<ProtectoraRiskLevel, numb
   return (
     <section className="protector-panel protector-risk-panel" aria-labelledby="risk-distribution-title">
       <header className="protector-panel-heading">
-        <p className="section-kicker">Lectura del catálogo</p>
+        <p className="section-kicker">Lectura del catálogo completo</p>
         <h2 id="risk-distribution-title">Riesgo complementario de adopción lenta</h2>
-        <p>Permite contextualizar qué perfiles podrían requerir una mayor atención en términos de visibilidad.</p>
+        <p>Distribución de los {HISTORICAL_CATALOG_SIZE.toLocaleString("es-ES")} perfiles según el nivel de riesgo complementario estimado por el modelo PetFinder.</p>
       </header>
       <div className="protector-risk-list">
         {RISK_LEVELS.map((level) => {
-          const width = (counts[level] / PROTECTORA_PETFINDER_PROFILES.length) * 100;
+          const percentage = (counts[level] / HISTORICAL_CATALOG_SIZE) * 100;
           return (
             <div className="protector-risk-row" key={level}>
               <div><span className={`protector-risk-dot risk-${level.toLocaleLowerCase()}`} aria-hidden="true" /><strong>{level}</strong></div>
-              <div className="protector-risk-track" aria-hidden="true"><span className={`risk-${level.toLocaleLowerCase()}`} style={{ width: `${width}%` }} /></div>
-              <p><strong>{counts[level]}</strong> {counts[level] === 1 ? "perfil" : "perfiles"}</p>
+              <div className="protector-risk-track" aria-hidden="true"><span className={`risk-${level.toLocaleLowerCase()}`} style={{ width: `${percentage}%` }} /></div>
+              <p><strong>{counts[level].toLocaleString("es-ES")}</strong> perfiles · {percentage.toLocaleString("es-ES", { maximumFractionDigits: 1 })} %</p>
             </div>
           );
         })}
       </div>
-      <p className="protector-panel-note">Los niveles son categorías descriptivas de riesgo complementario; no representan probabilidades.</p>
+      <p className="protector-panel-note">Los niveles son categorías derivadas del modelo complementario y se muestran sobre el catálogo histórico completo.</p>
     </section>
   );
 }
 
-function CompletenessOverview({ dogs }: { dogs: readonly ProtectoraPetfinderProfile[] }) {
+type CompletenessBand = {
+  label: string;
+  count: number;
+  percentage: number;
+};
+
+function CompletenessOverview({ bands }: { bands: readonly CompletenessBand[] }) {
   return (
     <section className="protector-panel protector-completeness-panel" aria-labelledby="completeness-title">
       <header className="protector-panel-heading">
         <p className="section-kicker">Información disponible</p>
         <h2 id="completeness-title">Completitud de las fichas</h2>
-        <p>La completitud indica cuánta información contiene una ficha; no evalúa al perro.</p>
+        <p>Distribución del catálogo según la cantidad de información estructurada disponible en cada ficha.</p>
       </header>
       <div className="protector-completeness-list">
-        {dogs.map((dog) => (
-          <div className="protector-completeness-row" key={dog.id}>
-            <div><strong>{dog.name}</strong><span>{dog.completeness} %</span></div>
-            <div className="protector-completeness-track" role="progressbar" aria-label={`Completitud de la ficha de ${dog.name}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={dog.completeness}>
-              <span style={{ width: `${dog.completeness}%` }} />
+        {bands.map((band) => (
+          <div className="protector-completeness-row" key={band.label}>
+            <div><strong>{band.label}</strong><span>{band.count.toLocaleString("es-ES")} · {band.percentage.toLocaleString("es-ES", { maximumFractionDigits: 1 })} %</span></div>
+            <div className="protector-completeness-track" role="progressbar" aria-label={`${band.label}: ${band.percentage.toLocaleString("es-ES", { maximumFractionDigits: 1 })} por ciento del catálogo`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(band.percentage)}>
+              <span style={{ width: `${band.percentage}%` }} />
             </div>
           </div>
         ))}
       </div>
-      <p className="protector-panel-note">Orden descriptivo de mayor a menor información disponible.</p>
+      <p className="protector-panel-note">La completitud describe la información disponible; no evalúa al perro ni modifica su nivel de riesgo.</p>
     </section>
   );
 }
 
-function RiskCompletenessMatrix() {
+function RiskCompletenessMatrix({
+  counts,
+  averageCompleteness,
+}: {
+  counts: Record<ProtectoraRiskLevel, number>;
+  averageCompleteness: Record<ProtectoraRiskLevel, number>;
+}) {
   return (
     <section className="protector-matrix-section" aria-labelledby="risk-matrix-title">
       <header className="protector-section-heading">
@@ -169,47 +181,47 @@ function RiskCompletenessMatrix() {
           <p className="section-kicker">Dos dimensiones independientes</p>
           <h2 id="risk-matrix-title">Riesgo y completitud</h2>
         </div>
-        <p>Una lectura conjunta del nivel de riesgo complementario y de la cantidad de información disponible en cada ficha.</p>
+        <p>Resumen agregado de la completitud media de las fichas dentro de cada nivel de riesgo complementario.</p>
       </header>
 
       <div className="protector-matrix-scroll" tabIndex={0} aria-label="Matriz desplazable de riesgo y completitud">
         <div className="protector-matrix">
           <div className="protector-matrix-y-title">Riesgo complementario</div>
           <div className="protector-matrix-y-labels" aria-hidden="true"><span>Alto</span><span>Medio</span><span>Bajo</span></div>
-          <div className="protector-matrix-plot" role="img" aria-label="Matriz con los seis perfiles según su riesgo complementario y completitud de ficha">
+          <div className="protector-matrix-plot" role="img" aria-label="Resumen agregado del catálogo según riesgo complementario y completitud media de ficha">
             <div className="protector-matrix-stage">
-              {PROTECTORA_PETFINDER_PROFILES.map((dog) => (
+              {RISK_LEVELS.map((level) => (
                 <div
-                  className={`protector-matrix-point matrix-risk-${dog.risk.toLocaleLowerCase()}`}
-                  style={{ "--matrix-x": `${dog.completeness}%`, "--matrix-y": `${MATRIX_RISK_POSITION[dog.risk]}%` } as CSSProperties}
-                  aria-label={`${dog.name}: riesgo complementario ${dog.risk}, completitud ${dog.completeness} por ciento`}
-                  key={dog.id}
+                  className={`protector-matrix-point matrix-risk-${level.toLocaleLowerCase()}`}
+                  style={{ "--matrix-x": `${averageCompleteness[level]}%`, "--matrix-y": `${MATRIX_RISK_POSITION[level]}%` } as CSSProperties}
+                  aria-label={`${level}: ${counts[level]} perfiles, completitud media ${averageCompleteness[level].toLocaleString("es-ES", { maximumFractionDigits: 1 })} por ciento`}
+                  key={level}
                 >
                   <span aria-hidden="true" />
-                  <strong>{dog.name}</strong>
-                  <small>{dog.completeness} %</small>
+                  <strong>{counts[level].toLocaleString("es-ES")}</strong>
+                  <small>{averageCompleteness[level].toLocaleString("es-ES", { maximumFractionDigits: 1 })} % media</small>
                 </div>
               ))}
             </div>
           </div>
           <div className="protector-matrix-x-axis" aria-hidden="true"><span>0 %</span><span>25 %</span><span>50 %</span><span>75 %</span><span>100 %</span></div>
-          <div className="protector-matrix-x-title">Completitud de ficha</div>
+          <div className="protector-matrix-x-title">Completitud media de ficha</div>
         </div>
       </div>
 
-      <p className="protector-matrix-note">Esta vista permite revisar conjuntamente dos dimensiones independientes. No constituye una puntuación combinada ni determina automáticamente la prioridad de un perfil.</p>
+      <p className="protector-matrix-note">Cada punto resume un nivel completo de riesgo, no un perro individual. La completitud y el riesgo se mantienen como dimensiones independientes y no forman una puntuación combinada.</p>
     </section>
   );
 }
 
-function ProtectorReviewCard({ dog }: { dog: ProtectoraPetfinderProfile }) {
+function ProtectorReviewCard({ dog }: { dog: AdopterDogResult["profile"] }) {
   return (
     <article className="protector-review-card">
       <div className="protector-review-photo">
         <Image
           className="protector-review-image"
-          src={dog.imagePath}
-          alt={`Fotografía de ${dog.name}`}
+          src={dog.photoUrl!}
+          alt={`Fotografía de ${dog.displayName}`}
           width={640}
           height={480}
           sizes="(max-width: 760px) 100vw, 50vw"
@@ -217,44 +229,70 @@ function ProtectorReviewCard({ dog }: { dog: ProtectoraPetfinderProfile }) {
       </div>
       <div className="protector-review-body">
         <div className="protector-review-title">
-          <div><p>Perfil para revisión</p><h3>{dog.name}</h3></div>
-          <span>{dog.breed}</span>
+          <div><p>Perfil para revisión</p><h3>{dog.displayName}</h3></div>
+          <span>{dog.breedLabel}</span>
         </div>
-        <p className="protector-review-meta">{dog.age} <i aria-hidden="true">·</i> {dog.sex} <i aria-hidden="true">·</i> {dog.size}</p>
+        <p className="protector-review-meta">{dog.ageLabel} <i aria-hidden="true">·</i> {dog.sex} <i aria-hidden="true">·</i> {dog.size}</p>
         <dl>
-          <div><dt>Riesgo complementario</dt><dd>Alto</dd></div>
-          <div><dt>Completitud de ficha</dt><dd>{dog.completeness} %</dd></div>
+          <div><dt>Riesgo complementario</dt><dd>{dog.riskLevel}</dd></div>
+          <div><dt>Completitud de ficha</dt><dd>{dog.completenessPercent} %</dd></div>
         </dl>
-        <div className="protector-review-track" role="progressbar" aria-label={`Completitud de la ficha de ${dog.name}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={dog.completeness}>
-          <span style={{ width: `${dog.completeness}%` }} />
+        <div className="protector-review-track" role="progressbar" aria-label={`Completitud de la ficha de ${dog.displayName}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={dog.completenessPercent}>
+          <span style={{ width: `${dog.completenessPercent}%` }} />
         </div>
-        <p className="protector-review-context">Este perfil aparece en esta sección por pertenecer al nivel Alto de riesgo complementario. La completitud se muestra como una dimensión independiente.</p>
-        <Link className="protector-review-action" href={`/protectora/perro/${dog.id}`}>Revisar perfil</Link>
+        <p className="protector-review-context">Este perfil se encuentra entre los de mayor probabilidad estimada de adopción lenta dentro del nivel Alto. La completitud se muestra como una dimensión independiente y no interviene en este orden.</p>
+        <Link className="protector-review-action" href={`/protectora/perro/${dog.petId}`}>Revisar perfil</Link>
       </div>
     </article>
   );
 }
 
 export default function ProtectorPage() {
-  const demoCount = PROTECTORA_PETFINDER_PROFILES.length;
-  const riskCounts = PROTECTORA_PETFINDER_PROFILES.reduce<Record<ProtectoraRiskLevel, number>>(
-    (counts, dog) => ({
-      ...counts,
-      [dog.source.nivel_riesgo_relativo]: counts[dog.source.nivel_riesgo_relativo] + 1,
-    }),
-    { Bajo: 0, Medio: 0, Alto: 0 },
+  const riskStats = adopterProfiles.reduce<Record<ProtectoraRiskLevel, { count: number; completenessTotal: number }>>(
+    (stats, dog) => {
+      const current = stats[dog.riskLevel];
+      return {
+        ...stats,
+        [dog.riskLevel]: {
+          count: current.count + 1,
+          completenessTotal: current.completenessTotal + dog.completenessIndex,
+        },
+      };
+    },
+    {
+      Bajo: { count: 0, completenessTotal: 0 },
+      Medio: { count: 0, completenessTotal: 0 },
+      Alto: { count: 0, completenessTotal: 0 },
+    },
   );
+  const riskCounts: Record<ProtectoraRiskLevel, number> = {
+    Bajo: riskStats.Bajo.count,
+    Medio: riskStats.Medio.count,
+    Alto: riskStats.Alto.count,
+  };
+  const riskAverageCompleteness: Record<ProtectoraRiskLevel, number> = {
+    Bajo: (riskStats.Bajo.completenessTotal / Math.max(riskStats.Bajo.count, 1)) * 100,
+    Medio: (riskStats.Medio.completenessTotal / Math.max(riskStats.Medio.count, 1)) * 100,
+    Alto: (riskStats.Alto.completenessTotal / Math.max(riskStats.Alto.count, 1)) * 100,
+  };
   const averageCompleteness = (
-    PROTECTORA_PETFINDER_PROFILES.reduce(
-      (total, dog) => total + dog.source.indice_completitud_ficha,
-      0,
-    ) / demoCount
+    adopterProfiles.reduce((total, dog) => total + dog.completenessIndex, 0) / HISTORICAL_CATALOG_SIZE
   ) * 100;
   const averageCompletenessLabel = averageCompleteness.toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  const dogsByCompleteness = [...PROTECTORA_PETFINDER_PROFILES].sort((first, second) => second.completeness - first.completeness);
-  const highRiskDogs = PROTECTORA_PETFINDER_PROFILES.filter(
-    (dog) => dog.source.nivel_riesgo_relativo === "Alto",
-  );
+  const highRiskPercentLabel = ((riskCounts.Alto / HISTORICAL_CATALOG_SIZE) * 100).toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+  const completenessBands: CompletenessBand[] = [
+    { label: "Menos del 50 %", count: adopterProfiles.filter((dog) => dog.completenessIndex < 0.5).length, percentage: 0 },
+    { label: "50–74 %", count: adopterProfiles.filter((dog) => dog.completenessIndex >= 0.5 && dog.completenessIndex < 0.75).length, percentage: 0 },
+    { label: "75–89 %", count: adopterProfiles.filter((dog) => dog.completenessIndex >= 0.75 && dog.completenessIndex < 0.9).length, percentage: 0 },
+    { label: "90–100 %", count: adopterProfiles.filter((dog) => dog.completenessIndex >= 0.9).length, percentage: 0 },
+  ].map((band) => ({ ...band, percentage: (band.count / HISTORICAL_CATALOG_SIZE) * 100 }));
+
+  const highRiskDogs = adopterProfiles
+    .filter((dog) => dog.riskLevel === "Alto")
+    .sort((first, second) => second.riskProbability - first.riskProbability)
+    .slice(0, 6)
+    .map((dog) => createAdopterDogResult(dog).profile);
 
   return (
     <main className="protector-page">
@@ -285,36 +323,36 @@ export default function ProtectorPage() {
       <section className="protector-overview">
         <div className="page-shell">
           <aside className="protector-demo-notice" aria-labelledby="protector-demo-title">
-            <span>Vista de demostración</span>
+            <span>Catálogo histórico</span>
             <div>
-              <h2 id="protector-demo-title">Lectura operativa con perfiles históricos</h2>
-              <p>Los seis perfiles y sus métricas proceden del artefacto histórico PetFinder preparado para esta demostración. La selección se mantiene separada del catálogo completo y del modelo Austin.</p>
+              <h2 id="protector-demo-title">Lectura operativa sobre el catálogo completo</h2>
+              <p>Las métricas de esta vista se calculan sobre los {HISTORICAL_CATALOG_SIZE.toLocaleString("es-ES")} perfiles históricos PetFinder preparados para el TFM, no sobre una selección manual de ejemplos.</p>
             </div>
-            <p>Los animales mostrados no deben interpretarse como actualmente disponibles para adopción.</p>
+            <p>Los animales mostrados pertenecen a registros históricos y no deben interpretarse como actualmente disponibles para adopción.</p>
           </aside>
 
           <section className="protector-summary" aria-labelledby="protector-summary-title">
             <header className="protector-section-heading">
-              <div><p className="section-kicker">Contexto operativo</p><h2 id="protector-summary-title">Resumen de la vista</h2></div>
-              <p>El catálogo histórico preparado y los seis perfiles PetFinder seleccionados se muestran como ámbitos claramente diferenciados.</p>
+              <div><p className="section-kicker">Contexto operativo</p><h2 id="protector-summary-title">Resumen del catálogo</h2></div>
+              <p>Las cifras siguientes describen el conjunto completo PetFinder utilizado por InvisibleDogs Predict.</p>
             </header>
-            <ProtectorKpis highRiskCount={riskCounts.Alto} averageCompleteness={averageCompletenessLabel} />
+            <ProtectorKpis highRiskCount={riskCounts.Alto} highRiskPercent={highRiskPercentLabel} averageCompleteness={averageCompletenessLabel} />
           </section>
 
           <div className="protector-analytics-grid">
             <RiskDistribution counts={riskCounts} />
-            <CompletenessOverview dogs={dogsByCompleteness} />
+            <CompletenessOverview bands={completenessBands} />
           </div>
 
-          <RiskCompletenessMatrix />
+          <RiskCompletenessMatrix counts={riskCounts} averageCompleteness={riskAverageCompleteness} />
 
           <section className="protector-review-section" aria-labelledby="protector-review-title">
             <header className="protector-section-heading">
-              <div><p className="section-kicker">Revisión de visibilidad</p><h2 id="protector-review-title">Perfiles que podrían necesitar más visibilidad</h2></div>
-              <p>Esta selección incluye únicamente los perfiles de la demostración con riesgo complementario Alto, sin aplicar fórmulas de priorización ni ordenar por un score combinado.</p>
+              <div><p className="section-kicker">Revisión de visibilidad</p><h2 id="protector-review-title">Perfiles con mayor riesgo complementario</h2></div>
+              <p>Se muestran los seis perfiles con mayor probabilidad estimada de adopción lenta dentro del nivel Alto del catálogo completo. La completitud no interviene en este orden.</p>
             </header>
             <div className="protector-review-grid">
-              {highRiskDogs.map((dog) => <ProtectorReviewCard dog={dog} key={dog.id} />)}
+              {highRiskDogs.map((dog) => <ProtectorReviewCard dog={dog} key={dog.petId} />)}
             </div>
           </section>
 
