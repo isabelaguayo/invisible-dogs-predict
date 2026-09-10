@@ -36,6 +36,15 @@ const MATRIX_RISK_POSITION: Record<ProtectoraRiskLevel, number> = {
   Bajo: 83.333,
 };
 
+const PROTECTORA_REVIEW_PHOTO_POSITIONS: Readonly<Record<string, string>> = {
+  Simone: "50% 34%",
+  HAPPY: "50% 28%",
+  "Wei Wei": "50% 46%",
+  Lucy: "50% 34%",
+  Lily: "50% 30%",
+  "Bailey (Great With Kids).": "50% 30%",
+};
+
 function BackIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
@@ -85,7 +94,7 @@ function ProtectorKpis({
       context: "Clasificación del modelo PetFinder",
     },
     {
-      label: "Peso del nivel Alto",
+      label: "Proporción en nivel Alto",
       value: `${highRiskPercent} %`,
       detail: "del catálogo",
       context: "Sobre todos los perfiles analizados",
@@ -215,16 +224,21 @@ function RiskCompletenessMatrix({
 }
 
 function ProtectorReviewCard({ dog }: { dog: AdopterDogResult["profile"] }) {
+  const objectPosition = PROTECTORA_REVIEW_PHOTO_POSITIONS[dog.displayName]
+    ?? PROTECTORA_REVIEW_PHOTO_POSITIONS[dog.sourceName]
+    ?? dog.objectPosition;
+
   return (
     <article className="protector-review-card">
-      <div className="protector-review-photo">
+      <div className="protector-review-photo" style={{ aspectRatio: "16 / 9", height: "auto" }}>
         <Image
           className="protector-review-image"
           src={dog.photoUrl!}
           alt={`Fotografía de ${dog.displayName}`}
           width={640}
-          height={480}
+          height={360}
           sizes="(max-width: 760px) 100vw, 50vw"
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition }}
         />
       </div>
       <div className="protector-review-body">
@@ -349,7 +363,7 @@ export default function ProtectorPage() {
           <section className="protector-review-section" aria-labelledby="protector-review-title">
             <header className="protector-section-heading">
               <div><p className="section-kicker">Revisión de visibilidad</p><h2 id="protector-review-title">Perfiles con mayor riesgo complementario</h2></div>
-              <p>Se muestran los seis perfiles con mayor probabilidad estimada de adopción lenta dentro del nivel Alto del catálogo completo. La completitud no interviene en este orden.</p>
+              <p>Se muestran los 6 perfiles con mayor probabilidad estimada de adopción lenta dentro de los {riskCounts.Alto.toLocaleString("es-ES")} perfiles clasificados en nivel Alto. La completitud no interviene en este orden.</p>
             </header>
             <div className="protector-review-grid">
               {highRiskDogs.map((dog) => <ProtectorReviewCard dog={dog} key={dog.petId} />)}
