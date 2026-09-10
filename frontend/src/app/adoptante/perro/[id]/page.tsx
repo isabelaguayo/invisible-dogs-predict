@@ -5,7 +5,6 @@ import { ProfileFavoriteButton } from "@/components/ProfileFavoriteButton";
 import { SectionDivider } from "@/components/SectionDivider";
 import { FavoritesNavLink } from "@/components/adoptante/FavoritesNavLink";
 import { buildAdopterProfileSummary } from "@/lib/adoptante/presentation";
-import { getPetfinderHistoricalDescription } from "@/lib/tfm/descriptions";
 import {
   createAdopterHref,
   parseAdopterSearchRequest,
@@ -84,8 +83,7 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
   const { profile } = dog;
   const cameFromSearch = request.referenceStatus !== "none" || Object.keys(state).length > 0;
   const backToResultsHref = cameFromSearch ? createAdopterHref("/adoptante/resultados", state) : undefined;
-  const historicalDescription = getPetfinderHistoricalDescription(profile.petId);
-  const summary = historicalDescription ?? buildAdopterProfileSummary(profile);
+  const summary = buildAdopterProfileSummary(profile);
 
   return (
     <main className="adopter-page dog-profile-page">
@@ -177,11 +175,11 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
       <section className="profile-content">
         <div className="page-shell">
           <section className="profile-about" aria-labelledby="adopter-profile-about-title">
-            <p className="section-kicker">{historicalDescription ? "Descripción histórica original" : "Resumen de la información disponible"}</p>
+            <p className="section-kicker">Resumen de la información disponible</p>
             <div>
               <h2 id="adopter-profile-about-title">Sobre este perfil</h2>
               <p>{summary}</p>
-              <small>{historicalDescription ? "Descripción original de PetFinder, conservada en su idioma de origen. Refleja lo publicado entonces; no acredita disponibilidad ni estado actual del animal." : "Texto generado de forma determinista a partir de los campos estructurados de la ficha. No es la descripción histórica original ni una valoración de personalidad o comportamiento."}</small>
+              <small>Resumen en español generado de forma determinista a partir de los campos estructurados de la ficha. La descripción histórica original de PetFinder se conserva intacta en los datos, pero no se muestra como texto principal.</small>
             </div>
           </section>
 
