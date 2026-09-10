@@ -179,7 +179,7 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
             <div>
               <h2 id="adopter-profile-about-title">Sobre este perfil</h2>
               <p>{summary}</p>
-              <small>Resumen en español construido a partir de los datos estructurados de la ficha histórica PetFinder. La descripción original se conserva en la fuente, sin modificarla, pero no se muestra en la vista en español.</small>
+              <small>Resumen en español construido a partir de los datos estructurados de la ficha histórica PetFinder. La descripción original se conserva en la fuente, sin modificarla, pero no se muestra en esta vista.</small>
             </div>
           </section>
 
