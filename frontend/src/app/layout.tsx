@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { RefreshLifecycleReset } from "@/components/RefreshLifecycleReset";
 import "./globals.css";
+import "./protectora-mobile.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 

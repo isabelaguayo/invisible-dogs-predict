@@ -1,0 +1,81 @@
+/* Protectora · navegación móvil
+   Mantiene las acciones del encabezado en filas separadas para evitar solapes
+   en pantallas estrechas. */
+@media (max-width: 760px) {
+  .protector-header .flow-header-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 0;
+    gap: 8px 12px;
+    padding-block: 8px;
+  }
+
+  .protector-header .brand-link {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .protector-header .flow-header-actions {
+    display: contents;
+  }
+
+  .protector-header .flow-context {
+    display: none;
+  }
+
+  .protector-header .back-home {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  .protector-header .flow-header-actions > .protector-header-overview {
+    grid-column: 1;
+    align-self: center;
+    justify-self: start;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .protector-header .protector-logout-button {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: end;
+    min-height: 38px;
+    padding-inline: 10px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .protector-header .page-shell {
+    width: min(1180px, calc(100% - 32px));
+  }
+
+  .protector-header .flow-header-inner {
+    gap: 7px 10px;
+  }
+
+  .protector-header .protector-header-overview,
+  .protector-header .back-home,
+  .protector-header .protector-logout-button {
+    font-size: 0.72rem;
+  }
+
+  .protector-header .protector-logout-button {
+    min-height: 34px;
+    gap: 6px;
+    padding-inline: 8px;
+  }
+
+  .protector-header .protector-logout-button svg {
+    width: 14px;
+    height: 14px;
+  }
+}
