@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend · InvisibleDogs Predict
 
-## Getting Started
+Aplicación web de **InvisibleDogs Predict**, desarrollada con Next.js para presentar los resultados científicos del proyecto y ofrecer recorridos diferenciados para adoptantes y protectoras.
 
-First, run the development server:
+## Funcionalidades principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Adoptante
+
+- búsqueda de perfiles por características básicas;
+- búsqueda por apariencia y referencia visual;
+- búsqueda por fotografía mediante DINOv2;
+- resultados ordenados y fichas individuales;
+- sistema de favoritos en el navegador.
+
+### Protectora
+
+- resumen del conjunto histórico PetFinder;
+- distribución del riesgo complementario de adopción lenta;
+- revisión de completitud de las fichas;
+- selección de perfiles prioritarios;
+- explorador de los perfiles históricos disponibles;
+- fichas individuales con interpretación y acciones orientadas a mejorar la visibilidad.
+
+## Tecnología
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- servicio externo de inferencia DINOv2 para búsqueda por fotografía
+
+## Estructura relevante
+
+```text
+frontend/
+├── public/          # Recursos gráficos y fotografías publicadas
+├── server-data/     # Datos preparados para consumo de servidor
+├── src/app/         # Rutas y páginas de la aplicación
+├── src/components/  # Componentes reutilizables
+├── src/data/        # Datos estructurados de presentación
+├── src/lib/         # Lógica de negocio y acceso a artefactos
+├── tests/           # Pruebas funcionales y de consistencia
+└── scripts/         # Utilidades y benchmarks del frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ejecución local
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Desde `frontend/`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+La aplicación se sirve por defecto en `http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+## Variables de entorno
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Las variables necesarias se documentan en `.env.example`. Incluyen:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- URL del servicio DINOv2;
+- credenciales del acceso de Protectora para el entorno correspondiente;
+- secreto utilizado para firmar la sesión de Protectora.
 
-## Deploy on Vercel
+Los valores reales no deben incorporarse al repositorio.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Validación
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Comandos principales:
+
+```bash
+npm test
+npm run lint
+npm run build
+```
+
+Las pruebas están organizadas por Home, Adoptante y Protectora.
+
+## Datos consumidos
+
+La web utiliza proyecciones y artefactos derivados de Austin Animal Center, PetFinder.my y Tsinghua Dogs. La correspondencia entre estas fuentes, los modelos y los elementos mostrados en la aplicación se documenta en `DATA-INTEGRATION.md`.
+
+## Publicación
+
+La aplicación utiliza una salida standalone de Next.js y se publica en Azure App Service mediante los flujos definidos en `.github/workflows/`.
