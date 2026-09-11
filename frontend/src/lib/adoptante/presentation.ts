@@ -12,6 +12,7 @@ import type {
 } from "../../types/adopterResult.ts";
 import { adopterProfiles } from "./artifacts.ts";
 import { PROTECTORA_PETFINDER_PROFILES } from "../../data/protectoraPetfinderProfiles.ts";
+import { presentPetfinderName } from "../presentation/petfinderName.ts";
 import { getAdditionalPetfinderPhoto } from "../tfm/results.ts";
 
 const COLOR_LABELS = {
@@ -26,32 +27,6 @@ const COLOR_LABELS = {
 
 const BREED_PRESENTATION_LABELS: Readonly<Record<string, string>> = {
   "Mixed Breed": "Mestizo",
-};
-
-const PETFINDER_NAME_PRESENTATION_OVERRIDES: Readonly<Record<string, {
-  sourceName: string;
-  displayName: string;
-}>> = {
-  f477f306f: {
-    sourceName: '"Pumpkin" - Applehead Chihuahua',
-    displayName: "Pumpkin",
-  },
-  "719917454": {
-    sourceName: "'Mango' Small Apple Head Chihuahua",
-    displayName: "Mango",
-  },
-  caa16cc3c: {
-    sourceName: "Adult Smooth Coat Chihuahua Female",
-    displayName: "Sin nombre",
-  },
-  // The suffix is the exact byte-for-byte result of encoding ちび as UTF-8
-  // and misreading those bytes as Latin-1 (6 codepoints, two of them C1 control
-  // bytes). Reading it back as raw Latin-1 bytes and decoding as UTF-8 recovers
-  // ちび exactly: a lossless, deterministic round trip.
-  "43b277272": {
-    sourceName: "Chibi ã¡ã³",
-    displayName: "Chibi ちび",
-  },
 };
 
 export const DEFAULT_ADOPTER_PHOTO_OBJECT_POSITION = "50% 50%";
@@ -141,35 +116,7 @@ export function createAdopterPreferenceSummary(
   });
 }
 
-export function presentPetfinderName(
-  sourceName: string | null | undefined,
-  petId?: string,
-) {
-  const normalizedSourceName = sourceName?.trim() ?? "";
-  if (!normalizedSourceName || normalizedSourceName === "Sin nombre") {
-    return "Sin nombre";
-  }
-
-  const override = petId
-    ? PETFINDER_NAME_PRESENTATION_OVERRIDES[petId]
-    : undefined;
-  if (override?.sourceName === normalizedSourceName) {
-    return override.displayName;
-  }
-
-  if (normalizedSourceName === "Bailey (Great With Kids).") {
-    return "Bailey";
-  }
-
-  // Some historical PetFinder names contain decorative heart symbols that
-  // arrived mojibaked in the source export. Keep the source untouched and
-  // clean only the visible label used by the web.
-  if (/\bLily\b/i.test(normalizedSourceName) && /[â¥]/.test(normalizedSourceName)) {
-    return "Lily";
-  }
-
-  return normalizedSourceName;
-}
+export { presentPetfinderName };
 
 export function createAdopterDogResult(
   profile: AdopterProfile,
