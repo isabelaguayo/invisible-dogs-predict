@@ -1,5 +1,6 @@
 import { getPetfinderHistoricalDescription } from "../lib/tfm/descriptions.ts";
 import { adopterProfiles } from "../lib/adoptante/artifacts.ts";
+import { presentPetfinderName } from "../lib/presentation/petfinderName.ts";
 import type { AdopterProfile } from "../types/adopterSearch.ts";
 
 export type ProtectoraRiskLevel = "Bajo" | "Medio" | "Alto";
@@ -135,13 +136,6 @@ function presentKnownValue(value: string, mapping: Readonly<Record<string, strin
   return mapping[value] ?? value;
 }
 
-function presentProtectoraName(sourceName: string | null | undefined) {
-  const normalized = sourceName?.trim() || "Sin nombre";
-  if (normalized === "Bailey (Great With Kids).") return "Bailey";
-  if (/\bLily\b/i.test(normalized) && /[â¥]/.test(normalized)) return "Lily";
-  return normalized;
-}
-
 function presentBreed(source: ProtectoraPetfinderSourceProfile) {
   return joinInformed(
     [source.raza_principal_app, source.raza_secundaria_app].map((breed) =>
@@ -152,7 +146,7 @@ function presentBreed(source: ProtectoraPetfinderSourceProfile) {
 }
 
 function buildStructuredDescription(source: ProtectoraPetfinderSourceProfile) {
-  const name = presentProtectoraName(source.nombre_app);
+  const name = presentPetfinderName(source.nombre_app, source.PetID);
   const subject = source.sexo_app === "Macho" ? "un macho" : "una hembra";
   const breed = presentBreed(source);
   const breedClause = breed ? `registra la raza ${breed}` : "no registra una raza específica";
@@ -166,7 +160,7 @@ function toProtectoraProfile(
   return {
     source,
     id: source.PetID,
-    name: presentProtectoraName(source.nombre_app),
+    name: presentPetfinderName(source.nombre_app, source.PetID),
     age: formatAge(source.edad_anos),
     sex: source.sexo_app,
     size: source.tamano_app,
