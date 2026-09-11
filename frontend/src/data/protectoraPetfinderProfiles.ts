@@ -53,6 +53,16 @@ export type ProtectoraPetfinderProfile = {
 
 const PROTECTORA_PETFINDER_IDS = ["485bebd4f", "a9085cdde", "c3a2d4d83", "ad2423b1f", "fff4a6420", "c749028bb"];
 
+const MALE_PRESENTATION_NAMES = [
+  "Max", "Rocky", "Toby", "Bruno", "Leo", "Simba", "Milo", "Duke", "Thor", "Bobby",
+  "Rex", "Oliver", "Benji", "Teo", "Nico", "Lucky", "Tango", "Chester", "Balu", "Kiko",
+] as const;
+
+const FEMALE_PRESENTATION_NAMES = [
+  "Luna", "Nala", "Kira", "Maya", "Lola", "Duna", "Mia", "Noa", "Gala", "Lia",
+  "Nina", "Alma", "Sasha", "Kiara", "Vega", "Leia", "Roma", "Olivia", "Mila", "Cora",
+] as const;
+
 function sourceFromAdopterProfile(profile: AdopterProfile): ProtectoraPetfinderSourceProfile {
   return {
     Description: getPetfinderHistoricalDescription(profile.petId) ?? "",
@@ -136,6 +146,24 @@ function presentKnownValue(value: string, mapping: Readonly<Record<string, strin
   return mapping[value] ?? value;
 }
 
+function stablePresentationName(petId: string, names: readonly string[]) {
+  let hash = 0;
+  for (const character of petId) {
+    hash = ((hash * 31) + character.charCodeAt(0)) >>> 0;
+  }
+  return names[hash % names.length];
+}
+
+function presentProtectoraName(source: ProtectoraPetfinderSourceProfile) {
+  const historicalName = presentPetfinderName(source.nombre_app, source.PetID);
+  if (historicalName !== "Sin nombre") return historicalName;
+
+  const names = source.sexo_app === "Macho"
+    ? MALE_PRESENTATION_NAMES
+    : FEMALE_PRESENTATION_NAMES;
+  return stablePresentationName(source.PetID, names);
+}
+
 function presentBreed(source: ProtectoraPetfinderSourceProfile) {
   return joinInformed(
     [source.raza_principal_app, source.raza_secundaria_app].map((breed) =>
@@ -146,7 +174,7 @@ function presentBreed(source: ProtectoraPetfinderSourceProfile) {
 }
 
 function buildStructuredDescription(source: ProtectoraPetfinderSourceProfile) {
-  const name = presentPetfinderName(source.nombre_app, source.PetID);
+  const name = presentProtectoraName(source);
   const subject = source.sexo_app === "Macho" ? "un macho" : "una hembra";
   const breed = presentBreed(source);
   const breedClause = breed ? `registra la raza ${breed}` : "no registra una raza específica";
@@ -160,7 +188,7 @@ function toProtectoraProfile(
   return {
     source,
     id: source.PetID,
-    name: presentPetfinderName(source.nombre_app, source.PetID),
+    name: presentProtectoraName(source),
     age: formatAge(source.edad_anos),
     sex: source.sexo_app,
     size: source.tamano_app,
