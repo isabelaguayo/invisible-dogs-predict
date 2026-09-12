@@ -67,6 +67,14 @@ function stablePresentationName(petId: string, sex?: string) {
   return names[hash % names.length];
 }
 
+function comparableLabel(value: string | null | undefined) {
+  return (value ?? "")
+    .toLocaleLowerCase("en-US")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function presentPetfinderName(
   sourceName: string | null | undefined,
   petId?: string,
@@ -98,13 +106,26 @@ export function presentPetfinderVisibleName(
   sourceName: string | null | undefined,
   petId: string,
   sex?: string,
+  breedLabels: readonly (string | null | undefined)[] = [],
 ) {
   const normalizedSourceName = sourceName?.trim() ?? "";
   const presented = presentPetfinderName(sourceName, petId);
   const looksLikeGenericLabel = GENERIC_PROFILE_LABEL.test(normalizedSourceName);
   const looksLikePromotionalLabel = PROMOTIONAL_PROFILE_LABEL.test(normalizedSourceName);
+  const sourceComparable = comparableLabel(normalizedSourceName);
+  const presentedComparable = comparableLabel(presented);
+  const looksLikeBreedLabel = breedLabels.some((breed) => {
+    const breedComparable = comparableLabel(breed);
+    return Boolean(breedComparable)
+      && (sourceComparable === breedComparable || presentedComparable === breedComparable);
+  });
 
-  if (presented !== "Sin nombre" && !looksLikeGenericLabel && !looksLikePromotionalLabel) {
+  if (
+    presented !== "Sin nombre"
+    && !looksLikeGenericLabel
+    && !looksLikePromotionalLabel
+    && !looksLikeBreedLabel
+  ) {
     return presented;
   }
 
