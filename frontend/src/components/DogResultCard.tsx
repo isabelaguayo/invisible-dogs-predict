@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { AdopterDogResult } from "@/types/adopterResult";
 import { useAdopterFavorite } from "@/hooks/useAdopterFavorites";
+import { presentPetfinderVisibleName } from "@/lib/presentation/petfinderName";
 
 function HeartIcon({ active }: { active: boolean }) {
   return (
@@ -27,6 +28,7 @@ export function DogResultCard({
   const { isFavorite, toggle } = useAdopterFavorite(dog.profile.petId);
   const [explanationOpen, setExplanationOpen] = useState(false);
   const { profile, search } = dog;
+  const visibleName = presentPetfinderVisibleName(profile.sourceName, profile.petId, profile.sex);
   const explanationId = `result-explanation-${profile.petId}`;
   const hasVisualSimilarity = variant === "search" && search.similarityPercent !== undefined && search.rank !== undefined;
   const visualBarWidth = hasVisualSimilarity
@@ -44,14 +46,14 @@ export function DogResultCard({
         {profile.photoUrl ? (
           <Image
             src={profile.photoUrl}
-            alt={`Fotografía de ${profile.displayName}`}
+            alt={`Fotografía de ${visibleName}`}
             fill
             sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1040px) 50vw, 33vw"
             style={{ objectFit: "cover", objectPosition: profile.objectPosition }}
           />
         ) : (
-          <div className="result-photo-placeholder" aria-label={`Fotografía no disponible para el perfil de ${profile.displayName}`}>
-            <span aria-hidden="true">{profile.displayName.charAt(0) || "?"}</span>
+          <div className="result-photo-placeholder" aria-label={`Fotografía no disponible para el perfil de ${visibleName}`}>
+            <span aria-hidden="true">{visibleName.charAt(0) || "?"}</span>
             <p>Fotografía no disponible</p>
             <small>No incluida en esta revisión</small>
           </div>
@@ -59,7 +61,7 @@ export function DogResultCard({
         <button
           className="favorite-button"
           type="button"
-          aria-label={isFavorite ? `Quitar ${profile.displayName} de favoritos` : `Añadir ${profile.displayName} a favoritos`}
+          aria-label={isFavorite ? `Quitar ${visibleName} de favoritos` : `Añadir ${visibleName} a favoritos`}
           aria-pressed={isFavorite}
           onClick={toggle}
         >
@@ -69,21 +71,21 @@ export function DogResultCard({
 
       <div className="result-card-body">
         <header className="result-dog-heading">
-          <div><p>{variant === "favorite" ? "Favorito" : hasVisualSimilarity ? `Resultado ${search.rank}` : "Perfil compatible"}</p><h3>{profile.displayName}</h3></div>
+          <div><p>{variant === "favorite" ? "Favorito" : hasVisualSimilarity ? `Resultado ${search.rank}` : "Perfil compatible"}</p><h3>{visibleName}</h3></div>
           <span>{profile.breedLabel}</span>
         </header>
 
         <p className="result-dog-meta">{profile.ageLabel} <i aria-hidden="true">·</i> {profile.sex} <i aria-hidden="true">·</i> {profile.size}</p>
 
         {variant === "favorite" ? null : hasVisualSimilarity ? (
-          <section className="similarity-metric" aria-label={`Similitud visual de ${profile.displayName}: ${search.similarityPercent} por ciento`}>
+          <section className="similarity-metric" aria-label={`Similitud visual de ${visibleName}: ${search.similarityPercent} por ciento`}>
             <div><span>Similitud visual</span><strong>{search.similarityPercent} %</strong></div>
             <div className="metric-track" role="progressbar" aria-label="Similitud visual" aria-valuemin={0} aria-valuemax={100} aria-valuenow={visualBarWidth}>
               <span style={{ width: `${visualBarWidth}%` }} />
             </div>
           </section>
         ) : (
-          <section className="compatible-profile-note" aria-label={`${profile.displayName} cumple las preferencias seleccionadas`}>
+          <section className="compatible-profile-note" aria-label={`${visibleName} cumple las preferencias seleccionadas`}>
             <span aria-hidden="true">✓</span>
             <div><strong>Compatible con tus preferencias</strong><small>Sin puntuación de similitud visual</small></div>
           </section>

@@ -20,6 +20,18 @@ const PETFINDER_NAME_PRESENTATION_OVERRIDES: Readonly<Record<string, {
   },
 };
 
+const MALE_PRESENTATION_NAMES = [
+  "Max", "Rocky", "Toby", "Bruno", "Leo", "Simba", "Milo", "Duke", "Thor", "Bobby",
+  "Rex", "Oliver", "Benji", "Teo", "Nico", "Lucky", "Tango", "Chester", "Balu", "Kiko",
+] as const;
+
+const FEMALE_PRESENTATION_NAMES = [
+  "Luna", "Nala", "Kira", "Maya", "Lola", "Duna", "Mia", "Noa", "Gala", "Lia",
+  "Nina", "Alma", "Sasha", "Kiara", "Vega", "Leia", "Roma", "Olivia", "Mila", "Cora",
+] as const;
+
+const GENERIC_PROFILE_LABEL = /\b(?:adult|puppy|dog|female|male|mixed|breed|coat|small|medium|large|poodle|chihuahua|beagle|month|months|year|years)\b/i;
+
 function sentenceCase(value: string) {
   const lower = value.toLocaleLowerCase("es-ES");
   return lower.charAt(0).toLocaleUpperCase("es-ES") + lower.slice(1);
@@ -43,6 +55,15 @@ function cleanHistoricalName(value: string) {
     .trim();
 
   return cleaned;
+}
+
+function stablePresentationName(petId: string, sex?: string) {
+  const names = sex === "Hembra" ? FEMALE_PRESENTATION_NAMES : MALE_PRESENTATION_NAMES;
+  let hash = 0;
+  for (const character of petId) {
+    hash = ((hash * 31) + character.charCodeAt(0)) >>> 0;
+  }
+  return names[hash % names.length];
 }
 
 export function presentPetfinderName(
@@ -70,4 +91,20 @@ export function presentPetfinderName(
   if (!cleaned) return "Sin nombre";
 
   return sentenceCase(cleaned);
+}
+
+export function presentPetfinderVisibleName(
+  sourceName: string | null | undefined,
+  petId: string,
+  sex?: string,
+) {
+  const normalizedSourceName = sourceName?.trim() ?? "";
+  const presented = presentPetfinderName(sourceName, petId);
+  const looksLikeGenericLabel = GENERIC_PROFILE_LABEL.test(normalizedSourceName);
+
+  if (presented !== "Sin nombre" && !looksLikeGenericLabel) {
+    return presented;
+  }
+
+  return stablePresentationName(petId, sex);
 }

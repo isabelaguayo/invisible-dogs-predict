@@ -5,6 +5,7 @@ import { ProfileFavoriteButton } from "@/components/ProfileFavoriteButton";
 import { SectionDivider } from "@/components/SectionDivider";
 import { FavoritesNavLink } from "@/components/adoptante/FavoritesNavLink";
 import { buildAdopterProfileSummary } from "@/lib/adoptante/presentation";
+import { presentPetfinderVisibleName } from "@/lib/presentation/petfinderName";
 import {
   createAdopterHref,
   parseAdopterSearchRequest,
@@ -44,14 +45,20 @@ function AdopterProfileHeader() {
   );
 }
 
-function AdopterProfilePhoto({ profile }: { profile: AdopterDogResult["profile"] }) {
+function AdopterProfilePhoto({
+  profile,
+  visibleName,
+}: {
+  profile: AdopterDogResult["profile"];
+  visibleName: string;
+}) {
   return (
     <figure className="profile-gallery">
       <div className="profile-photo-frame">
         {profile.photoUrl ? (
           <Image
             src={profile.photoUrl}
-            alt={`Fotografía de ${profile.displayName}`}
+            alt={`Fotografía de ${visibleName}`}
             fill
             sizes="(max-width: 760px) 88vw, (max-width: 1040px) 46vw, 480px"
             style={{ objectFit: "contain" }}
@@ -59,7 +66,7 @@ function AdopterProfilePhoto({ profile }: { profile: AdopterDogResult["profile"]
           />
         ) : (
           <div className="profile-photo-missing">
-            <span aria-hidden="true">{profile.displayName.charAt(0) || "?"}</span>
+            <span aria-hidden="true">{visibleName.charAt(0) || "?"}</span>
             <p>Fotografía no disponible en esta revisión</p>
           </div>
         )}
@@ -81,9 +88,10 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
 
   const { dog, context } = view;
   const { profile } = dog;
+  const visibleName = presentPetfinderVisibleName(profile.sourceName, profile.petId, profile.sex);
   const cameFromSearch = request.referenceStatus !== "none" || Object.keys(state).length > 0;
   const backToResultsHref = cameFromSearch ? createAdopterHref("/adoptante/resultados", state) : undefined;
-  const summary = buildAdopterProfileSummary(profile);
+  const summary = buildAdopterProfileSummary({ ...profile, displayName: visibleName });
 
   return (
     <main className="adopter-page dog-profile-page">
@@ -98,23 +106,23 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
           )}
 
           <div className="profile-hero-grid">
-            <AdopterProfilePhoto profile={profile} />
+            <AdopterProfilePhoto profile={profile} visibleName={visibleName} />
 
             <div className="profile-summary">
               <div className="profile-demo-label"><i aria-hidden="true" />Perfil histórico</div>
               <div className="profile-title-row">
                 <div>
                   <p className="flow-eyebrow">Ficha individual</p>
-                  <h1>{profile.displayName}</h1>
+                  <h1>{visibleName}</h1>
                 </div>
-                <ProfileFavoriteButton petId={profile.petId} dogName={profile.displayName} />
+                <ProfileFavoriteButton petId={profile.petId} dogName={visibleName} />
               </div>
               <p className="profile-meta">{profile.ageLabel} <i aria-hidden="true">·</i> {profile.sex} <i aria-hidden="true">·</i> {profile.size}</p>
               <p className="profile-breed">{profile.breedLabel}</p>
 
               <div className="profile-metrics">
                 {context.kind === "breed" && (
-                  <section className="profile-similarity" aria-label={`Similitud visual de ${profile.displayName}: ${context.similarityPercent} por ciento`}>
+                  <section className="profile-similarity" aria-label={`Similitud visual de ${visibleName}: ${context.similarityPercent} por ciento`}>
                     <div className="profile-metric-heading">
                       <div><span>01</span><h2>Similitud visual</h2></div>
                       <strong>{context.similarityPercent} %</strong>
@@ -128,7 +136,7 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
                 )}
 
                 {context.kind === "characteristics" && (
-                  <section className="compatible-profile-note" aria-label={`${profile.displayName} cumple las preferencias seleccionadas`}>
+                  <section className="compatible-profile-note" aria-label={`${visibleName} cumple las preferencias seleccionadas`}>
                     <span aria-hidden="true">✓</span>
                     <div>
                       <strong>Compatible con tus preferencias</strong>
