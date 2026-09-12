@@ -31,3 +31,11 @@ test("Adoptante no muestra descriptores genéricos como si fueran nombres", () =
   assert.notEqual(visibleName, "Poodle female");
   assert.match(visibleName, /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+$/u);
 });
+
+test("Adoptante sustituye frases promocionales del anuncio por un nombre de presentación", () => {
+  const visibleName = presentPetfinderVisibleName("Pls take me home", "promo-profile", "Hembra");
+
+  assert.notEqual(visibleName, "Pls take me home");
+  assert.match(visibleName, /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+$/u);
+  assert.equal(visibleName, presentPetfinderVisibleName("Pls take me home", "promo-profile", "Hembra"));
+});
