@@ -28,7 +28,12 @@ export function DogResultCard({
   const { isFavorite, toggle } = useAdopterFavorite(dog.profile.petId);
   const [explanationOpen, setExplanationOpen] = useState(false);
   const { profile, search } = dog;
-  const visibleName = presentPetfinderVisibleName(profile.sourceName, profile.petId, profile.sex);
+  const visibleName = presentPetfinderVisibleName(
+    profile.sourceName,
+    profile.petId,
+    profile.sex,
+    [profile.primaryBreed, profile.secondaryBreed],
+  );
   const explanationId = `result-explanation-${profile.petId}`;
   const hasVisualSimilarity = variant === "search" && search.similarityPercent !== undefined && search.rank !== undefined;
   const visualBarWidth = hasVisualSimilarity
