@@ -88,7 +88,12 @@ export default async function AdopterDogProfilePage({ params, searchParams }: Ad
 
   const { dog, context } = view;
   const { profile } = dog;
-  const visibleName = presentPetfinderVisibleName(profile.sourceName, profile.petId, profile.sex);
+  const visibleName = presentPetfinderVisibleName(
+    profile.sourceName,
+    profile.petId,
+    profile.sex,
+    [profile.primaryBreed, profile.secondaryBreed],
+  );
   const cameFromSearch = request.referenceStatus !== "none" || Object.keys(state).length > 0;
   const backToResultsHref = cameFromSearch ? createAdopterHref("/adoptante/resultados", state) : undefined;
   const summary = buildAdopterProfileSummary({ ...profile, displayName: visibleName });
