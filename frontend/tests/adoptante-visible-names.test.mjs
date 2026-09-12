@@ -39,3 +39,23 @@ test("Adoptante sustituye frases promocionales del anuncio por un nombre de pres
   assert.match(visibleName, /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+$/u);
   assert.equal(visibleName, presentPetfinderVisibleName("Pls take me home", "promo-profile", "Hembra"));
 });
+
+test("Adoptante no muestra la raza como si fuera el nombre del perro", () => {
+  const shihTzu = presentPetfinderVisibleName(
+    "Shih Tzu",
+    "breed-only-shih-tzu",
+    "Macho",
+    ["Shih Tzu", undefined],
+  );
+  const spitz = presentPetfinderVisibleName(
+    "Spitz",
+    "breed-only-spitz",
+    "Hembra",
+    ["Spitz", undefined],
+  );
+
+  assert.notEqual(shihTzu.toLocaleLowerCase("en-US"), "shih tzu");
+  assert.notEqual(spitz.toLocaleLowerCase("en-US"), "spitz");
+  assert.match(shihTzu, /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+$/u);
+  assert.match(spitz, /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+$/u);
+});
