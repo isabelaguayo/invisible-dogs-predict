@@ -31,6 +31,7 @@ const FEMALE_PRESENTATION_NAMES = [
 ] as const;
 
 const GENERIC_PROFILE_LABEL = /\b(?:adult|puppy|dog|female|male|mixed|breed|coat|small|medium|large|poodle|chihuahua|beagle|month|months|year|years)\b/i;
+const PROMOTIONAL_PROFILE_LABEL = /(?:\b(?:pls|please|plz)\b.*\b(?:home|adopt|adoption|family)\b|\b(?:take me home|adopt me|need(?:s)? (?:a )?home|looking for (?:a )?home|find me (?:a )?home|give me (?:a )?home|forever home|new home|save me|rescue me)\b)/i;
 
 function sentenceCase(value: string) {
   const lower = value.toLocaleLowerCase("es-ES");
@@ -101,8 +102,9 @@ export function presentPetfinderVisibleName(
   const normalizedSourceName = sourceName?.trim() ?? "";
   const presented = presentPetfinderName(sourceName, petId);
   const looksLikeGenericLabel = GENERIC_PROFILE_LABEL.test(normalizedSourceName);
+  const looksLikePromotionalLabel = PROMOTIONAL_PROFILE_LABEL.test(normalizedSourceName);
 
-  if (presented !== "Sin nombre" && !looksLikeGenericLabel) {
+  if (presented !== "Sin nombre" && !looksLikeGenericLabel && !looksLikePromotionalLabel) {
     return presented;
   }
 
